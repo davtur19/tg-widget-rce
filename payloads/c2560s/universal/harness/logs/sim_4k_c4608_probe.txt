@@ -1,0 +1,4 @@
+SIM map=4k classes=64 limit=8388608
+=== SCRIPT <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4608_probe.js (2631)
+[<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4608_probe.js] Error: Error: RESULT SAFE4608C
+=== DONE <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4608_probe.js

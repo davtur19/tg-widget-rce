@@ -1,0 +1,24 @@
+{
+  "name": "session_v14",
+  "notes": "Session-impact payloads. file uses the group-root spdb/rce proof from backup2; net needs the external c2_recv.py receiver on the LAN port named in the payload.",
+  "attempts": [
+    {
+      "label": "session_file",
+      "payload": "lab/ios17e/session_impact/out/session_v14_file_1m.html",
+      "count": 1,
+      "expect": "proof",
+      "require_proof": true,
+      "backup_regex": "<APPGROUP>.*rce.txt|.*spdb",
+      "success_markers": ["RESULT SS2", "HIT="],
+      "stop_after_consecutive_deaths": 2
+    },
+    {
+      "label": "session_net",
+      "payload": "lab/ios17e/session_impact/out/session_v14_net_1m.html",
+      "count": 1,
+      "expect": "marker_or_proof",
+      "success_markers": ["RESULT SS2", "HIT=", "\\bOK\\b"],
+      "stop_after_consecutive_deaths": 2
+    }
+  ]
+}

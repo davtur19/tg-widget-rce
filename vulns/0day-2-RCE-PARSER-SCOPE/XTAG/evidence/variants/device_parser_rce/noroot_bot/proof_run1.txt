@@ -1,0 +1,2 @@
+-rw------- 1 u0_a346 u0_a346 185 2026-11-07 18:07 /data/user/0/org.telegram.messenger.beta/files/n1
+uid=10346(u0_a346) gid=10346(u0_a346) groups=10346(u0_a346),3002(net_bt),3003(inet),9997(everybody),20346(u0_a346_cache),50346(all_a346) context=u:r:untrusted_app:s0:c90,c257,c512,c768

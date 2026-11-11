@@ -1,0 +1,56 @@
+<!doctype html><body><div id="v" style="font:12px monospace">S1 PROBE IDLE</div>
+<script>
+/* Answer-channel limit probe (host-only artifact; no exploit, no state).
+ * Requests P0..P8 from the bot probe_answers.py and prints per-step results:
+ *   @ms  time since start (ms)          LEN=n  string length (chars)
+ *   ERR=c rejection code                D65/D64  request-data boundary
+ * Sequence waits 5.2 s between steps (background pacing); a tap on the page
+ * advances immediately (tests the foreground/tap path: a success <5 s after
+ * the previous request proves it). P8 is the fixed 4900/5100 ms pacing test
+ * and ignores taps before it starts.
+ * Steps: P0 1024B, P1 1025B, P2 512x(e9)=1024B, P3 513x(e9)=1026B, P4 NUL,
+ *        P7 request-data 65/64B, P8 pacing, P6 1024x01, P5 empty.
+ */
+(function(){
+var SEQ=["P0","P1","P2","P3","P4","P7","P8","P6","P5"],i=0,t0=0,out=[],busy=false,tm=null,armed=false;
+function el(){return document.getElementById("v")}
+function show(s){el().textContent="S1 PROBE "+s}
+function rec(s){out.push(s);show(out.join(" | "))}
+function now(){return t0?Date.now()-t0:0}
+function ans(a){if(typeof a=="string")return a;return a&&typeof a.result=="string"?a.result:null}
+function send(data,label,cb){
+  var p;try{p=TelegramWidget.request(data)}catch(e){cb("ERR:"+((e&&e.code)||(e&&e.name)||"throw"),0);return}
+  if(!p||typeof p.then!="function"){cb("ERR:PROMISE",0);return}
+  var st=Date.now();
+  p.then(function(a){cb("LEN="+(ans(a)===null?"null":ans(a).length),Date.now()-st)},
+         function(e){cb("ERR:"+((e&&e.code)||(e&&e.name)||"x"),Date.now()-st)})
+}
+function later(ms,fn){clearTimeout(tm);tm=setTimeout(fn,ms)}
+function pac(){
+  var A=Date.now();
+  send("P8","A",function(r1){rec("@"+now()+" P8A "+r1);
+    var B=A+4900,C=A+5100;
+    later(Math.max(0,B-Date.now()),function(){
+      send("P8","B",function(r2){rec("@"+now()+" P8B "+r2);
+        later(Math.max(0,C-Date.now()),function(){
+          send("P8","C",function(r3){rec("@"+now()+" P8C "+r3);busy=false;next(5200)})})})})})}
+function step(){
+  if(busy)return;
+  if(i>=SEQ.length){show(out.join(" | ")+" | DONE");return}
+  var k=SEQ[i++];busy=true;
+  if(k=="P7"){
+    var e65="none";
+    try{TelegramWidget.request("R".repeat(65))}catch(e){e65=(e&&e.code)||(e&&e.name)||"throw"}
+    rec("@"+now()+" D65="+e65);
+    send("R".repeat(64),"P7",function(r,d){rec("@"+now()+" P7 "+r+" rt="+d);busy=false;next(5200)});
+    return;
+  }
+  if(k=="P8"){later(5200,function(){busy=true;pac()});return}
+  send(k,k,function(r,d){rec("@"+now()+" "+k+" "+r+" rt="+d);busy=false;next(5200)});
+}
+function next(ms){armed=true;later(ms,function(){armed=false;step()})}
+document.addEventListener("click",function(){if(armed&&i<SEQ.length&&SEQ[i]!="P8"){clearTimeout(tm);armed=false;step()}});
+t0=Date.now();later(300,step);
+})();
+</script>
+</body>

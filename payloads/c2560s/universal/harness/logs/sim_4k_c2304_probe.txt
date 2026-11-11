@@ -1,0 +1,4 @@
+SIM map=4k classes=64 limit=8388608
+=== SCRIPT <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2304_probe.js (2180)
+[<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2304_probe.js] Error: Error: RESULT SAFE2304C
+=== DONE <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2304_probe.js

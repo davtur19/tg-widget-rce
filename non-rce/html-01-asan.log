@@ -1,0 +1,120 @@
+step 1 len=12 '<div>a</div>'
+  ok changed=0
+step 2 len=8 '<x>a</x>'
+  ok changed=1
+step 3 len=8 '<y>a</y>'
+=================================================================
+==1251959==ERROR: AddressSanitizer: stack-use-after-return on address 0x7f08f6519051 at pc 0x55607d2b443d bp 0x7ffddbcaa0c0 sp 0x7ffddbca9868
+READ of size 1 at 0x7f08f6519051 thread T0
+    #0 0x55607d2b443c in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long) (<HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/build/uar_repro+0x2b243c) (BuildId: 28b3d822ee11d7a47b211fbba90c03b5453721d6)
+    #1 0x55607d2b48e0 in bcmp (<HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/build/uar_repro+0x2b28e0) (BuildId: 28b3d822ee11d7a47b211fbba90c03b5453721d6)
+    #2 0x55607d3ef538 in std::char_traits<char>::compare(char const*, char const*, unsigned long) /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/char_traits.h:381:9
+    #3 0x55607d3ef538 in std::basic_string_view<char, std::char_traits<char>>::compare(std::basic_string_view<char, std::char_traits<char>>) const /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/string_view:346:14
+    #4 0x55607d3ef538 in bool std::operator==<char, std::char_traits<char>>(std::basic_string_view<char, std::char_traits<char>>, std::type_identity<std::basic_string_view<char, std::char_traits<char>>>::type) /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/string_view:615:46
+    #5 0x55607d3ef538 in litehtml::(anonymous namespace)::same_element_kind(GumboInternalNode const*, GumboInternalNode const*) <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:186:67
+    #6 0x55607d3f0494 in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*)::$_1::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:2039:67
+    #7 0x55607d3f8b4c in std::function<bool (GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool)>::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/std_function.h:591:9
+    #8 0x55607d3f8b4c in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*)::$_9::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:2024:17
+    #9 0x55607d3f0e96 in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*)::$_1::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:2066:48
+    #10 0x55607d3f8b4c in std::function<bool (GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool)>::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/std_function.h:591:9
+    #11 0x55607d3f8b4c in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*)::$_9::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:2024:17
+    #12 0x55607d3f0e96 in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*)::$_1::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:2066:48
+    #13 0x55607d405f1e in std::function<bool (GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool)>::operator()(GumboInternalNode const*, GumboInternalNode const*, std::shared_ptr<litehtml::element> const&, bool) const /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/std_function.h:591:9
+    #14 0x55607d3b94dc in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*) <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:2185:13
+    #15 0x55607d37b20b in (anonymous namespace)::step(std::shared_ptr<litehtml::document>&, (anonymous namespace)::C&, char const*, int, int) <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/src/uar_repro.cpp:73:18
+    #16 0x55607d37b20b in main <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/src/uar_repro.cpp:86:36
+    #17 0x7f08f7ff6ca7  (/lib/x86_64-linux-gnu/libc.so.6+0x29ca7) (BuildId: 5e5b51f4c39af9ac589408c1dc432ba390a273cc)
+    #18 0x7f08f7ff6d64 in __libc_start_main (/lib/x86_64-linux-gnu/libc.so.6+0x29d64) (BuildId: 5e5b51f4c39af9ac589408c1dc432ba390a273cc)
+    #19 0x55607d2972e0 in _start (<HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/build/uar_repro+0x2952e0) (BuildId: 28b3d822ee11d7a47b211fbba90c03b5453721d6)
+
+Address 0x7f08f6519051 is located in stack of thread T0 at offset 81 in frame
+    #0 0x55607d3b849f in litehtml::document::update_structure(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&, bool*) <HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/../qjs_fork_audit/twidget-canonical/litehtml/src/document.cpp:1835
+
+  This frame has 52 object(s):
+    [32, 33) 'attribute_scope' (line 1845)
+    [48, 49) 'position_scope' (line 1846)
+    [64, 96) 'text' (line 1848) <== Memory access at offset 81 is inside this variable
+    [128, 136) 'holes_of' (line 1863)
+    [160, 168) 'hole_in' (line 1869)
+    [192, 200) 'mapped_element' (line 1880)
+    [224, 248) 'current_text' (line 1884)
+    [288, 304) 'same_text_node' (line 1890)
+    [320, 352) 'same_subtree' (line 1898)
+    [384, 408) 'styles' (line 1939)
+    [448, 472) 'retags' (line 1940)
+    [512, 536) 'rebuilds' (line 1941)
+    [576, 600) 'kept' (line 1942)
+    [640, 664) 'kept_text' (line 1943)
+    [704, 728) 'retexts' (line 1944)
+    [768, 769) 'unsafe_style' (line 1952)
+    [784, 808) 'retag' (line 1956)
+    [848, 880) 'diff_children' (line 1969)
+    [912, 984) 'diff_element' (line 1970)
+    [1024, 1040) 'ref.tmp274' (line 2185)
+    [1056, 1080) 'over_chain' (line 2205)
+    [1120, 1136) 'agg.tmp'
+    [1152, 1176) 'active_chain' (line 2206)
+    [1216, 1232) 'agg.tmp304'
+    [1248, 1304) 'remapped' (line 2208)
+    [1344, 1352) '__begin1' (line 2210)
+    [1376, 1392) 'ref.tmp350' (line 2211)
+    [1408, 1416) 'ref.tmp357' (line 2211)
+    [1440, 1448) '__begin1382' (line 2212)
+    [1472, 1480) 'ref.tmp412' (line 2213)
+    [1504, 1528) 'restyle' (line 2216)
+    [1568, 1576) '__begin1444' (line 2217)
+    [1600, 1624) 'retext' (line 2222)
+    [1664, 1672) '__begin1502' (line 2223)
+    [1696, 1720) 'created' (line 2234)
+    [1760, 1768) '__begin1621' (line 2237)
+    [1792, 1808) 'p' (line 2241)
+    [1824, 1840) 'before' (line 2244)
+    [1856, 1872) 'after' (line 2244)
+    [1888, 1944) 'reused' (line 2249)
+    [1984, 2008) 'children' (line 2250)
+    [2048, 2072) 'made' (line 2265)
+    [2112, 2120) '__begin11258' (line 2289)
+    [2144, 2152) '__begin21344' (line 2298)
+    [2176, 2184) '__begin21404' (line 2300)
+    [2208, 2216) '__begin21457' (line 2302)
+    [2240, 2248) '__begin21517' (line 2304)
+    [2272, 2328) 'ref.tmp1588' (line 2306)
+    [2368, 2424) 'ref.tmp1593' (line 2306)
+    [2464, 2520) 'ref.tmp1598' (line 2306)
+    [2560, 2576) 'ref.tmp1623' (line 2309)
+    [2592, 2608) 'ref.tmp1642' (line 2310)
+HINT: this may be a false positive if your program uses some custom stack unwind mechanism, swapcontext or vfork
+      (longjmp and C++ exceptions *are* supported)
+SUMMARY: AddressSanitizer: stack-use-after-return (<HOME>/ailocal/Telegram/telegramandroidwidget/lab/widget_surface_hunt/build/uar_repro+0x2b243c) (BuildId: 28b3d822ee11d7a47b211fbba90c03b5453721d6) in MemcmpInterceptorCommon(void*, int (*)(void const*, void const*, unsigned long), void const*, void const*, unsigned long)
+Shadow bytes around the buggy address:
+  0x7f08f6518d80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6518e00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6518e80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6518f00: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6518f80: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+=>0x7f08f6519000: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5[f5]f5 f5 f5 f5 f5
+  0x7f08f6519080: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6519100: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6519180: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6519200: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+  0x7f08f6519280: f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5 f5
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==1251959==ABORTING

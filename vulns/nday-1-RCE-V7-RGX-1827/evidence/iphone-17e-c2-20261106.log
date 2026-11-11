@@ -1,0 +1,53 @@
+LISTEN 44499 (loop)
+CONN 1 <LAN_IP>:37068 -> /tmp/opencode/exfil_1
+GOT 1 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 2 <LAN_IP>:46142 -> /tmp/opencode/exfil_2
+GOT 2 26 bytes sha=0d13d96fa09658a63383f960e0d6618fbea32af39f533b2f6160e3c33da45651 1.0s
+CONN 3 <LAN_IP>:53896 -> /tmp/opencode/exfil_3
+GOT 3 21 bytes sha=4976ccb4adeee148e0bcfc9bdf3156b4acab69f73ad5f9b4137ed30b6df627b2 0.0s
+CONN 4 127.0.0.1:58404 -> /tmp/opencode/exfil_4
+GOT 4 17 bytes sha=98a57393b3fbb444a466a699ca4810e5d6cc204c56efa40690abd0f270e1162e 0.0s
+CONN 5 <LAN_IP>:50625 -> /tmp/opencode/exfil_5
+GOT 5 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 6 <LAN_IP>:50723 -> /tmp/opencode/exfil_6
+GOT 6 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 7 <LAN_IP>:50726 -> /tmp/opencode/exfil_7
+GOT 7 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 8 <LAN_IP>:50730 -> /tmp/opencode/exfil_8
+GOT 8 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 9 <LAN_IP>:50734 -> /tmp/opencode/exfil_9
+GOT 9 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 10 <LAN_IP>:50739 -> /tmp/opencode/exfil_10
+GOT 10 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 11 <LAN_IP>:50752 -> /tmp/opencode/exfil_11
+GOT 11 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 12 <LAN_IP>:50761 -> /tmp/opencode/exfil_12
+GOT 12 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 13 <LAN_IP>:51156 -> /tmp/opencode/exfil_13
+GOT 13 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 14 <LAN_IP>:52385 -> /tmp/opencode/exfil_14
+GOT 14 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 15 <LAN_IP>:52398 -> /tmp/opencode/exfil_15
+GOT 15 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 16 <LAN_IP>:52401 -> /tmp/opencode/exfil_16
+GOT 16 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 17 <LAN_IP>:52604 -> /tmp/opencode/exfil_17
+GOT 17 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 18 <LAN_IP>:52655 -> /tmp/opencode/exfil_18
+GOT 18 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 19 <LAN_IP>:52936 -> /tmp/opencode/exfil_19
+GOT 19 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 15.0s
+CONN 20 <LAN_IP>:55345 -> /tmp/opencode/exfil_20
+GOT 20 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 21 <LAN_IP>:55348 -> /tmp/opencode/exfil_21
+GOT 21 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 22 <LAN_IP>:49176 -> /tmp/opencode/exfil_22
+GOT 22 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 23 <LAN_IP>:49180 -> /tmp/opencode/exfil_23
+GOT 23 0 bytes sha=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0.0s
+CONN 24 <LAN_IP>:49183 -> /tmp/opencode/exfil_24
+GOT 24 3039 bytes sha=641ebc34794ccbcd32c4fb1fe2e18e1b9481994682c8e4f0d06b988c1091d94e 9.2s
+CONN 25 <LAN_IP>:49187 -> /tmp/opencode/exfil_25
+GOT 25 3039 bytes sha=77f546e1e3a57773f104fce4d870f6a6b12667b4cb5c3d907bdb4ac6d4695b88 15.0s
+CONN 26 <LAN_IP>:49188 -> /tmp/opencode/exfil_26
+GOT 26 3039 bytes sha=72a90d91c794393334b66091da5291c1476a3af55250c0dbed2ee5e2b326725b 15.0s

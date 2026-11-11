@@ -1,0 +1,29 @@
+<!doctype html><body><div id="v">Ok</div>
+<script>
+"use strict";
+globalThis.BP={stage:'init',getter:'unset'};
+try{
+  Object.defineProperty(InternalError.prototype,'name',{
+    configurable:true,
+    get(){this.message='x';return 'x';}
+  });
+  globalThis.BP.getter='ok';
+}catch(e){globalThis.BP.getter='err:'+String(e);}
+function bpPaint(s){try{var v=document.getElementById('v');if(v)v.textContent=s;}catch(e){}try{console.log('N1IOS:'+s);}catch(e){}}
+globalThis.BP.stage='pre';
+bpPaint('BYPASS PRE getter='+globalThis.BP.getter);
+var BPBIG="x".repeat(9000000);
+globalThis.BP.stage='post';
+bpPaint('BYPASS POST');
+</script>
+<script>
+"use strict";
+try{
+  var st=(typeof BP!=='undefined'&&BP.stage)?BP.stage:'none';
+  var g=(typeof BP!=='undefined'&&BP.getter)?BP.getter:'none';
+  var s='BYPASS B stage='+st+' getter='+g;
+  var v=document.getElementById('v');if(v)v.textContent=s;
+  console.log('N1IOS:'+s);
+}catch(e){}
+</script>
+</body></html>

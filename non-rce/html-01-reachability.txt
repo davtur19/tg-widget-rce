@@ -1,0 +1,33 @@
+HTML-01 reachability in shipped Telegram
+
+1. The only updatable-document consumer in the canonical twidget tree is
+   core/src/renderer.cpp: Container::build() -> document::update_from_string.
+   grep: update_from_string appears only in core/src/renderer.cpp:709 and
+   litehtml/src/document.cpp (definition/callers of the patch paths).
+2. Container::build is called from Renderer::build_document with html_ =
+   serialize() (core/src/renderer.cpp:3171/3182); html_ has no other
+   assignment.
+3. serialize() starts with the literal "<!DOCTYPE html>" (15 B) followed by
+   "<html" and always emits head and body:
+   minimum "<!DOCTYPE html><html><head></head><body></body></html>" = 54 B.
+4. SSO capacity: libstdc++ 15 B (host repro), NDK libc++ 22 B. The shipped
+   Android library is libc++: its typeinfo names carry the `NSt6__ndk1` inline
+   namespace (1,161 occurrences, e.g.
+   `NSt6__ndk120__shared_ptr_emplaceIN8litehtml8raw_ruleE...`).
+   54 B > 22 B -> std::string is heap allocated -> m_text.swap(text) exchanges
+   the heap pointers, so the GumboOutput keeps pointing at a live buffer.
+   Therefore the stack-use-after-return cannot occur through the widget
+   renderer.
+5. The Android JNI create() takes only width/dpr/theme/backend
+   (platforms/android/jni.cpp:258); widget HTML arrives as JSON ops through
+   receive() and is serialized from the node tree. No path passes short HTML
+   to update_from_string.
+6. iOS: tgwidget-src (release-13.2) has no update_from_string/update_structure
+   (grep empty) and the TelegramUIFramework binary has no LH_NO_TEMPLATE /
+   LH_NO_STRUCTURE strings; it parses from m_text.data() directly
+   (document.cpp:2127). Not applicable to iOS 13.2.
+
+Conclusion: genuine litehtml library memory-safety defect (stack OOB read),
+host reproducible, NOT reachable from the shipped widget engine on Android and
+not present on iOS. Direct embedders of the litehtml updatable API that pass
+short documents (<= SSO capacity) are affected.

@@ -1,0 +1,4 @@
+SIM map=4k classes=64 limit=8388608
+=== SCRIPT <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2048_probe.js (2124)
+[<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2048_probe.js] Error: Error: RESULT SAFE2048C
+=== DONE <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2048_probe.js

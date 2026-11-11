@@ -1,0 +1,11 @@
+{
+  "token_env": "BOT_TOKEN",
+  "chat_id": 0,
+  "uid": 0,
+  "chunks": "chunks",
+  "method": "answerWidgetQuery",
+  "beta": true,
+  "note": "Placeholder values only. Token comes from BOT_TOKEN; MTProto app credentials from TG_API_ID/TG_API_HASH.",
+  "api_id_env": "TG_API_ID",
+  "api_hash_env": "TG_API_HASH"
+}

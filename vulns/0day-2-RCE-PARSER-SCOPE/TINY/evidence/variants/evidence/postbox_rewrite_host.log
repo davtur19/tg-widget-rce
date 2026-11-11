@@ -1,0 +1,8 @@
+integrity before: b'ok'
+candidate 0000000847cdfde3000000006aef5c2d000139f6 value_len 1386 zoff 105 comp_len 1266 html_len 10782 head b'<!doctype html><body><div id="v">N1</div>\n<script type="text'
+key preserved: 0000000847cdfde3000000006aef5c2d000139f6
+old value_len 1386 new 1094 old comp 1266 new 974 old html 10782 new 2174
+verify: key unchanged, payload equals new html
+integrity after: b'ok'
+t4 value length: 5
+wrote /tmp/opencode/postbox_test2/db_sqlite.new2

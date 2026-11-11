@@ -1,0 +1,37 @@
+11-07 22:06:50.122 19662 19662 E tmessages: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference
+11-07 22:06:52.004  1070 20164 E SmcInvoke_MinkDescriptor: cbthread[tid 510892457136] exit
+11-07 22:06:52.005  1070 20174 E SmcInvoke_MinkDescriptor: cbthread[tid 510882053296] exit
+11-07 22:06:52.005  1070 20172 E SmcInvoke_MinkDescriptor: cbthread[tid 510884134064] exit
+11-07 22:06:52.005  1070 20171 E SmcInvoke_MinkDescriptor: cbthread[tid 510885174448] exit
+11-07 22:06:52.006  1070 20169 E SmcInvoke_MinkDescriptor: cbthread[tid 510887255216] exit
+11-07 22:06:52.006  1070 20173 E SmcInvoke_MinkDescriptor: cbthread[tid 510883093680] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.006  1070 20173 D SmcInvoke_MinkDescriptor: cbthread[tid 510883093680] continue with errno 4
+11-07 22:06:52.006  1070 20173 E SmcInvoke_MinkDescriptor: cbthread[tid 510883093680] exit
+11-07 22:06:52.006  1070 20162 E SmcInvoke_MinkDescriptor: cbthread[tid 511129418928] exit
+11-07 22:06:52.006  1070 20170 E SmcInvoke_MinkDescriptor: cbthread[tid 510886214832] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.006  1070 20170 D SmcInvoke_MinkDescriptor: cbthread[tid 510886214832] continue with errno 4
+11-07 22:06:52.006  1070 20170 E SmcInvoke_MinkDescriptor: cbthread[tid 510886214832] exit
+11-07 22:06:52.007  1070 20168 E SmcInvoke_MinkDescriptor: cbthread[tid 510888295600] return -1, errno 4: has_response 1, txn_id 2, result 0, cbobj_id -2, op 0xffff, counts 0x0,
+11-07 22:06:52.007  1070 20168 D SmcInvoke_MinkDescriptor: cbthread[tid 510888295600] continue with errno 4
+11-07 22:06:52.007  1070 20168 E SmcInvoke_MinkDescriptor: cbthread[tid 510888295600] exit
+11-07 22:06:52.007  1070 20167 E SmcInvoke_MinkDescriptor: cbthread[tid 510889335984] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.007  1070 20167 D SmcInvoke_MinkDescriptor: cbthread[tid 510889335984] continue with errno 4
+11-07 22:06:52.007  1070 20167 E SmcInvoke_MinkDescriptor: cbthread[tid 510889335984] exit
+11-07 22:06:52.007  1070 20166 E SmcInvoke_MinkDescriptor: cbthread[tid 510890376368] return -1, errno 4: has_response 1, txn_id 1, result 0, cbobj_id -2, op 0x0, counts 0x10,
+11-07 22:06:52.007  1070 20166 D SmcInvoke_MinkDescriptor: cbthread[tid 510890376368] continue with errno 4
+11-07 22:06:52.007  1070 20166 E SmcInvoke_MinkDescriptor: cbthread[tid 510890376368] exit
+11-07 22:06:52.008  1070 20165 E SmcInvoke_MinkDescriptor: cbthread[tid 510891416752] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.008  1070 20165 D SmcInvoke_MinkDescriptor: cbthread[tid 510891416752] continue with errno 4
+11-07 22:06:52.008  1070 20165 E SmcInvoke_MinkDescriptor: cbthread[tid 510891416752] exit
+11-07 22:06:52.008  1070 20163 E SmcInvoke_MinkDescriptor: cbthread[tid 511128378544] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.008  1070 20163 D SmcInvoke_MinkDescriptor: cbthread[tid 511128378544] continue with errno 4
+11-07 22:06:52.008  1070 20163 E SmcInvoke_MinkDescriptor: cbthread[tid 511128378544] exit
+11-07 22:06:52.008  1070 20161 E SmcInvoke_MinkDescriptor: cbthread[tid 511131499696] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.008  1070 20161 D SmcInvoke_MinkDescriptor: cbthread[tid 511131499696] continue with errno 4
+11-07 22:06:52.008  1070 20161 E SmcInvoke_MinkDescriptor: cbthread[tid 511131499696] exit
+11-07 22:06:52.009  1070 20160 E SmcInvoke_MinkDescriptor: cbthread[tid 511132540080] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.009  1070 20160 D SmcInvoke_MinkDescriptor: cbthread[tid 511132540080] continue with errno 4
+11-07 22:06:52.009  1070 20160 E SmcInvoke_MinkDescriptor: cbthread[tid 511132540080] exit
+11-07 22:06:52.009  1070 20159 E SmcInvoke_MinkDescriptor: cbthread[tid 511133580464] return -1, errno 4: has_response 0, txn_id 0, result 0, cbobj_id 0, op 0x0, counts 0x0,
+11-07 22:06:52.009  1070 20159 D SmcInvoke_MinkDescriptor: cbthread[tid 511133580464] continue with errno 4
+11-07 22:06:52.009  1070 20159 E SmcInvoke_MinkDescriptor: cbthread[tid 511133580464] exit

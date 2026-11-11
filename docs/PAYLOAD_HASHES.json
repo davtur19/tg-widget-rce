@@ -1,0 +1,295 @@
+{
+ "generated": "2026-11-08",
+ "zlib": "1.3.1",
+ "note": "Post-redaction sizes. Older notes pin pre-redaction hashes; see REDACTION.md. zlib9 values depend on the zlib build.",
+ "files": [
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/XTAG/payloads/final-sony-beta-72929.html",
+   "raw": 9946,
+   "zlib9": 4023,
+   "sha256": "992a51267a385c57635f5aed835aa29a1006ca8c584ca3843b265cd2c71318b4",
+   "status": "device-proven",
+   "note": "Sony 72929 5/5 and 72889 1/1; app-level, writes the 185 B id proof. 72979/72989 are isolated and do not reach the app-data write."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/XTAG/payloads/probe-sony-beta-72929.html",
+   "raw": 9946,
+   "zlib9": 959,
+   "sha256": "b9104faef8be5e06fc451fc11c62aea546b8e995d56585a13c53b897cdeae41f",
+   "status": "device-proven",
+   "note": "Safe probe used before the final; all-4 filler, never forges. Device-proven on 72929."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/XTAG/payloads/c2-final-sony-beta-72929.html",
+   "raw": 9946,
+   "zlib9": 4025,
+   "sha256": "26f670aeaf6e6043b18bbb76eeb0ed7933c50748ee4c7fa359da51c539bac40b",
+   "status": "device-proven",
+   "note": "C2 variant; one app-level session, time-to-C2 1.913 s on 72929. On 72979/72989 the isolated widget process has no network permissions."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/XTAG/payloads/debug-sony-beta-72929.html",
+   "raw": 9946,
+   "zlib9": 3009,
+   "sha256": "ef87921f72081d812e55a73bc1f2b2d597d1ec4c69d6c3b2defeeb496fe47b19",
+   "status": "host-only",
+   "note": "Debug endgame; reports field values, not a proof payload."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/XTAG/payloads/final-host-twin.html",
+   "raw": 9946,
+   "zlib9": 4014,
+   "sha256": "e95603f4080d9ff319852adcb80dcf0591a27d6b546d3d9dd5cbd394b384c8c2",
+   "status": "host-only",
+   "note": "Host proof at /tmp/hf_proof; not a device payload."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/STAG/payloads/route2/stage-a-probe-72801.html",
+   "raw": 1566,
+   "zlib9": 686,
+   "sha256": "a534a8725b8a1a07efacf7a5c8108ab5c31488d4b0e2e1bc7558d548a7f39412",
+   "status": "device-proven",
+   "note": "Pixel 9 72801: S1 ABLEN[599]=327744 VLEN=327744."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/STAG/payloads/route2/out-of-band-72801.html",
+   "raw": 2151,
+   "zlib9": 1024,
+   "sha256": "245f4dc4a2773fedc10647e35b3e95d65409aafb21d7d6f1925ef9aa6a225e1d",
+   "status": "device-proven",
+   "note": "Pixel 72801 app-process proof: G1/8..G8/8 | HF HF OK. A 72979-style isolated process blocks the app-private write."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/STAG/payloads/route2/out-of-band-burst-72801.html",
+   "raw": 2151,
+   "zlib9": 1025,
+   "sha256": "2f84a1a703674967534f0c86352e0de0dbba1e10423b4682d9cbdeb24faec243",
+   "status": "host-only",
+   "note": "Burst pacing build; host-validated, device run not recorded."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/STAG/payloads/route2/inline-endgame-72801.html",
+   "raw": 9186,
+   "zlib9": 3883,
+   "sha256": "fcf935361af2bb13dddd1aa8fd6c82dc9c45957610c84be9271663edbca571d3",
+   "status": "host-only",
+   "note": "Host END=HF OK 154-158 ms; device inline endgame not proven. The write is app-private; 72979 isolation blocks it."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/STAG/payloads/route2/endgame-72801.js",
+   "raw": 7469,
+   "zlib9": 3214,
+   "sha256": "5200636a47720fe89b41461aa9296c135f751ab194938e6bd4e4d0842353d860",
+   "status": "source",
+   "note": "Release-package endgame source, 7,469 B, split into eight answer chunks."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/TINY/payloads/probe-h400.html",
+   "raw": 1929,
+   "zlib9": 890,
+   "sha256": "a522f06b143ca8f3be88b034ffd251c535ec3e5fe21ccb2b7087f18b71ebeb5c",
+   "status": "device-proven",
+   "note": "6s H400 hit: HIT=545 LEN=327744 PH=36 VK=598 NT=21."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/TINY/payloads/final-h400.html",
+   "raw": 5583,
+   "zlib9": 2356,
+   "sha256": "fce1d2f6b6ac1c58340169984c32a945660238fc6d23d533d49c258d6f748fa2",
+   "status": "historical",
+   "note": "Early two-script final; missed on the 6s. Kept for provenance."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/TINY/payloads/inline-rop-h200.html",
+   "raw": 4600,
+   "zlib9": 2099,
+   "sha256": "e971a9c78ba20a38d02a4f7c6180f350321165261c4215d610821528b118c001",
+   "status": "device-proven",
+   "note": "Winning 6s inline ROP; wrote Documents/rce.txt = RCE_OK at 05:49:24."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/TINY/payloads/seed-stage-b.html",
+   "raw": 3969,
+   "zlib9": 1737,
+   "sha256": "ecba978f541b238b3d883cb39f5d7654cae8a26ec86110b4a42202c15ec0f595",
+   "status": "device-proven",
+   "note": "Seed helper for the same widget id; stores the 3,617 B stage B."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/TINY/payloads/stage-a-2036-h400.html",
+   "raw": 2036,
+   "zlib9": 940,
+   "sha256": "74ac5558917de06dd79c51715d398bc8c7c918c1a250f77c56c09862fc220766",
+   "status": "device-proven",
+   "note": "2,036 B stage A; HIT=585 PH=4 in the cross-message run."
+  },
+  {
+   "path": "vulns/0day-2-RCE-PARSER-SCOPE/TINY/payloads/attribute-rop-h200.html",
+   "raw": 9336,
+   "zlib9": 3543,
+   "sha256": "25932a728b6885f878edb518bd2a78dd9c5de86f4e1cb554beb159421959cc20",
+   "status": "host-only",
+   "note": "Attribute ROP final; host-validated, device-pending."
+  },
+  {
+   "path": "payloads/ios27_rel/p0_proven.html",
+   "raw": 8647,
+   "zlib9": 3658,
+   "sha256": "8b6706e5f2dcdba25d87f548ad0818b66882809805241a4a0015459a5bcc6b10",
+   "status": "device-proven",
+   "note": "Redacted byte-copy of the 5725 page; device RCE once, stage-A marker unknown."
+  },
+  {
+   "path": "payloads/ios27_rel/p1_pad768.html",
+   "raw": 8647,
+   "zlib9": 3659,
+   "sha256": "92ba67f2ddbf342e6f9d4652d04573299ec80fc6e41a978f123df3e1001e2e3d",
+   "status": "host-only",
+   "note": "Length-invariant pad-first variant; host 3/3, device-pending."
+  },
+  {
+   "path": "payloads/ios27_rel/p2_pad384.html",
+   "raw": 8647,
+   "zlib9": 3659,
+   "sha256": "031ea2c5e28be3df6378f6d65db81127d81cf9a971e553aa61a41a539f755761",
+   "status": "host-only",
+   "note": "Length-invariant pad-first variant; host 3/3, device-pending."
+  },
+  {
+   "path": "payloads/ios27_rel/p3_n3000.html",
+   "raw": 8647,
+   "zlib9": 3661,
+   "sha256": "f1294c0e79e7cb7b7b04df9590ccc101200146ed42bd5bdfa583a21ea5913f73",
+   "status": "host-only",
+   "note": "N=3000 variant; host 3/3, device-pending."
+  },
+  {
+   "path": "payloads/ios27_rel/p4_n3000_pad768.html",
+   "raw": 8647,
+   "zlib9": 3662,
+   "sha256": "46d3510d84e5e7483a126b89c422c728b3ed4122d58d95e53e725b1a16c9d379",
+   "status": "host-only",
+   "note": "N=3000 and pad-first variant; host 3/3, device-pending."
+  },
+  {
+   "path": "payloads/ios27_rel/srop_v5_min.js",
+   "raw": 6099,
+   "zlib9": 2695,
+   "sha256": "2ba2f47fff08805fd0874b7b703ffaf384b9c61ea3bb21786d486e7e5853951e",
+   "status": "source",
+   "note": "iOS 27 stage-B source, 6,099 B, used by the 5725 page."
+  },
+  {
+   "path": "payloads/two_phase/detector.html",
+   "raw": 9185,
+   "zlib9": 1641,
+   "sha256": "ba0638228881234b3e17f9be4ed2dc3b40794a83b37366e95399d1ef3ca623db",
+   "status": "host-only",
+   "note": "Gated P3 detector, old safe-area/DPR gate, release path; host-only. The 72979 detector stage A is contained in isolated UID 99017."
+  },
+  {
+   "path": "payloads/two_phase/final_inline.html",
+   "raw": 9185,
+   "zlib9": 4068,
+   "sha256": "f8bba6582943903477cfe088313a83f8e06e1db79359331769e2bd582fed9807",
+   "status": "host-only",
+   "note": "Gated P3 final, old gate, release path; 28 B zlib margin; host-only. The beta path needs a 5-byte rebuild; 72979/72989 also isolate the widget."
+  },
+  {
+   "path": "payloads/two_phase/final_fallback.html",
+   "raw": 2620,
+   "zlib9": 1261,
+   "sha256": "f30cacb2b5701c7ca17e2ca560099438fcf9eb4deaa6e51d84a02c2e22133675",
+   "status": "host-only",
+   "note": "Gated answer-chain fallback; host-only."
+  },
+  {
+   "path": "bot/detector.html",
+   "raw": 9176,
+   "zlib9": 1489,
+   "sha256": "35f8698ead92bd2ed27f7539fcb06196450fb959d2a912f596d8da872d3890f1",
+   "status": "host-only",
+   "note": "Ungated P2 detector used by bot/bot_two_phase.py; host-only."
+  },
+  {
+   "path": "bot/final_inline.html",
+   "raw": 9176,
+   "zlib9": 3988,
+   "sha256": "7aae63e7aed883646e4b41e5acb8b3f46da08a36e1c02c7f32bbfaec98077b33",
+   "status": "host-only",
+   "note": "Ungated P2 final, release path; host-only."
+  },
+  {
+   "path": "bot/final_fallback.html",
+   "raw": 2151,
+   "zlib9": 1024,
+   "sha256": "245f4dc4a2773fedc10647e35b3e95d65409aafb21d7d6f1925ef9aa6a225e1d",
+   "status": "host-only",
+   "note": "Ungated fallback, 2,151 B; host-only."
+  },
+  {
+   "path": "payloads/two_phase/ios15/at_probe_h400.html",
+   "raw": 6801,
+   "zlib9": 1050,
+   "sha256": "4cf7efc46ec038e1e57571a0b1177cb99b5f1e268742c7d19f19f85b29583e94",
+   "status": "device-proven",
+   "note": "6s H400 probe: HIT=545 LEN=327744 PH=36 VK=598 NT=21."
+  },
+  {
+   "path": "payloads/two_phase/ios15/at_final_h400.html",
+   "raw": 6801,
+   "zlib9": 2528,
+   "sha256": "9085b5886aa8dd3b0276a907d47be65fcf6489133cf04ad1a21acae0cbe5f02e",
+   "status": "host-only",
+   "note": "Attribute final H400; host-validated, device-pending."
+  },
+  {
+   "path": "payloads/two_phase/ios15_gated/at_probe_h400.html",
+   "raw": 7263,
+   "zlib9": 1299,
+   "sha256": "28ff3fa228aaaa9e98ada699a43e1fde3a2fe54b7059d6b2a4a102dbe15030f0",
+   "status": "host-only",
+   "note": "Gated probe, 7,263 B; old gate, host-only."
+  },
+  {
+   "path": "payloads/two_phase/ios15_gated/at_final_h400.html",
+   "raw": 7263,
+   "zlib9": 2775,
+   "sha256": "fd49cee5f1a9d061f227208e87e36bebec00db5126dc08fc6e758e068d4672ba",
+   "status": "host-only",
+   "note": "Gated final, 7,263 B; old gate, host-only."
+  },
+  {
+   "path": "payloads/two_phase/ios27/detector_ios27.html",
+   "raw": 1581,
+   "zlib9": 804,
+   "sha256": "609b7180d52ee6c654f08b9931ccb487f5b95e2db29fb19ffa2411a2582d4632",
+   "status": "host-only",
+   "note": "Non-forging safe handshake; host 2/2."
+  },
+  {
+   "path": "payloads/two_phase/ios27/final_ios27.html",
+   "raw": 8647,
+   "zlib9": 3658,
+   "sha256": "8b6706e5f2dcdba25d87f548ad0818b66882809805241a4a0015459a5bcc6b10",
+   "status": "device-proven",
+   "note": "Same bytes as p0_proven after redaction; device RCE once."
+  },
+  {
+   "path": "payloads/two_phase/ios27_gated/detector_ios27.html",
+   "raw": 2540,
+   "zlib9": 1067,
+   "sha256": "5098d73fa8ea8bd0f8188b357bc8d6f439a9d8e73f7c605344773e223b2b0481",
+   "status": "host-only",
+   "note": "Gated safe handshake, 2,540 B; host-only."
+  },
+  {
+   "path": "payloads/two_phase/ios27_gated/final_ios27.html",
+   "raw": 9139,
+   "zlib9": 3915,
+   "sha256": "01b38c7188a180cf0c2ebfab5b5c6a0d73b1c57387195af4ae124893b0611c0c",
+   "status": "host-only",
+   "note": "Gated final, 9,139 B; page length changed from the proven 8,647 B; host-only."
+  }
+ ]
+}

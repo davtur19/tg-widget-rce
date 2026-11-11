@@ -1,0 +1,6 @@
+sessions
+exec id
+exec getprop ro.product.model; getprop ro.build.version.release; id
+pause 10
+bye stop
+quit

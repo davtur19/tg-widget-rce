@@ -1,0 +1,47 @@
+=== inline_fwd256_srop.html ===
+OK message_id=17004 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.16s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=springboard marker=
+inline_fwd256_srop.html: CRASH detected; recovering
+delete 17004 True
+openchat: tapped (299,514) header_ok=True state=chat
+post-recovery state: chat
+=== inline_fwd256_srop.html ===
+OK message_id=17005 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.15s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=chat marker=RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1 RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1
+delete 17005 True
+=== inline_fwd256_srop.html ===
+OK message_id=17006 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.15s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=springboard marker=
+inline_fwd256_srop.html: CRASH detected; recovering
+delete 17006 True
+openchat: tapped (299,514) header_ok=False state=springboard
+post-recovery state: springboard
+=== inline_fwd256_srop.html ===
+OK message_id=17007 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.15s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=springboard marker=
+inline_fwd256_srop.html: CRASH detected; recovering
+delete error <urlopen error [Errno 104] Connection reset by peer>
+openchat: tapped (299,514) header_ok=False state=springboard
+post-recovery state: springboard
+=== inline_fwd256_srop.html ===
+OK message_id=17008 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.15s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=springboard marker=
+inline_fwd256_srop.html: CRASH detected; recovering
+delete 17008 True
+openchat: tapped (299,514) header_ok=True state=chat
+post-recovery state: chat
+=== inline_fwd256_srop.html ===
+OK message_id=17009 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.20s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=chat marker=RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038HIT=-1LEN=0 PH=-1 RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1 RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1
+delete 17009 True
+=== inline_fwd256_srop.html ===
+OK message_id=17010 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.15s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=springboard marker=
+inline_fwd256_srop.html: CRASH detected; recovering
+delete 17010 True
+openchat: tapped (299,514) header_ok=True state=chat
+post-recovery state: chat
+=== inline_fwd256_srop.html ===
+OK message_id=17011 raw=8223 zlib=3471 chat=<CHAT_ID> allow_queries=False dt=0.17s file=attr_cf/inline_fwd256_srop.html
+inline_fwd256_srop.html: state=chat marker=RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1 RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1 RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN=6038 HIT=-1 LEN=0 PH=-1
+last message id (delete after reading): 17011

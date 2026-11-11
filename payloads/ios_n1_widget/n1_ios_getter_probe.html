@@ -1,0 +1,20 @@
+<!doctype html><body><div id="v">D</div>
+<script>
+"use strict";
+globalThis.DP={getter:'unset'};
+try{
+  Object.defineProperty(InternalError.prototype,'name',{
+    configurable:true,
+    get(){this.message='x';return 'x';}
+  });
+  globalThis.DP.getter='ok';
+}catch(e){globalThis.DP.getter='err:'+String(e);}
+try{document.getElementById('v').textContent='D PRE getter='+globalThis.DP.getter;}catch(e){}
+console.log('N1IOS:D PRE getter='+globalThis.DP.getter);
+</script>
+<script>
+"use strict";
+try{document.getElementById('v').textContent='D B getter='+globalThis.DP.getter;}catch(e){}
+console.log('N1IOS:D B getter='+globalThis.DP.getter);
+</script>
+</body></html>

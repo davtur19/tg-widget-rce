@@ -1,0 +1,22 @@
+{
+  "name": "p1_v10",
+  "notes": "P1 reliability block: 10 x v10 with a fresh relaunch between runs, then the v0 control. The v9 fallback is only for a P1 failure.",
+  "attempts": [
+    {
+      "label": "P1",
+      "payload": "lab/ios17e/reliability_20261109/out/v10_primary6.html",
+      "count": 10,
+      "expect": "marker",
+      "success_markers": ["RESULT SS2", "HIT="],
+      "stop_after_consecutive_deaths": 2
+    },
+    {
+      "label": "P3",
+      "payload": "lab/ios17e/reliability_20261109/out/v0_p0.html",
+      "count": 4,
+      "expect": "marker",
+      "success_markers": ["RESULT SS2", "HIT="],
+      "stop_after_consecutive_deaths": 2
+    }
+  ]
+}

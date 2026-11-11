@@ -1,0 +1,9 @@
+backup /tmp/opencode/postbox_test2/db_sqlite.bak-20261108-035439.bak-20261108-035557
+integrity before: b'ok'
+candidate 0000000847cdfde3000000006aef5c2d000139f6 value_len 1386 zoff 105 comp_len 1266 html_len 10782 head b'<!doctype html><body><div id="v">N1</div>\n<script type="text'
+key preserved: 0000000847cdfde3000000006aef5c2d000139f6
+old value_len 1386 new 2648 old comp 1266 new 2528 old html 10782 new 6801
+verify: key unchanged, payload equals new html
+integrity after: b'ok'
+t4 value length: 5
+in-place updated /tmp/opencode/postbox_test2/db_sqlite.bak-20261108-035439

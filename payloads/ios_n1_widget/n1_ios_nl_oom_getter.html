@@ -1,0 +1,34 @@
+<!doctype html><body><div id="v">G</div>
+<script>
+"use strict";
+globalThis.NLG={stage:'init',getter:'unset',f:-1};
+try{
+  Object.defineProperty(InternalError.prototype,'name',{
+    configurable:true,
+    get(){this.message='x';return 'x';}
+  });
+  globalThis.NLG.getter='ok';
+}catch(e){globalThis.NLG.getter='err:'+String(e);}
+function nlPaint(s){try{var v=document.getElementById('v');if(v)v.textContent=s;}catch(e){}}
+nlPaint('NLG PRE getter='+globalThis.NLG.getter);
+function probeFree(cap){var lo=0,hi=cap;while(lo<hi){var mid=(lo+hi+1)>>1,ok=false;try{var p=new ArrayBuffer(mid);ok=true;p=null;}catch(e){}if(ok)lo=mid;else hi=mid-1;}return lo;}
+function fillDown(lim,K,TGT){var arr=[],l=lim,ok=false,i;for(i=0;i<7&&!ok;i++){try{arr.push(new Uint8Array(l-(1<<20)));ok=true;}catch(e){l>>=1;}}if(!ok){return{a:arr,f:-1};}var f=probeFree(1<<21),g=0;while(f>=(1<<21)&&g++<8){arr.push(new Uint8Array(1<<20));f=probeFree(1<<21);}var need=f-(K+TGT);if(need>0)try{arr.push(new Uint8Array(need));}catch(e){}return{a:arr,f:f};}
+globalThis.NLKEEP=fillDown(8388608,14000,0);
+globalThis.NLG.f=globalThis.NLKEEP.f;
+globalThis.NLG.stage='pre';
+var NLA=new Uint8Array(20000);
+globalThis.NLG.stage='post';
+nlPaint('NLG POST');
+</script>
+<script>
+"use strict";
+try{
+  globalThis.NLKEEP=null;
+  var st=(typeof NLG!=='undefined'&&NLG.stage)?NLG.stage:'none';
+  var g=(typeof NLG!=='undefined'&&NLG.getter)?NLG.getter:'none';
+  var f=(typeof NLG!=='undefined')?NLG.f:'?';
+  var s='NLG B stage='+st+' getter='+g+' f='+f;
+  var v=document.getElementById('v');if(v)v.textContent=s;
+}catch(e){}
+</script>
+</body></html>

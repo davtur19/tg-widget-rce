@@ -1,0 +1,48 @@
+lib       : lib/libtmessages.49.so
+size      : 27052872
+sha256    : 6fa06f2699350bec1f55ae8a00c74a1267b81e242bf2b44839612638dd1be61c
+build-id  : 1400000003000000474e5500ecb6bff684aab8ecf5b54f80ca330f275d51ec88
+comment   : 
+
+[1] arena class table (fork JS_ARENA_BLOCK_SIZE_COUNT=31)
+  hit 0x410236: [16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512]
+
+[2] arena_slab_take mmap(NULL, 0x10000, RW, PRIVATE|ANON)
+  call 0x17079ec: mov w1, #0x10000 | mov w2, #3 | mov w3, #0x22 | mov w4, #-1 | mov x5, xzr | bl #0x18ba7d0
+
+[3] add_closure_variables loop signature
+  hit 0x174985c
+    0x174985c  ldrh    w11, [x24, #0x38]
+    0x1749860  ldr     x12, [x24, #0x28]
+    0x1749864  add     x11, x11, w10, uxtw
+    0x1749868  madd    x13, x11, x8, x12
+    0x174986c  ldr     w13, [x13, #4]
+    0x1749870  cmp     w13, #1
+
+[4] .eh_frame functions of the crash backtrace
+  pc 0x174986c  -> 0x174956c..0x174a228 (3260 B)
+  pc 0x1719e94  -> 0x1719dfc..0x1719ec4 (200 B)
+  pc 0x170c380  -> 0x170a7a8..0x1715930 (45448 B)
+  pc 0x170b84c  -> 0x170a7a8..0x1715930 (45448 B)
+  pc 0x17334e0  -> 0x1733460..0x1733830 (976 B)
+  pc 0x1749fd0  -> 0x174956c..0x174a228 (3260 B)
+  pc 0x17ac85c  -> 0x17ac794..0x17ac894 (256 B)
+  pc 0x77ab34   -> 0x77aad4..0x77abb0 (220 B)
+
+[5] crash arithmetic
+  b (x24)          = 0x6e776f9c98
+  vardefs (x12)    = 0x6e776f9d18  (= b+0x80, JSFunctionBytecode->vardefs)
+  vd      (x13)    = 0x6e77839d04  (= vardefs + 20*65535 = b+1,310,828)
+  fault            = 0x6e77839d08  (= &vd->scope_level = vd+4)
+  arg_count (b+0x38) = 1, var_count = 6  (c2560s geometry)
+  target slab      = b_slab + 20*0x10000 (20 x 64 KiB)
+  signal           = SIGSEGV/SEGV_ACCERR, ESR DFSC=6 (translation fault,
+                     VMA present without read permission -> PROT_NONE)
+
+[compare libs/libtmessages.49.so] size 27069808 sha256 f12c3cb8b5e0345f
+  class table: ['0x414236']
+  acv sig    : ['0x174d99c']
+
+[compare ../../lab/qjs_fork_audit/zeroday_hunt_parser/device/updates/72929/lib/libtmessages.49.so] size 27070032 sha256 f2178927433b9faf
+  class table: ['0x414236']
+  acv sig    : ['0x174daa4']

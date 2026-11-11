@@ -1,0 +1,15 @@
+<div id="t">evalprobe</div>
+<script>
+requestAnimationFrame(function(){ var e=document.getElementById("t"); if(e) e.textContent = String(globalThis.RESULT || "NONE"); });
+</script>
+<script>
+(function(){
+  try {
+    var t0 = Date.now();
+    var src = "function* g(" + "x,".repeat(65533) + "y){ if(0) eval(''); var f=()=>y; var a=0,b=0,c=0,d=0; yield f; } ; g";
+    var g = eval(src);
+    var t1 = Date.now();
+    globalThis.RESULT = "EVALOK " + (t1-t0) + " " + (typeof g);
+  } catch(e) { globalThis.RESULT = "EVALERR " + e; }
+})();
+</script>

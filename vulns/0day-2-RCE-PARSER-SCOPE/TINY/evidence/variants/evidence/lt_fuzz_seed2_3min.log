@@ -1,0 +1,9 @@
+seeds=59 bin=<HOME>/ailocal/Telegram/telegramandroidwidget/lab/rce_candidates/lt/build/telegram_asan/lt_harness
+exec=200 crashes=0 elapsed=25s
+exec=400 crashes=0 elapsed=53s
+exec=600 crashes=0 elapsed=78s
+exec=800 crashes=0 elapsed=97s
+exec=1000 crashes=0 elapsed=120s
+exec=1200 crashes=0 elapsed=139s
+exec=1400 crashes=0 elapsed=159s
+done exec=1576 crashes=0

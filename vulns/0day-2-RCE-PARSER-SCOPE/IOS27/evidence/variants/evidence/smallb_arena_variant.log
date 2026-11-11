@@ -1,0 +1,27 @@
+== small b (class 352) hole variant, H=300
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+ACV b=0x561b918076f0 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x561b91807770 target=0x561b9194775c bclen=45 bcoff=268
+RESULT=SMALL N=6000 H=300 HIT=-1 LEN=0 PH=-1 VK=-1 NT=25

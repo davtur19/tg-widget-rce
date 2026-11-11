@@ -1,0 +1,23 @@
+== widget entry: isValidCellBoc -> gram-wallet::is_valid_cell_boc -> ton_connect_core::CellBoc::try_from
+date: 2026-11-08T03:54:55+01:00
+crate: ton-connect-core 0.0.7 @ wallet-engine 5c65e47 (pinned by Android 13.1.1 tree); ton_core 0.1.4 local path
+
+-- WC-1 root-index payload through the widget entry --
+CellBoc::try_from = Err(value must contain a valid single-root TON cell BoC)  [no panic]
+
+-- WC-1 ref-index payload through the widget entry --
+CellBoc::try_from = Err(value must contain a valid single-root TON cell BoC)  [no panic]
+
+-- WC-1 huge-cells payload (cells=0x10000000) through the widget entry --
+CellBoc::try_from = Err(value must contain a valid single-root TON cell BoC)  [no panic]
+
+-- valid control through the widget entry --
+CellBoc::try_from = Ok (VALIDATED, unexpected for WC-1)
+
+-- same root-index payload through raw ton_core BoC::from_bytes (the note v1 path, NOT the app entry) --
+
+thread 'main' (1271168) panicked at <HOME>/ailocal/Telegram/telegramandroidwidget/lab/lib_hunt_static/ton_core-0.1.4/src/cell/boc/raw_boc.rs:170:29:
+index out of bounds: the len is 1 but the index is 18446744073709551611
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+raw BoC::from_bytes = PANIC
+exit=0

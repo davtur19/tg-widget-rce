@@ -1,0 +1,6 @@
+key preserved: 0000000847cdfde3000000006aef5c2d000139f6
+old value_len 2244 new 2244 old comp 2124 new 2124 old html 4600 new 4600
+verify: key unchanged, payload equals new html
+integrity after: b'ok'
+t4 value length: 5
+wrote /tmp/opencode/final4600/db_inline

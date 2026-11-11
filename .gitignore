@@ -1,0 +1,40 @@
+# secrets and credentials
+token.env
+.env
+*.session
+*.session-journal
+bot_*.session
+
+# databases and large binaries
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+*.apk
+*.ipa
+*.so
+*.dylib
+*.i64
+*.idb
+*.zip
+*.tar.gz
+*.7z
+
+# Python / build
+__pycache__/
+*.pyc
+*.pyo
+build/
+*.o
+*.a
+*.out
+
+# editor / OS
+.DS_Store
+*.swp
+.idea/
+.vscode/
+state/
+*.dmp
+*.core

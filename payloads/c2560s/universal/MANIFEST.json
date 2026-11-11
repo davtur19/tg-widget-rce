@@ -1,0 +1,901 @@
+{
+ "device_evidence": {
+  "all4_probe": "fault/safety probe only (class region mapped + tag compatible); never checks the forge",
+  "app_alive_after_runs": true,
+  "c2560": {
+   "final": "ABLEN[599]=327744 VLEN=327744 (HF OK, n1)",
+   "forge_probe": "S1 ABLEN[599]=327744 VLEN=327744 END=-",
+   "status": "device-proven, dual build 72889/72929"
+  },
+  "c3840": {
+   "result": "SIGSEGV 0x1fff9",
+   "status": "unsafe; dense-3840 hypothesis refuted; excluded"
+  },
+  "c4096_final": {
+   "cause": "endgame-B content changes the pre-stage-A string layout (+3635 used, same malloc_size)",
+   "fix_family": "device/widget/universal/fix4096/",
+   "result": "S1 NOCORR END=HF ERR NOV (no n1, app alive)",
+   "status": "pending layout calibration; do not redeploy the old final"
+  },
+  "c4096_stageA": {
+   "forge_probe_base": "S1 ABLEN[599]=327744 VLEN=327744 END=-",
+   "forge_probe_legacyB4957": "S1 ABLEN[599]=327744 VLEN=327744 END=-",
+   "forge_probe_nab900": "S1 ABLEN[599]=327744 VLEN=327744 END=-",
+   "status": "class 4096 proven; b/AB same class"
+  },
+  "date": "2026-11-07",
+  "forge_probe": "final stage A (RT/RJ) + no-op B=7182 + stage C; reports ABLEN[...] or NOCORR without the endgame",
+  "target": "Sony XQ-BT52, Android 13, Telegram beta 72929, uid 10346"
+ },
+ "diagnostics_4096": [
+  {
+   "A_final_len": 2503,
+   "B_len": 4957,
+   "nab": 700,
+   "name": "legacyB4957",
+   "output": {
+    "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_forgeprobe_legacyB4957_72929.html",
+    "raw": 7996,
+    "sha256": "1439aa4059b617971ce063ec0cfd3a62b76784bd458276d5dc266c511f2de554",
+    "zlib9": 1004
+   }
+  },
+  {
+   "A_final_len": 2503,
+   "B_len": 7182,
+   "nab": 900,
+   "name": "nab900",
+   "output": {
+    "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_forgeprobe_nab900_72929.html",
+    "raw": 10221,
+    "sha256": "8cdda536995923ccfda0f65e799a89fea7717a908a782fff1ade2cd71ca1ae42",
+    "zlib9": 1014
+   }
+  }
+ ],
+ "pos": "mid",
+ "variants": [
+  {
+   "A_final_len": 2124,
+   "A_final_sha256": "cae4669b1b0215af4bc7eb1595f675893283ec369719c7e7c0d3de9e921d0269",
+   "A_probe_len": 2124,
+   "A_probe_sha256": "a0e1ac7ef19d4675e011718b783538d34bc534549005fdac80adc63329d9b495",
+   "C": 2048,
+   "bsize": 1920,
+   "drain": 3000,
+   "fs": 2040,
+   "fsize": 1907,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 1400,
+   "nfloat": 84,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2048_final_ladder_72929.html",
+     "raw": 9842,
+     "sha256": "1f88570bd7b02e7be209ff2d36b99781be47153eca5501ba8c8461e5bcb4dbc2",
+     "zlib9": 4025
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2048_final_ladder_host.html",
+     "raw": 9842,
+     "sha256": "14eab353d8197ac725485828531cb18060bce2377267d84f12b4a77a55735caf",
+     "zlib9": 4015
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2048_forgeprobe_ladder_72929.html",
+     "raw": 9842,
+     "sha256": "508c3b290a3b9b199d3ce69f387140dbddaac10713e938dada9986749b964756",
+     "zlib9": 1013
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2048_forgeprobe_ladder_host.html",
+     "raw": 9842,
+     "sha256": "508c3b290a3b9b199d3ce69f387140dbddaac10713e938dada9986749b964756",
+     "zlib9": 1013
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2048_probe_ladder_72929.html",
+     "raw": 9842,
+     "sha256": "316213077951271264e2935e858156b9fd5c8fbc9e76271fccaf075ebea1ddc5",
+     "zlib9": 960
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2048_probe_ladder_host.html",
+     "raw": 9842,
+     "sha256": "316213077951271264e2935e858156b9fd5c8fbc9e76271fccaf075ebea1ddc5",
+     "zlib9": 960
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2048_final.js",
+     "raw": 2124,
+     "sha256": "cae4669b1b0215af4bc7eb1595f675893283ec369719c7e7c0d3de9e921d0269",
+     "zlib9": 771
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2048_probe.js",
+     "raw": 2124,
+     "sha256": "a0e1ac7ef19d4675e011718b783538d34bc534549005fdac80adc63329d9b495",
+     "zlib9": 722
+    }
+   },
+   "reference": false,
+   "req_b": 1928,
+   "req_fs": 2048,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2180,
+   "A_final_sha256": "3488da6629fbccd495527e253b34ca2162ff0ff05c8e834faecf9d0ced75babd",
+   "A_probe_len": 2180,
+   "A_probe_sha256": "d82270d79ff4c5049f3ca9e92937321c9a6f4747b5f59ecd6b7a1bd4847716db",
+   "C": 2304,
+   "bsize": 2176,
+   "drain": 3000,
+   "fs": 2296,
+   "fsize": 2173,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 1200,
+   "nfloat": 98,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2304_final_ladder_72929.html",
+     "raw": 9898,
+     "sha256": "5252cbca2baeafce216178dbfa0e50e80d2e41e94b39257855e5a77cbca98814",
+     "zlib9": 4025
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2304_final_ladder_host.html",
+     "raw": 9898,
+     "sha256": "96b7e0149b4917bc111313873bcb3e1f3f797cbde072dbe1bbfc41e4e90dfe71",
+     "zlib9": 4015
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2304_forgeprobe_ladder_72929.html",
+     "raw": 9898,
+     "sha256": "71b60e35ffa41a4e0a35fda95bbb307f0a0ae4422cde8aaaeb021c90501c2645",
+     "zlib9": 1013
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2304_forgeprobe_ladder_host.html",
+     "raw": 9898,
+     "sha256": "71b60e35ffa41a4e0a35fda95bbb307f0a0ae4422cde8aaaeb021c90501c2645",
+     "zlib9": 1013
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2304_probe_ladder_72929.html",
+     "raw": 9898,
+     "sha256": "e1bca7be0bfbf209b7402d6d42a25f56590dab78d19d7b59bc9e3c2ab45e1ab8",
+     "zlib9": 961
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2304_probe_ladder_host.html",
+     "raw": 9898,
+     "sha256": "e1bca7be0bfbf209b7402d6d42a25f56590dab78d19d7b59bc9e3c2ab45e1ab8",
+     "zlib9": 961
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2304_final.js",
+     "raw": 2180,
+     "sha256": "3488da6629fbccd495527e253b34ca2162ff0ff05c8e834faecf9d0ced75babd",
+     "zlib9": 772
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2304_probe.js",
+     "raw": 2180,
+     "sha256": "d82270d79ff4c5049f3ca9e92937321c9a6f4747b5f59ecd6b7a1bd4847716db",
+     "zlib9": 723
+    }
+   },
+   "reference": false,
+   "req_b": 2184,
+   "req_fs": 2304,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2228,
+   "A_final_sha256": "fa3bb943b03f55104e1e2880fa60456a4c7b51a96ba642bc2663084f8558e32a",
+   "A_probe_len": 2228,
+   "A_probe_sha256": "686374e41fd50ad9c4fc2ddb85555c9265f7d3fe9c67ed7616300e22545ade9b",
+   "C": 2560,
+   "bsize": 2416,
+   "drain": 3000,
+   "fs": 2544,
+   "fsize": 2401,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 1100,
+   "nfloat": 110,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2560_final_ladder_72929.html",
+     "raw": 9946,
+     "sha256": "992a51267a385c57635f5aed835aa29a1006ca8c584ca3843b265cd2c71318b4",
+     "zlib9": 4023
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2560_final_ladder_host.html",
+     "raw": 9946,
+     "sha256": "e95603f4080d9ff319852adcb80dcf0591a27d6b546d3d9dd5cbd394b384c8c2",
+     "zlib9": 4014
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2560_forgeprobe_ladder_72929.html",
+     "raw": 9946,
+     "sha256": "382b4ea307425ddd1ff014071cd3f62ee7d50c0c97afb6c696375f60d2b3571c",
+     "zlib9": 1011
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2560_forgeprobe_ladder_host.html",
+     "raw": 9946,
+     "sha256": "382b4ea307425ddd1ff014071cd3f62ee7d50c0c97afb6c696375f60d2b3571c",
+     "zlib9": 1011
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2560_probe_ladder_72929.html",
+     "raw": 9946,
+     "sha256": "b9104faef8be5e06fc451fc11c62aea546b8e995d56585a13c53b897cdeae41f",
+     "zlib9": 959
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2560_probe_ladder_host.html",
+     "raw": 9946,
+     "sha256": "b9104faef8be5e06fc451fc11c62aea546b8e995d56585a13c53b897cdeae41f",
+     "zlib9": 959
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2560_final.js",
+     "raw": 2228,
+     "sha256": "fa3bb943b03f55104e1e2880fa60456a4c7b51a96ba642bc2663084f8558e32a",
+     "zlib9": 772
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2560_probe.js",
+     "raw": 2228,
+     "sha256": "686374e41fd50ad9c4fc2ddb85555c9265f7d3fe9c67ed7616300e22545ade9b",
+     "zlib9": 722
+    }
+   },
+   "reference": true,
+   "req_b": 2424,
+   "req_fs": 2552,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2307,
+   "A_final_sha256": "76f74a90fa5c800a453c6cf773adcd2eadfabbf765acb464918f83428dcbc84e",
+   "A_probe_len": 2307,
+   "A_probe_sha256": "5c5796f6cc5c1c16a9cb925b06bdf1e48fc5607037c06997da9328f417633afa",
+   "C": 3072,
+   "bsize": 2800,
+   "drain": 3000,
+   "fs": 3064,
+   "fsize": 2800,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 900,
+   "nfloat": 131,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072_final_ladder_72929.html",
+     "raw": 10025,
+     "sha256": "f9f533b31c0a33e3b06e72b7fb72cc63ab71be592b609f54f7fde07a80296e50",
+     "zlib9": 4024
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072_final_ladder_host.html",
+     "raw": 10025,
+     "sha256": "5d40c37edf249ac1f9548098f5b2f0ffcfb20de327360560b492f831faf93cda",
+     "zlib9": 4012
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072_forgeprobe_ladder_72929.html",
+     "raw": 10025,
+     "sha256": "0829a6f7a41bd0a5453002c4d04ed56fb985c79e5bab268fd8af589bfc50138b",
+     "zlib9": 1010
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072_forgeprobe_ladder_host.html",
+     "raw": 10025,
+     "sha256": "0829a6f7a41bd0a5453002c4d04ed56fb985c79e5bab268fd8af589bfc50138b",
+     "zlib9": 1010
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072_probe_ladder_72929.html",
+     "raw": 10025,
+     "sha256": "b10ed6dc02ca6d336cfe85bfd67f64323be4df39431a72bdc4a259f92760b6a6",
+     "zlib9": 957
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072_probe_ladder_host.html",
+     "raw": 10025,
+     "sha256": "b10ed6dc02ca6d336cfe85bfd67f64323be4df39431a72bdc4a259f92760b6a6",
+     "zlib9": 957
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3072_final.js",
+     "raw": 2307,
+     "sha256": "76f74a90fa5c800a453c6cf773adcd2eadfabbf765acb464918f83428dcbc84e",
+     "zlib9": 769
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3072_probe.js",
+     "raw": 2307,
+     "sha256": "5c5796f6cc5c1c16a9cb925b06bdf1e48fc5607037c06997da9328f417633afa",
+     "zlib9": 723
+    }
+   },
+   "reference": false,
+   "req_b": 2808,
+   "req_fs": 3072,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2415,
+   "A_final_sha256": "39bb3e43df6a8fa2e5b3991c14d0742e22786a14a259f28a156fec2c4ba4dda1",
+   "A_probe_len": 2415,
+   "A_probe_sha256": "70de8c2ef9a9ce6ab7ff553521e0694377d8a054d6d8759141975a6ed4605f80",
+   "C": 3584,
+   "bsize": 3328,
+   "drain": 3000,
+   "fs": 3576,
+   "fsize": 3313,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 800,
+   "nfloat": 158,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3584_final_ladder_72929.html",
+     "raw": 10133,
+     "sha256": "06ff6789ed332d6b318ca04ec4e167dd9c5220161e2c2ac74850b51e40cac296",
+     "zlib9": 4026
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3584_final_ladder_host.html",
+     "raw": 10133,
+     "sha256": "2fd8cf7f298864c2dca14b841291ad851588ea63792f6a1685414e89325a670b",
+     "zlib9": 4016
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3584_forgeprobe_ladder_72929.html",
+     "raw": 10133,
+     "sha256": "a42738cd6e66c724ed946e4d7c75189ea38f185b7613fb5db0760197fbce68b1",
+     "zlib9": 1015
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3584_forgeprobe_ladder_host.html",
+     "raw": 10133,
+     "sha256": "a42738cd6e66c724ed946e4d7c75189ea38f185b7613fb5db0760197fbce68b1",
+     "zlib9": 1015
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3584_probe_ladder_72929.html",
+     "raw": 10133,
+     "sha256": "aa3a4b2a9a76a5f9215072e0d0f4bd6b53cd67ec7ed95da36585ac8ab4211113",
+     "zlib9": 962
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3584_probe_ladder_host.html",
+     "raw": 10133,
+     "sha256": "aa3a4b2a9a76a5f9215072e0d0f4bd6b53cd67ec7ed95da36585ac8ab4211113",
+     "zlib9": 962
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3584_final.js",
+     "raw": 2415,
+     "sha256": "39bb3e43df6a8fa2e5b3991c14d0742e22786a14a259f28a156fec2c4ba4dda1",
+     "zlib9": 775
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3584_probe.js",
+     "raw": 2415,
+     "sha256": "70de8c2ef9a9ce6ab7ff553521e0694377d8a054d6d8759141975a6ed4605f80",
+     "zlib9": 726
+    }
+   },
+   "reference": false,
+   "req_b": 3336,
+   "req_fs": 3584,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2503,
+   "A_final_sha256": "13f69847b2394c0afe231c28a691377af4b4398b5f91f03ca4e962176f118d5a",
+   "A_probe_len": 2503,
+   "A_probe_sha256": "dae03b01f765e67ef15611a6e0c5f0a51a6df935e21f675ab9081bc1ada4fa94",
+   "C": 4096,
+   "bsize": 3744,
+   "drain": 3000,
+   "fs": 4080,
+   "fsize": 3731,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 700,
+   "nfloat": 180,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_final_ladder_72929.html",
+     "raw": 10221,
+     "sha256": "fe3b41ae7c469d2e8a4cc6900ccb92c3c3d31823c5fa9349435a00e426dadc1f",
+     "zlib9": 4023
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_final_ladder_host.html",
+     "raw": 10221,
+     "sha256": "8068ccfb3877376f7aea487bf0203465934ff0fbe831e7d90ceafd41252f82d7",
+     "zlib9": 4014
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_forgeprobe_ladder_72929.html",
+     "raw": 10221,
+     "sha256": "d8e249ac5f203b059ce083192fddd7eedfc09fc71a5c21f4402e122a2a40804a",
+     "zlib9": 1014
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_forgeprobe_ladder_host.html",
+     "raw": 10221,
+     "sha256": "d8e249ac5f203b059ce083192fddd7eedfc09fc71a5c21f4402e122a2a40804a",
+     "zlib9": 1014
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_probe_ladder_72929.html",
+     "raw": 10221,
+     "sha256": "f89262067f9b9e848459cc4ca97c8d8288e70e678b87f1eecaa1c16876c4ab55",
+     "zlib9": 963
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4096_probe_ladder_host.html",
+     "raw": 10221,
+     "sha256": "f89262067f9b9e848459cc4ca97c8d8288e70e678b87f1eecaa1c16876c4ab55",
+     "zlib9": 963
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4096_final.js",
+     "raw": 2503,
+     "sha256": "13f69847b2394c0afe231c28a691377af4b4398b5f91f03ca4e962176f118d5a",
+     "zlib9": 773
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4096_probe.js",
+     "raw": 2503,
+     "sha256": "dae03b01f765e67ef15611a6e0c5f0a51a6df935e21f675ab9081bc1ada4fa94",
+     "zlib9": 727
+    }
+   },
+   "reference": true,
+   "req_b": 3752,
+   "req_fs": 4088,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2631,
+   "A_final_sha256": "346bba1cfd1555b12bb6afc99d199bd630adcfb7a916269060f6365e0f09954a",
+   "A_probe_len": 2631,
+   "A_probe_sha256": "7ca5c863104202057711b26bcc8182a29426bbd9de1f941469dca1ea9e14a1d5",
+   "C": 4608,
+   "bsize": 4352,
+   "drain": 3000,
+   "fs": 4600,
+   "fsize": 4339,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 600,
+   "nfloat": 212,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4608_final_ladder_72929.html",
+     "raw": 10349,
+     "sha256": "d4ef019d3eb399842818e09bdd79b1f5ba776b7c6ebe9b2104355795946cebd8",
+     "zlib9": 4021
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4608_final_ladder_host.html",
+     "raw": 10349,
+     "sha256": "e30438468c1929b263236b43da717a4b205a8383bf6fc78fa638c0275b677f74",
+     "zlib9": 4012
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4608_forgeprobe_ladder_72929.html",
+     "raw": 10349,
+     "sha256": "76e126e2102bb729e09e0a63109839ad289c927097297218380e297778fb7526",
+     "zlib9": 1011
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4608_forgeprobe_ladder_host.html",
+     "raw": 10349,
+     "sha256": "76e126e2102bb729e09e0a63109839ad289c927097297218380e297778fb7526",
+     "zlib9": 1011
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4608_probe_ladder_72929.html",
+     "raw": 10349,
+     "sha256": "144d98032ce5b7159e59775a069426e251390b0d3a51c3f353aa1baf2c0908f8",
+     "zlib9": 957
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c4608_probe_ladder_host.html",
+     "raw": 10349,
+     "sha256": "144d98032ce5b7159e59775a069426e251390b0d3a51c3f353aa1baf2c0908f8",
+     "zlib9": 957
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4608_final.js",
+     "raw": 2631,
+     "sha256": "346bba1cfd1555b12bb6afc99d199bd630adcfb7a916269060f6365e0f09954a",
+     "zlib9": 770
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c4608_probe.js",
+     "raw": 2631,
+     "sha256": "7ca5c863104202057711b26bcc8182a29426bbd9de1f941469dca1ea9e14a1d5",
+     "zlib9": 720
+    }
+   },
+   "reference": false,
+   "req_b": 4360,
+   "req_fs": 4608,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2739,
+   "A_final_sha256": "b508e92462b7c712339e35fcebdce64a53c204964dd2d12320d03ff240e106a2",
+   "A_probe_len": 2739,
+   "A_probe_sha256": "9fa36f4b583334315b2aa10ff2c06e189aa2f5009a8f40f5d369bb547d60ace9",
+   "C": 5120,
+   "bsize": 4864,
+   "drain": 3000,
+   "fs": 5112,
+   "fsize": 4852,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 600,
+   "nfloat": 239,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c5120_final_ladder_72929.html",
+     "raw": 10457,
+     "sha256": "536ffccf59a84ea9103863594798a24fa9b22b7da4c021ad391bdde7a1ac22b0",
+     "zlib9": 4021
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c5120_final_ladder_host.html",
+     "raw": 10457,
+     "sha256": "4eedf727e7292a983cb064a510371232ec278a5658ab7d87024c2fdd30588248",
+     "zlib9": 4012
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c5120_forgeprobe_ladder_72929.html",
+     "raw": 10457,
+     "sha256": "9856cd528b444cedb1557e238fc46ccf27ae015b5de10e3c919b99de57712683",
+     "zlib9": 1011
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c5120_forgeprobe_ladder_host.html",
+     "raw": 10457,
+     "sha256": "9856cd528b444cedb1557e238fc46ccf27ae015b5de10e3c919b99de57712683",
+     "zlib9": 1011
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c5120_probe_ladder_72929.html",
+     "raw": 10457,
+     "sha256": "00eb33164131e86d25fbe105aede988636e40b89372022853899d447da38c85d",
+     "zlib9": 958
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c5120_probe_ladder_host.html",
+     "raw": 10457,
+     "sha256": "00eb33164131e86d25fbe105aede988636e40b89372022853899d447da38c85d",
+     "zlib9": 958
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c5120_final.js",
+     "raw": 2739,
+     "sha256": "b508e92462b7c712339e35fcebdce64a53c204964dd2d12320d03ff240e106a2",
+     "zlib9": 771
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c5120_probe.js",
+     "raw": 2739,
+     "sha256": "9fa36f4b583334315b2aa10ff2c06e189aa2f5009a8f40f5d369bb547d60ace9",
+     "zlib9": 722
+    }
+   },
+   "reference": false,
+   "req_b": 4872,
+   "req_fs": 5120,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2112,
+   "A_final_sha256": "77544818624ee883b3d1dfbaae1ac02547fb1c767d582671fcea8c934539038f",
+   "A_probe_len": 2112,
+   "A_probe_sha256": "e53c85f5f5ab1aa111c56f54d53c6b2beb83253e409961b169f3b4a17f32c250",
+   "C": 2080,
+   "bsize": 1856,
+   "drain": 3000,
+   "fs": 2072,
+   "fsize": 1850,
+   "keep": 3000,
+   "map_name": "alt",
+   "nab": 1400,
+   "nfloat": 81,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2080_final_ladder_72929.html",
+     "raw": 9830,
+     "sha256": "1e2027d1ae28d8b2f0a266dfb272c2a4acac931f9bf6cc07f9d90f698db38176",
+     "zlib9": 4024
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2080_final_ladder_host.html",
+     "raw": 9830,
+     "sha256": "7efa27b782c27b3fb4acb824e92c74bd91f339f0e9761c39cfc15d51bcb3fc05",
+     "zlib9": 4015
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2080_forgeprobe_ladder_72929.html",
+     "raw": 9830,
+     "sha256": "8f1fc7d161f2a0598cb040d72e3580cad9d49b6b2ef4ea3a729f048b93d6dd19",
+     "zlib9": 1013
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2080_forgeprobe_ladder_host.html",
+     "raw": 9830,
+     "sha256": "8f1fc7d161f2a0598cb040d72e3580cad9d49b6b2ef4ea3a729f048b93d6dd19",
+     "zlib9": 1013
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2080_probe_ladder_72929.html",
+     "raw": 9830,
+     "sha256": "1cbf00e74051da6fece29fde3dcf5b04786bf5c91e2723740fa984e38cfb48b1",
+     "zlib9": 961
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c2080_probe_ladder_host.html",
+     "raw": 9830,
+     "sha256": "1cbf00e74051da6fece29fde3dcf5b04786bf5c91e2723740fa984e38cfb48b1",
+     "zlib9": 961
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2080_final.js",
+     "raw": 2112,
+     "sha256": "77544818624ee883b3d1dfbaae1ac02547fb1c767d582671fcea8c934539038f",
+     "zlib9": 771
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c2080_probe.js",
+     "raw": 2112,
+     "sha256": "e53c85f5f5ab1aa111c56f54d53c6b2beb83253e409961b169f3b4a17f32c250",
+     "zlib9": 723
+    }
+   },
+   "reference": false,
+   "req_b": 1864,
+   "req_fs": 2080,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2311,
+   "A_final_sha256": "8512721b12ddd13f4453334fbed85428cb6dd5d59b3c5ef504b2b1e5edd14e6d",
+   "A_probe_len": 2311,
+   "A_probe_sha256": "305676ab132a32dfab23e4efc30b6305c5e0f7bd8376f76ea6447f4e526ce64e",
+   "C": 3104,
+   "bsize": 2832,
+   "drain": 3000,
+   "fs": 3096,
+   "fsize": 2819,
+   "keep": 3000,
+   "map_name": "alt",
+   "nab": 900,
+   "nfloat": 132,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3104_final_ladder_72929.html",
+     "raw": 10029,
+     "sha256": "5d5fa092c5ba127c0135c1c3aa5a2c1da2c9ea3d484aa38503f11f6a14ed7292",
+     "zlib9": 4024
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3104_final_ladder_host.html",
+     "raw": 10029,
+     "sha256": "b86f1f2bf25b62ceb6b5e11b5962d4957f987b1a26647dc2c237b05d19549c22",
+     "zlib9": 4014
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3104_forgeprobe_ladder_72929.html",
+     "raw": 10029,
+     "sha256": "13ccd417c18c07505c4ef182dfb356eace38e0aa28aec4b723ca8c37a182f2fe",
+     "zlib9": 1013
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3104_forgeprobe_ladder_host.html",
+     "raw": 10029,
+     "sha256": "13ccd417c18c07505c4ef182dfb356eace38e0aa28aec4b723ca8c37a182f2fe",
+     "zlib9": 1013
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3104_probe_ladder_72929.html",
+     "raw": 10029,
+     "sha256": "333f3e30df5fbfc9cd55523e3df08f83262e5d556647107d388f83a642d9238e",
+     "zlib9": 959
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3104_probe_ladder_host.html",
+     "raw": 10029,
+     "sha256": "333f3e30df5fbfc9cd55523e3df08f83262e5d556647107d388f83a642d9238e",
+     "zlib9": 959
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3104_final.js",
+     "raw": 2311,
+     "sha256": "8512721b12ddd13f4453334fbed85428cb6dd5d59b3c5ef504b2b1e5edd14e6d",
+     "zlib9": 771
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3104_probe.js",
+     "raw": 2311,
+     "sha256": "305676ab132a32dfab23e4efc30b6305c5e0f7bd8376f76ea6447f4e526ce64e",
+     "zlib9": 724
+    }
+   },
+   "reference": false,
+   "req_b": 2840,
+   "req_fs": 3104,
+   "tn": 600
+  },
+  {
+   "A_final_len": 2495,
+   "A_final_sha256": "3786bd96155517092ddb5af03646e04fcb8ddd2ffbe46337d05bbfb0aeded197",
+   "A_probe_len": 2495,
+   "A_probe_sha256": "db59b12ca3ddf62dda3a96f2d9594ee43e59389d81f709016fa1b9d32139f47a",
+   "C": 3840,
+   "bsize": 3696,
+   "drain": 3000,
+   "fs": 3832,
+   "fsize": 3693,
+   "keep": 3000,
+   "map_name": "dense",
+   "nab": 700,
+   "nfloat": 178,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3840_final_ladder_72929.html",
+     "raw": 10213,
+     "sha256": "b11bf062899cc34c618b330bea3d7e463f0edd2ea24afe0d5b79d877970dc949",
+     "zlib9": 4025
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3840_final_ladder_host.html",
+     "raw": 10213,
+     "sha256": "6a04986246f715a8666be29e8d6c025c9ff75672db024e11865b97eeec9c0ee7",
+     "zlib9": 4015
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3840_forgeprobe_ladder_72929.html",
+     "raw": 10213,
+     "sha256": "84782ffea269b3a9f7cd7ead184119b75581f9b55b44e5b9ffb13d55e630474f",
+     "zlib9": 1014
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3840_forgeprobe_ladder_host.html",
+     "raw": 10213,
+     "sha256": "84782ffea269b3a9f7cd7ead184119b75581f9b55b44e5b9ffb13d55e630474f",
+     "zlib9": 1014
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3840_probe_ladder_72929.html",
+     "raw": 10213,
+     "sha256": "3b8ee4c105a0e435c25671628ab6206e3bc3e1f6e530977d738fcf164c17fc81",
+     "zlib9": 963
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3840_probe_ladder_host.html",
+     "raw": 10213,
+     "sha256": "3b8ee4c105a0e435c25671628ab6206e3bc3e1f6e530977d738fcf164c17fc81",
+     "zlib9": 963
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3840_final.js",
+     "raw": 2495,
+     "sha256": "3786bd96155517092ddb5af03646e04fcb8ddd2ffbe46337d05bbfb0aeded197",
+     "zlib9": 774
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3840_probe.js",
+     "raw": 2495,
+     "sha256": "db59b12ca3ddf62dda3a96f2d9594ee43e59389d81f709016fa1b9d32139f47a",
+     "zlib9": 726
+    }
+   },
+   "reference": false,
+   "req_b": 3704,
+   "req_fs": 3840,
+   "role": "robust_4096_slot",
+   "tn": 600
+  },
+  {
+   "A_final_len": 2359,
+   "A_final_sha256": "178edf6a5f1d33e7fe81b3de9f699a426c8011cce9209daf62a9bad8e47d8cfd",
+   "A_probe_len": 2359,
+   "A_probe_sha256": "d38e2ff5ec5bd070c07b6c7ae0c4b998530cffdcbf1baf67911f6f9b1ce5a36f",
+   "C": 3072,
+   "bsize": 3056,
+   "drain": 3000,
+   "fs": 3064,
+   "fsize": 3047,
+   "keep": 3000,
+   "map_name": "4k",
+   "nab": 900,
+   "nfloat": 144,
+   "nsym": 65600,
+   "outputs": {
+    "final_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072max_final_ladder_72929.html",
+     "raw": 10077,
+     "sha256": "7503973ad9c7cf466bef96891404d0b2e8c6b8588b631fa5fa41cc2e393b58c0",
+     "zlib9": 4024
+    },
+    "final_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072max_final_ladder_host.html",
+     "raw": 10077,
+     "sha256": "8ca7ebf1a1a3c3ad80b15ac40b7d1395e1eb1f7291cd9976393a964e0fb43d8c",
+     "zlib9": 4015
+    },
+    "forgeprobe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072max_forgeprobe_ladder_72929.html",
+     "raw": 10077,
+     "sha256": "9ab210dc556f09f0b3ec01c03edf24a39efe4858f8e9509fc75cec6613ae1530",
+     "zlib9": 1013
+    },
+    "forgeprobe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072max_forgeprobe_ladder_host.html",
+     "raw": 10077,
+     "sha256": "9ab210dc556f09f0b3ec01c03edf24a39efe4858f8e9509fc75cec6613ae1530",
+     "zlib9": 1013
+    },
+    "probe_72929": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072max_probe_ladder_72929.html",
+     "raw": 10077,
+     "sha256": "a44e8b61c8f0486bc6f48abc94f5ff8cd22d10c4146079b9743d274618d7fcb5",
+     "zlib9": 960
+    },
+    "probe_host": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/c3072max_probe_ladder_host.html",
+     "raw": 10077,
+     "sha256": "a44e8b61c8f0486bc6f48abc94f5ff8cd22d10c4146079b9743d274618d7fcb5",
+     "zlib9": 960
+    },
+    "stageA_final": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3072max_final.js",
+     "raw": 2359,
+     "sha256": "178edf6a5f1d33e7fe81b3de9f699a426c8011cce9209daf62a9bad8e47d8cfd",
+     "zlib9": 772
+    },
+    "stageA_probe": {
+     "path": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3072max_probe.js",
+     "raw": 2359,
+     "sha256": "d38e2ff5ec5bd070c07b6c7ae0c4b998530cffdcbf1baf67911f6f9b1ce5a36f",
+     "zlib9": 725
+    }
+   },
+   "reference": false,
+   "req_b": 3064,
+   "req_fs": 3072,
+   "role": "robust_3072_slot",
+   "tn": 600
+  }
+ ]
+}

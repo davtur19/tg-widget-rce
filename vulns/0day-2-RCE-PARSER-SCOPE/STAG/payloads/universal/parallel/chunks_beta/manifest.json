@@ -1,0 +1,47 @@
+{
+ "n": 8,
+ "chunk": 1000,
+ "source": "<HOME>/ailocal/Telegram/telegramandroidwidget/lab/parallel_univ_20261108/endgame_beta.js",
+ "chunks": [
+  {
+   "i": 0,
+   "len": 1000,
+   "sha256": "69a9344d4b48b82ce05ebcae85914f447d503d257db827098f924d004820f4e1"
+  },
+  {
+   "i": 1,
+   "len": 1000,
+   "sha256": "2c0064d637e34896ed80f4112e27177f4303327a0b073c06cb175ee0bd9b87b2"
+  },
+  {
+   "i": 2,
+   "len": 1000,
+   "sha256": "ae9fe82a86089472e15883e8403935f2416e53a269908f461afe7f9725236e93"
+  },
+  {
+   "i": 3,
+   "len": 1000,
+   "sha256": "726e0c40eda2df59cf329238af02dbc336a14748e2af7e243302e6509c96438d"
+  },
+  {
+   "i": 4,
+   "len": 1000,
+   "sha256": "cb37f9e86905519a24fc26804a1aab491ce073351f46066f1365eb906075c307"
+  },
+  {
+   "i": 5,
+   "len": 1000,
+   "sha256": "406e8a5668f2633fbda38553b88053acb96659e89de13852fd5e5dddc7ed459c"
+  },
+  {
+   "i": 6,
+   "len": 1000,
+   "sha256": "4718871348367bfd6ff9384fc1e53715c615fe9dc290d13cae30949d7b76c888"
+  },
+  {
+   "i": 7,
+   "len": 474,
+   "sha256": "9c236b633ec5d16b13aff0b3652f94c927442024ddcc1dc9ae0fba789a5623c8"
+  }
+ ]
+}

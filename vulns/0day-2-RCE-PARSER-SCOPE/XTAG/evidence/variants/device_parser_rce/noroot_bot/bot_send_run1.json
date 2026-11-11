@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "message_id": 16679,
+  "chat_id": 0,
+  "raw": 8120,
+  "zlib9": 3289,
+  "transport": "bot sendWidget",
+  "root_used_for_delivery": false
+}

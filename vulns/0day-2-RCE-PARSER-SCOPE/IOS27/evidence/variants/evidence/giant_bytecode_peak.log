@@ -1,0 +1,8 @@
+== 8 MiB limit (rejected)
+[/tmp/opencode/big1.js] EXC InternalError: out of memory
+RESULT=undefined
+== 16 MiB limit (compiles, peak measured)
+CFPRE fsize=1320161 size=2557920 limit=16777216
+CFPOST fsize=1320161 size=3878104 peak=10477464
+ACV b=0x559b633a4e08 sizeofB=128 argc=1 varc=6 cvc=0 count=7 scope_idx=65534 vardefs=0x559b633a4e88 target=0x559b634e4e74 bclen=1319893 bcoff=268
+ACVPEAK 10477464

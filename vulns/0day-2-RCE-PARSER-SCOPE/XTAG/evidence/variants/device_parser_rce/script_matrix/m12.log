@@ -1,0 +1,1 @@
+11-07 22:06:58.009 19662 19662 E tmessages: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference

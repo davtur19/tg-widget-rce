@@ -1,0 +1,2 @@
+SIM map=alt classes=32 limit=8388608
+=== SCRIPT <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/widget/universal/stageA/c3072_final.js (2307)

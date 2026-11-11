@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 13px -apple-system, sans-serif; margin: 8px; }
+  #out { white-space: pre-wrap; word-break: break-all; }
+</style>
+</head>
+<body>
+<div id="out">boot</div>
+<script>
+/* Read-only engine probe: no memory corruption, no network.
+ * Confirms the features the #1827 payload depends on:
+ *   BigInt, typed arrays, resizable ArrayBuffer, RegExp lastIndex getter,
+ *   synchronous GC/free via `TRIG = null`.
+ */
+(function () {
+  var lines = [];
+  function log(s) {
+    lines.push(String(s));
+    try { document.getElementById('out').textContent = lines.join('\n'); } catch (e) {}
+    try { console.log('IOSPORT_CTX ' + s); } catch (e) {}
+  }
+  try {
+    log('bigint=' + (typeof BigInt) + ' u64=' + (typeof BigUint64Array));
+
+    var a = new Uint8Array(16);
+    var b = new BigUint64Array(a.buffer);
+    b[0] = 0x1122334455667788n;
+    log('u64_roundtrip=' + (b[0] === 0x1122334455667788n));
+
+    var rab = null;
+    try {
+      rab = new ArrayBuffer(16, { maxByteLength: 64 });
+      rab.resize(32);
+      log('rab_ok len=' + rab.byteLength + ' max=' + rab.maxByteLength);
+    } catch (e) {
+      log('rab_err=' + e);
+    }
+
+    var getterRan = false;
+    var re = /a/g;
+    re.lastIndex = { valueOf: function () { getterRan = true; return 0; } };
+    var m = re.exec('a');
+    log('regexp_getter=' + getterRan + ' match=' + (m && m[0]));
+
+    var freed = false;
+    var TRIG = new Uint8Array(4096);
+    TRIG[0] = 1;
+    TRIG = null;
+    log('free_sync=ok');
+
+    log('ctx_probe_done');
+  } catch (e) {
+    log('CTX_ERROR ' + e);
+  }
+})();
+</script>
+</body>
+</html>

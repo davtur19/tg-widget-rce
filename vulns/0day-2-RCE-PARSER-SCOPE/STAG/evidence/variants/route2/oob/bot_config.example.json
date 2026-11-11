@@ -1,0 +1,25 @@
+{
+  "api_prefix": "https://api.telegram.org/beta/bot<TOKEN>/",
+  "sendWidget": {
+    "method": "sendWidget",
+    "body": {
+      "chat_id": 0,
+      "html": "<contents of oob/s2oob_device_72801.html>",
+      "allow_queries": true,
+      "background_query": true
+    }
+  },
+  "answer": {
+    "method": "answerWidgetQuery",
+    "params": ["query_id", "result"],
+    "result": "string chunk (950 B, verbatim)"
+  },
+  "server": {
+    "cmd": "BOT_TOKEN=<TOKEN> python3 oob/bot_server.py --uid 0 --chunks oob/chunks",
+    "getUpdates": {"timeout": 25, "offset": "state/offset.json"},
+    "filter": {"uid": 0, "data": "^E[0-7]$"},
+    "log": "state/server.log"
+  },
+  "chunks": {"n": 8, "size": 950, "last": 819, "len": 7469,
+             "source_sha256": "5200636a47720fe89b41461aa9296c135f751ab194938e6bd4e4d0842353d860"}
+}

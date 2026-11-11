@@ -1,0 +1,3 @@
+11-07 21:10:41.891 15519 15570 D tmessages: widget payload: zlib, 4026 -> 10226 bytes
+11-07 21:10:42.314 15519 15671 F libc    : Fatal signal 11 (SIGSEGV), code 2 (SEGV_ACCERR), fault addr 0x6fafef5300 in tid 15671 (widget.sandbox), pid 15519 (.messenger.beta)
+11-07 21:10:42.723 15674 15674 F DEBUG   : signal 11 (SIGSEGV), code 2 (SEGV_ACCERR), fault addr 0x0000006fafef5300

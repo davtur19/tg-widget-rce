@@ -1,0 +1,4 @@
+11-07 22:06:02.421 19662 19662 E tmessages: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference
+11-07 22:06:09.980  1815  2021 W ProcessCpuTracker: Failed to stat(/proc/19972): android.system.ErrnoException: stat failed: ENOENT (No such file or directory)
+11-07 22:06:09.981  1815  2021 W ProcessCpuTracker: Failed to stat(/proc/19976): android.system.ErrnoException: stat failed: ENOENT (No such file or directory)
+11-07 22:06:09.981  1815  2021 W ProcessCpuTracker: Failed to stat(/proc/19977): android.system.ErrnoException: stat failed: ENOENT (No such file or directory)

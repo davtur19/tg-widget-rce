@@ -1,0 +1,12 @@
+# local artifacts and state (never commit real ids/tokens/logs)
+runs/
+.i17e_state/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+build/
+dist/
+*.jsonl
+*.log
+*.png

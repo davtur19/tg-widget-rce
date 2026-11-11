@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "i17e-runner"
+version = "1.0.0"
+description = "Generic host-only iPhone 17e test runner for the P1/v14/session matrices"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Proprietary lab tooling"}
+authors = [{name = "iOS 17e lab"}]
+dependencies = []
+
+[project.optional-dependencies]
+ocr = ["rapidocr_onnxruntime"]
+
+[project.scripts]
+i17e-runner = "i17e_runner.cli:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["i17e_runner*"]
+
+[tool.setuptools.package-data]
+"i17e_runner.vendor" = ["usb_recover.py"]

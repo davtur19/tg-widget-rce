@@ -1,0 +1,7 @@
+11-07 22:05:29.640 19662 19711 D tmessages: widget payload: zlib, 147 -> 197 bytes
+11-07 22:05:29.647 19662 19711 D tmessages: widget payload: zlib, 153 -> 247 bytes
+11-07 22:05:29.650 19662 19711 D tmessages: widget payload: zlib, 153 -> 251 bytes
+11-07 22:05:29.652 19662 19711 D tmessages: widget payload: zlib, 131 -> 221 bytes
+11-07 22:05:29.739 19662 19662 D tmessages: widget height 0/<CHAT_ID>/<CHAT_ID>/-274184410: away: cached heights read, 160 (placeholder) -> 59 (cache), width 376, off screen, not running, session 0, scripts held
+11-07 22:05:29.812 19662 19662 E tmessages: java.lang.NullPointerException: Attempt to invoke virtual method 'int java.lang.String.length()' on a null object reference
+11-07 22:05:30.068 19662 19662 D tmessages: widget tg-widget:0/<CHAT_ID>/<CHAT_ID>/-1156798021 stopped (1): Memory limit exceeded (8 MB)

@@ -1,0 +1,8 @@
+integrity before: b'ok'
+candidate 0000000847cdfde3000000006aef5c2d000139f6 value_len 1857 zoff 105 comp_len 1737 html_len 3969 head b'<!doctype html><html><head><meta charset="utf-8"></head><bod'
+key preserved: 0000000847cdfde3000000006aef5c2d000139f6
+old value_len 1857 new 2008 old comp 1737 new 1888 old html 3969 new 3969
+verify: key unchanged, payload equals new html
+integrity after: b'ok'
+t4 value length: 5
+wrote /tmp/opencode/srop3_row/db_inline

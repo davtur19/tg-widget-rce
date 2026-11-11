@@ -1,0 +1,22 @@
+<!doctype html><html><head><meta charset="utf-8"></head><body>
+<div id="v">N1IOS_DET_SAFE</div>
+<script>var GD=1;var N=navigator,U=''+N.userAgent,C=(TelegramWidget&&TelegramWidget.contentSafeAreaInset)||{},S=(screen&&screen.width)||0;if(U.length<40&&U.indexOf('TelegramWidget')>=0&&typeof __twReceive=='undefined'&&typeof __hostOps=='undefined'&&typeof webkit=='undefined'&&S<=800&&((C.bottom||0)+(C.cornerLeft||0)+(C.cornerRight||0)>0||(devicePixelRatio||1)>=2))GD=0;if(!GD){(function(){"use strict";"use strict";
+var T0=Date.now(),B=[],i;
+function P(v,w){for(var j=w-1;j>=0;j--)B.push(v>>8*j&255)}
+var dpr=(typeof devicePixelRatio=='number'?devicePixelRatio:1);
+var sw=(typeof screen!='undefined'&&screen.width)||0;
+var sh=(typeof screen!='undefined'&&screen.height)||0;
+var L=(typeof navigator!='undefined'&&navigator.language)||'??';
+var tz=0;try{tz=new Date().getTimezoneOffset()/15}catch(e){}
+P(3,1);P(3,1);P(4,1);P(6,1);P(255,1);P(0,2);P(545,2);P(598,2);P(12,1);
+P(Math.min(255,Math.round(dpr*10)),1);P(Math.min(4095,sw),2);P(Math.min(4095,sh),2);
+P(L.charCodeAt(0)||63,1);P(L.charCodeAt(1)||63,1);
+P(Math.min(255,Math.max(0,Math.round(tz)+128)),1);
+P(0,2);P(768,2);P(26,1);P(239,1);P(24,1);P(72,1);P(Date.now()&0xffffff,3);
+try{var N=256,S=new Array(N);for(i=0;i<N;i++)S[i]=new Uint8Array(957);globalThis.f=(0,eval)('"use strict";(function ([] = eval("(")) { var q1=0,q2=0,q3=0; return 1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5+1.5; })');}catch(e){}
+var el=Math.min(65535,Date.now()-T0);B[20]=(el>>8)&255;B[21]=el&255;
+var R='P3';for(i=0;i<B.length;i++)R+=('0'+B[i].toString(16)).slice(-2);
+globalThis.REP=R;S=null;
+try{var d=document.getElementById('v');if(d)d.textContent='DET SAFE '+R}catch(e){}
+try{if(typeof TelegramWidget!='undefined'&&TelegramWidget.request){var p=TelegramWidget.request(R);if(p&&p.then)p.then(function(){},function(){})}}catch(e){}
+})()};if(GD){!function(){var s='P3',B=[],i;function P(v,w){for(var j=w-1;j>=0;j--)B.push(v>>8*j&255)}P(3,1);P(9,1);P(0,1);P(0,1);P(255,1);P(0,2);P(0,2);P(0,2);P(0,1);P(0,1);P(0,2);P(0,2);P(63,1);P(63,1);P(128,1);P(0,2);P(0,2);P(0,1);P(0,1);P(0,1);P(0,3);for(i=0;i<B.length;i++)s+=('0'+B[i].toString(16)).slice(-2);try{var d=document.getElementById('v');if(d)d.textContent='DESKTOP OK R='+s}catch(e){}try{if(typeof TelegramWidget!='undefined'&&TelegramWidget.request){var p=TelegramWidget.request(s);if(p&&p.then)p.then(function(){},function(){})}}catch(e){}}();}</script></body></html>

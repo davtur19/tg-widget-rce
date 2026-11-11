@@ -1,0 +1,31 @@
+{
+  "name": "v14_k3_k4",
+  "notes": "K3p probe, then K3 x10, then K4 x6 only if K3 is 10/10. One widget per open; clean chat before every send.",
+  "attempts": [
+    {
+      "label": "K3p",
+      "payload": "lab/ios17e/reliability_20261109/fix_v10/out/v14_probe.html",
+      "count": 1,
+      "expect": "marker",
+      "success_markers": ["HIT=", "RESULT SS2"],
+      "stop_after_consecutive_deaths": 2
+    },
+    {
+      "label": "K3",
+      "payload": "lab/ios17e/reliability_20261109/fix_v10/out/v14_stage_a.html",
+      "count": 10,
+      "expect": "marker",
+      "success_markers": ["HIT=", "RESULT SS2"],
+      "stop_after_consecutive_deaths": 2
+    },
+    {
+      "label": "K4",
+      "payload": "lab/ios17e/reliability_20261109/fix_v10/out/v14_stage_a.html",
+      "count": 6,
+      "expect": "marker",
+      "success_markers": ["HIT=", "RESULT SS2"],
+      "gate": {"label": "K3", "min_passed": 10},
+      "stop_after_consecutive_deaths": 2
+    }
+  ]
+}

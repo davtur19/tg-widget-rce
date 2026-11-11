@@ -1,0 +1,16 @@
+== host stage B + real arm (dummy libcFree, HOSTCFG=0)
+
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000ffff9933304 in ?? ()
+rip            0xffff9933304       0xffff9933304
+rdi            0x5555556fe530      93824993977648
+rsi            0x5555556fe538      93824993977656
+#0  0x00000ffff9933304 in ?? ()
+#1  0x0000555555576dc3 in js_free_rt.part ()
+#2  0x000055555557c4f5 in js_realloc_rt ()
+#3  0x0000555555576eca in js_array_buffer_finalizer ()
+#4  0x000055555559b1d9 in free_object ()
+#5  0x000055555559b47d in js_free_value_rt ()
+#6  0x0000555555583927 in JS_CallInternal ()
+#7  0x000055555557f03f in JS_CallInternal ()

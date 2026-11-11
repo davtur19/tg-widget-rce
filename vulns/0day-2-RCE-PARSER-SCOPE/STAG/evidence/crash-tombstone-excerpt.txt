@@ -1,0 +1,57 @@
+Foreground: Yes
+Process-Runtime: 210142
+Build: google/tokay/tokay:17/CP3A.261005.005/16271449:user/release-keys
+DefaultScreen-State: ON
+Keyguard-Locked: false
+Loading-Progress: 1.0
+Dropped-Count: 0
+
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Build fingerprint: 'google/tokay/tokay:17/CP3A.261005.005/16271449:user/release-keys'
+Kernel Release: '6.1.162-android14-11-g9dd05ae3a1de-ab16261587'
+Revision: 'MP1.0'
+ABI: 'arm64'
+Timestamp: 2026-11-08 01:07:40.726845444+0100
+Process uptime: 337s
+Executable: /system/bin/app_process64
+Cmdline: org.telegram.messenger
+pid: 17820, ppid: 987, tid: 19188, name: widget.sandbox  >>> org.telegram.messenger <<<
+uid: 10290
+tagged_addr_ctrl: 0000000000000001 (PR_TAGGED_ADDR_ENABLE)
+pac_enabled_keys: 000000000000000f (PR_PAC_APIAKEY, PR_PAC_APIBKEY, PR_PAC_APDAKEY, PR_PAC_APDBKEY)
+esr: 0000000092000006 (Data Abort Exception 0x24)
+signal 11 (SIGSEGV), code 2 (SEGV_ACCERR), fault addr 0x0000006e77839d08 (read)
+
+    x0  0000006e76536638  x1  0000000000000006  x2  0000000000000038  x3  7075743e00000000
+    x4  7075743e00000000  x5  000000003e747570  x6  000000003e747570  x7  0000006f1d64820f
+    x8  0000000000000014  x9  00000000000000e8  x10 000000000000fffe  x11 000000000000ffff
+    x12 0000006e776f9d18  x13 0000006e77839d04  x14 0000000000000008  x15 0000001e504beaec
+    x16 0000006ec1285ce0  x17 00000071fec8ea80  x18 0000006e4fa58000  x19 b4000070afd3f1a8
+    x20 0000000000000002  x21 0000000000000001  x22 0000000000000002  x23 0000000000000000
+    x24 0000006e776f9c98  x25 0000006e5165a1a8  x26 b40000700fc8a608  x27 0000006ebfb71440
+    x28 0000006e51659d10  x29 0000006e51659df0
+    lr  0000006ec106182c  sp  0000006e51659ce0  pc  0000006ec106186c  pst 0000000000001000
+    esr 0000000092000006  vg  0000000000000002
+
+16 total frames
+backtrace:
+      #00 pc 000000000174986c  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #01 pc 0000000001719e94  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #02 pc 000000000170c380  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #03 pc 000000000170b84c  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #04 pc 00000000017334e0  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #05 pc 0000000001749fd0  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #06 pc 00000000017ac85c  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #07 pc 000000000077ab34  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #08 pc 0000000000787da0  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #09 pc 0000000000788380  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #10 pc 000000000077e858  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #11 pc 000000000077e354  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #12 pc 0000000000778bc4  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #13 pc 00000000007785e4  /data/app/~~uQsubc4QBqgJ68ey26XVnw==/org.telegram.messenger-Mvvwfe_Y7c4R9-KaATYc6g==/lib/arm64/libtmessages.49.so (BuildId: ecb6bff684aab8ecf5b54f80ca330f275d51ec88)
+      #14 pc 0000000000094314  /apex/com.android.runtime/lib64/bionic/libc.so (__pthread_start(void*) (.__uniq.67847048707805468364044055584648682506)+180) (BuildId: f4fb08a93372e239e4aab3ef1865ae74)
+      #15 pc 0000000000083a14  /apex/com.android.runtime/lib64/bionic/libc.so (__start_thread+68) (BuildId: f4fb08a93372e239e4aab3ef1865ae74)
+
+Note: To display stack pointer information, use the pbtombstone tool:
+        pbtombstone --display-sp tombstone_XX.pb
+

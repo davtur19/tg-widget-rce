@@ -1,0 +1,174 @@
+# Lemmalog facts — two-phase universal 0day (P3, Android + iOS 15 + iOS 27)
+# Host-only, 2026-11-08 17:xx. Every fact is read from the named artifact or measured.
+# Supersedes the v2 facts of 16:32; the v2 iOS27 rows were wrong (see correction).
+
+two_phase --architecture[1.0]--> detector_then_host_mapping_then_inline_final
+two_phase --goal[1.0]--> one_report_format_one_host_mapping_per_platform_final
+two_phase --hot_path[1.0]--> direct_one_message_final_no_answer_fetch_0p8_to_2p5_s
+two_phase --two_phase_total[0.6]--> 1p06_to_3p32_s_model_delivery_dominates
+
+# ---- report v3 (current) ----
+report --encoding[1.0]--> P3_plus_62_hex_31_packed_bytes_64_chars
+report --limit[1.0]--> request_data_1_to_64_utf8_bytes_exact_fit
+report --fields[1.0]--> ver_platform_chain_flags_att_sel_n_hd_cb_dpr_sw_sh_lang_tz_elapsed_padM_N_SZ_UBn_UBsz_trep
+report --legacy[1.0]--> P2_23_bytes_48_chars_still_parsed
+report --flags[1.0]--> bit0_hit_bit1_safe_bit2_answer_bit3_timed
+report --located[1.0]--> lab/two_phase_20261108/gen_two_phase.py
+report --host_parser[1.0]--> lab/two_phase_20261108/bot_two_phase.py
+
+# ---- Android route2 (P3 detector; final unchanged) ----
+android_detector --raw[1.0]--> 9176
+android_detector --zlib9[1.0]--> 1546
+android_detector --sha256[1.0]--> 1852d1ad78f68b76e1e763b1a4e144968b32c262b6c7cf0e417fc368a2180389
+android_detector --located[1.0]--> lab/two_phase_20261108/detector.html
+android_final --raw[1.0]--> 9176
+android_final --zlib9[1.0]--> 3988
+android_final --sha256[1.0]--> 7aae63e7aed883646e4b41e5acb8b3f46da08a36e1c02c7f32bbfaec98077b33
+android_final --located[1.0]--> lab/two_phase_20261108/final_inline.html
+android_fallback --raw[1.0]--> 2151
+android_fallback --zlib9[1.0]--> 1024
+android_fallback --sha256[1.0]--> 245f4dc4a2773fedc10647e35b3e95d65409aafb21d7d6f1925ef9aa6a225e1d
+android_fallback --located[1.0]--> lab/two_phase_20261108/final_fallback.html
+android_page_shape --rule[1.0]--> detector_and_final_equal_9176_and_stageA_byte_identical
+android_page_shape --measured[1.0]--> same_length_dummy_stageC_forges_like_endgame
+android_page_shape --correction[1.0]--> earlier_content_sensitivity_was_marker_bug_and_extra_mock_script
+
+# ---- iOS 27 (17e) canonical: msg 5725 ----
+ios27_proven --fact[1.0]--> message_5725_RCE_OK_app_alive_2026_11_08_16_27_UTC
+ios27_final --raw[1.0]--> 8647
+ios27_final --zlib9[1.0]--> 3680
+ios27_final --sha256[1.0]--> bf31f2f66485174d086d520cbbf8f0434eed674c7282c0a87d731d46015248f8
+ios27_final --located[1.0]--> lab/two_phase_20261108/ios27/final_ios27.html
+ios27_final --source[1.0]--> /tmp/opencode/ios17e/v2/ss8_final.html
+ios27_final --stageA[1.0]--> compile_first_self_sweep_MS_15_pads_N2600_SZ957_C34_PH_4_12_20_28_36
+ios27_final --S2[1.0]--> inline_minified_srop_6099_chars_no_answer_fetch
+ios27_final --marker[1.0]--> HIT545_LEN327744_PH12_VK598_NT106_R4_M768
+ios27_final --proof_sha256[1.0]--> 704984d94917e9108dd47ee93714cad1b150078dfd36e828182fe0d82eed07d4
+ios27_final --proof_bytes[1.0]--> 7_RCE_OK_newline
+ios27_appgroup --verified[1.0]--> 00000000-0000-0000-0000-000000000000
+ios27_stageB --consts[1.0]--> n_0x3f4f174_f_0x557bc20_pivot_libcFree_plus_0xB6583074
+
+# ---- iOS 27 detector: safe handshake (NOT a twin) ----
+ios27_detector --raw[1.0]--> 1581
+ios27_detector --zlib9[1.0]--> 804
+ios27_detector --sha256[1.0]--> 609b7180d52ee6c654f08b9931ccb487f5b95e2db29fb19ffa2411a2582d4632
+ios27_detector --located[1.0]--> lab/two_phase_20261108/ios27/detector_ios27.html
+ios27_detector --method[1.0]--> safe_spray_256_plus_compile_no_f_call_no_forge_P3_report
+ios27_detector --why[1.0]--> stageA_forge_corrupts_class64_header_and_js_free_rt_aborts_on_teardown
+ios27_detector --marker[1.0]--> DET_SAFE_P3_64_chars
+ios27_detector --host[1.0]--> DET_SAFE_P3_2_of_2_and_parse_map_to_final_m768
+ios27_detector_mock --raw[1.0]--> 1721
+ios27_detector_mock --zlib9[1.0]--> 870
+ios27_detector_mock --sha256[1.0]--> 9c0fd8e0689ff7e16ba3c89b063f3bf0c77cc9f45862abf9738d99470b900fa5
+ios27_detector_mock --located[1.0]--> lab/two_phase_20261108/ios27/m_det.html
+ios27_detector --correction[1.0]--> the_6295_univA_twin_is_not_the_5725_payload
+
+# ---- iOS 27 pad-first variants (pre-calibration) ----
+ios27_variants --count[1.0]--> 15_permutations_of_MS
+ios27_variants --raw[1.0]--> 8647_each
+ios27_variants --zlib9[1.0]--> 3680_to_3684
+ios27_variants --m768_sha256[1.0]--> a0b17e90940c26895c506b668a2b9a2afd6e8a7938bb36abf1bfbeab711cd8a8
+ios27_variants --m640_sha256[1.0]--> 630bc01af8cd10b91ca711c2031b8b5599a0f60ce6e8660cea988fae625ed7f8
+ios27_variants --m1024_sha256[1.0]--> b7fac23aaac9d8b956efa9c052ec7a68e8ae3415171772270e3a6e769d47c147
+ios27_variants --located[1.0]--> lab/two_phase_20261108/ios27/final_ios27_m<M>.html
+
+# ---- iOS 27 timed lab instrument ----
+ios27_timed --raw[1.0]--> 8807
+ios27_timed --zlib9[1.0]--> 3716
+ios27_timed --sha256[1.0]--> 39b567ea3fa900c801410cbfe9f6803eca2f842808b9991ea64ac3138bec2891
+ios27_timed_miss --raw[1.0]--> 8803
+ios27_timed_miss --zlib9[1.0]--> 3714
+ios27_timed_miss --sha256[1.0]--> cadfa07ce3aa602a60010af5a6786601d496c58be3c7767022030c07621db95a
+ios27_timed --host_miss[1.0]--> 375_attempts_517_ms_host_lower_bound_T0_T1_printed
+
+# ---- iOS 15 (6s) ----
+ios15_probe_h400 --raw[1.0]--> 6801
+ios15_probe_h400 --zlib9[1.0]--> 1050
+ios15_probe_h400 --sha256[1.0]--> 4cf7efc46ec038e1e57571a0b1177cb99b5f1e268742c7d19f19f85b29583e94
+ios15_probe_h400 --device[1.0]--> HIT545_LEN327744_PH36_VK598_NT21
+ios15_final_h400 --raw[1.0]--> 6801
+ios15_final_h400 --zlib9[1.0]--> 2528
+ios15_final_h400 --sha256[1.0]--> 9085b5886aa8dd3b0276a907d47be65fcf6489133cf04ad1a21acae0cbe5f02e
+ios15_final_h400 --status[1.0]--> host_validated_device_pending
+ios15_probe_h200 --sha256[1.0]--> 92990da7ae342302dce39b8832c025737fe1428eff7c823040680b5c11c46037
+ios15_final_h200 --sha256[1.0]--> f810c05c330a16ed729a90bfe490fa495d00c57c9bf9470ad81549c1a418ee7d
+ios15_probe_h64 --sha256[1.0]--> d2a5ea734eba4beb26a6eec8cdf7997fdcc5f19d50198c9938113d1df5088c8b
+ios15_final_h64 --sha256[1.0]--> 4d72cfb9b4ebadc33cc83411e1d33e0df519e01fcb0ab948402c75fd5525641a
+ios15_probe_h500 --sha256[1.0]--> 1c3da6df726a3ee005fa1e37111ab3ba7c37e616cff3a9a9fd351c21e82a059e
+ios15_final_h500 --sha256[1.0]--> 4f36e9bec2264bf0e8743ed6b7e009e0e479c512441f40b058270f86eca68d70
+ios15_h_order[1.0]--> 400_200_64_500
+ios15_fallback_srop --raw[1.0]--> 6011
+ios15_fallback_srop --zlib9[1.0]--> 2596
+ios15_fallback_srop --sha256[1.0]--> ae436e3fcd21d00feec94ac4dc5a2f5a30dc8b359bcff0d5bbd1d4f067acd14c
+ios15_fallback_seed --raw[1.0]--> 6400
+ios15_fallback_seed --sha256[1.0]--> a03985e769c79d582b400e6c4efbed35136b23af04d49a09bc4fa116f7b73dfe
+ios15_fallback_stageA --raw[1.0]--> 2036
+ios15_fallback_stageA --sha256[1.0]--> 541854df594f11ed9496725c364894c54c065f870ec283108c42bcbe26428bf7
+ios15_proof --path[1.0]--> 00000000-0000-0000-0000-000000000000_Documents_rce_txt
+ios15_gadgets[1.0]--> G_CALL_base_0x3292c_G_LOAD_base_0x172d96c_G_X0_base_0x628a2c_PIVOT2_libcFree_minus_0x66cccfc
+
+# ---- fingerprint / mapping ----
+fingerprint --ua[1.0]--> constant_Mozilla_5.0_TelegramWidget_1.0_platform_TelegramWidget
+fingerprint --api[1.0]--> iOS_and_Android_sandbox_bundles_expose_same_TelegramWidget_surface
+fingerprint --not_visible[1.0]--> model_os_version_ram_heap_limit_quickjs_build
+fingerprint --consequence[1.0]--> devices_json_platform_is_authoritative_report_platform_is_hint
+host --ack[1.0]--> K_within_15s_window
+host --cooldown[1.0]--> 3s_between_second_messages
+host --mapping[1.0]--> android_hit_final_ios15_hit_final_miss_next_H_ios27_safeany_final_m<lastm_or_padM>
+host --selftest[1.0]--> PASS_P3_64_P2_legacy_all_rows
+host --simulate[1.0]--> PASS_android_ios15_ios27
+host --located[1.0]--> lab/two_phase_20261108/bot_two_phase.py
+
+# ---- host validation (actual) ----
+host_validation --android_detector[1.0]--> 3_of_3_ATT0_parse_and_3_of_3_ATT1_3_of_3_MISS
+host_validation --android_final[1.0]--> 3_of_3_NOANCHOR_safe_and_3_of_3_HF_OK
+host_validation --ios27_detector[1.0]--> 2_of_2_DET_SAFE_P3_parse_map_m768
+host_validation --ios27_final[1.0]--> 6_of_6_LEN_72_host_stageB_stop
+host_validation --ios27_timed_miss[1.0]--> 375_attempts_517_ms_T0_T1
+host_validation --ios15_pair[1.0]--> 2_of_2_HIT545_LEN327744_PH36_VK598
+host_validation --ios15_relay[1.0]--> P3_64_chars_map_at_final_h400
+host_validation --located[1.0]--> lab/two_phase_20261108/logs/host_matrix.txt
+
+# ---- timing ----
+timeline --host_chain_p50[1.0]--> 0p047_ms_300_reports
+timeline --host_chain_p95[1.0]--> 0p060_ms
+timeline --host_safe_detector[1.0]--> 1p6_ms_host_5_runs
+timeline --host_final[1.0]--> 19p1_ms_host_stageA_only
+timeline --direct_hot_path[0.6]--> 0p81_to_2p55_s_delivery_0p5_1p5_stageA_0p3_1p0_ROP
+timeline --two_phase[0.6]--> 1p06_to_3p32_s_model
+timeline --5725_bounds[1.0]--> v8_16_26_16_and_w8_16_27_06_show_result_lt_2s_after_send
+timeline --5725_window[1.0]--> build_16_27_33p75_to_proof_alive_16_28_57_lt_5p1_s
+timeline --device_measure[1.0]--> T0_final_minus_t_rep_and_T1_minus_T0_with_timed_final
+
+# ---- limits / corrections ----
+limit --ios27_detector_does_not_certify_hit[1.0]--> safe_handshake_final_self_sweep_is_the_measurement
+limit --ios27_hit_rate[0.7]--> about_1_in_5_heap_state_dependent
+limit --two_phase_adds_one_delivery[1.0]--> 2_to_3_s_at_the_edge_use_direct_final_when_known
+limit --old_univA_6295[1.0]--> not_the_5725_payload_kept_as_ios27_old_final_ios27_univA
+limit --zlib_limit[1.0]--> 4096_server_refuses_larger_android_final_3988_ios27_max_3716
+device_order --sony[1.0]--> first_beta_72929_route2_first_datum
+device_order --pixel[1.0]--> second_release_72801
+device_order --samsung[1.0]--> tuesday_universal_first_open
+device_order --iphone17e[1.0]--> ios27_safe_handshake_then_canonical_final
+device_order --iphone6s[1.0]--> ios15_probe_h400_marker_relay_then_at_final_h400
+
+desktop_gate --design[1.0]--> early_gate_first_statements_all_payloads_fail_closed
+desktop_gate --signals[1.0]--> constant_mobile_ua_adapter_globals_shim_screen_safearea_or_dpr
+desktop_gate --default[1.0]--> GD_1_any_throw_or_missing_navigator_stops
+desktop_gate --desktop_report[1.0]--> P3_platform_9_chain_0_hit_0
+desktop_gate --host[1.0]--> platform_9_skip_before_devices_override_never_send_final
+desktop_gate --gate_matrix[1.0]--> 12_of_12_expected
+desktop_gate --android_detector[1.0]--> 9185_raw_1641_zlib9_sha_ba063822
+desktop_gate --android_final[1.0]--> 9185_raw_4068_zlib9_sha_f8bba658
+desktop_gate --android_fallback[1.0]--> 2620_raw_1261_zlib9_sha_f30cacb2
+desktop_gate --ios27_detector[1.0]--> 2540_raw_1067_zlib9_sha_5098d73f
+desktop_gate --ios27_final[1.0]--> 9139_raw_3937_zlib9_sha_41f9e6c3
+desktop_gate --ios27_timed[1.0]--> 9299_raw_3972_zlib9
+desktop_gate --ios15_pair[1.0]--> 7263_raw_1299_and_2775_zlib9_equal_length
+desktop_gate --host_runs[1.0]--> desktop_detector_and_final_DESKTOP_OK_no_forge
+desktop_gate --residual[1.0]--> native_desktop_dpr_ge2_zero_safearea_same_shim_undistinguished
+desktop_gate --residual_located[1.0]--> lab/two_phase_20261108/gate_native_desktop_dpr2_RESIDUAL.html
+desktop_gate --located[1.0]--> lab/two_phase_20261108/gen_gate_matrix.py
+desktop_gate --located[1.0]--> lab/two_phase_20261108/gate_ios27.py
+desktop_gate --handoff[1.0]--> notes/HANDOFF_desktop_gate_20261108.md
+desktop_gate --plan[1.0]--> open_detector_then_final_in_tdesktop_expect_DESKTOP_OK_no_crash_no_report

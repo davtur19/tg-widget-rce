@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 14px -apple-system, sans-serif; margin: 8px; }
+  #out { white-space: pre-wrap; word-break: break-all; }
+  button { font: inherit; padding: 4px 10px; }
+</style>
+</head>
+<body>
+<div id="out">boot</div>
+<button id="tap">tap</button>
+<script>
+(function () {
+  var n = 0;
+  function out(s) {
+    try { document.getElementById('out').textContent = String(s); } catch (e) {}
+    try { console.log('IOSPORT_PROBE ' + s); } catch (e) {}
+    try { print('IOSPORT_PROBE ' + s); } catch (e) {}
+  }
+  try {
+    var ua = '';
+    try { ua = String(navigator.userAgent || ''); } catch (e) { ua = 'no-ua'; }
+    out('JSRUN ok ua=' + ua +
+        ' bigint=' + (typeof BigInt) +
+        ' u8=' + (typeof Uint8Array) +
+        ' rab=' + (typeof ArrayBuffer) +
+        ' now=' + Date.now());
+  } catch (e) {
+    out('JSRUN_ERROR ' + e);
+  }
+  try {
+    document.getElementById('tap').addEventListener('click', function () {
+      n++;
+      out('TAP n=' + n + ' now=' + Date.now());
+    });
+  } catch (e) {
+    out('TAP_SETUP_ERROR ' + e);
+  }
+})();
+</script>
+</body>
+</html>

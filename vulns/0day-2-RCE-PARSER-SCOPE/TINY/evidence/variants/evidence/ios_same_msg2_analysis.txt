@@ -1,0 +1,55 @@
+# ios_same_msg2.ips; Postbox decoder trap (host analysis, 2026-11-08)
+
+Input: /tmp/opencode/ios_same_msg2.ips (22,294 B), Telegram 13.2 (36535),
+iPhone 6s iOS 15.8.8. The app was launched, a standalone Frida hook on
+printf/puts/NSLog was ready, then the bot chat was opened; crash ~8 s later.
+
+## Exception
+
+```
+EXC_BREAKPOINT / SIGTRAP
+codes 0x0000000000000001, 0x0000000104c5be8c
+termination Trace/BPT trap: 5, byProc exc handler
+faultingThread 9 (a Postbox dispatch workloop)
+```
+
+`0x104c5be8c` = PostboxFramework base `0x104c14000` + **0x47e8c**.
+
+## Frames (image offsets)
+
+PostboxFramework:
+`0x47e8c, 0x47d0c, 0x478e0, 0x483d0, 0x43b20, 0x54054, 0x43860, 0x48798,
+0xc2f60, 0x11e424, 0xeae04, 0x169f88, 0x17b128, 0x18ef2c, 0x175dcc,
+0x177204, 0x18d528, 0xfe88`
+TelegramCoreFramework: `0x5000e0, 0x277280` (image 19)
+
+Symbolication (PostboxFramework symbols):
+* `0x48798 + 0xd8` = `Postbox.PostboxDecoder.decodeObjectForKey(_:forKey:)`
+* 0x47e8c is a **`brk #0x1`** (`d4 20 00 20`) inside a Swift trap sled at
+  0x47e48..0x47e98; the caller path includes
+  `0x47e10: and w8,w0,#0xff; cmp w8,#0xe; b.eq 0x47ea0` and
+  `0x47ea0: brk #0x1`. `0x0e` (14) is **not a valid Postbox ValueType**
+  (0..13: Int32..BytesArray); 11=Nil, 12=StringArray, 13=BytesArray.
+  The decoder read a byte 0x0e where a type tag was expected.
+
+## Hook output
+
+Only `hook printf 0x18bb22a70`, `hook puts`, `hook NSLog`, `ready`; no
+`ABV`, no `N1IOS`, no printf marker. The Frida script died with the process.
+
+## Verdict
+
+Hypothesis **A**: the rewritten t7 row is schema-invalid. The crash is a
+Swift fatal trap in `PostboxDecoder` on a Postbox queue, before the widget JS
+runs. Hypothesis B (stage B corrupting rt/Postbox) is inconsistent with the
+thread, the `brk`, and the absent stage-A/printf output.
+
+Prime cause: the rewrite changed the t7 value/field lengths (seed HTML
+3,969 B -> 2,036 B, compressed 1,737 -> 940, value shorter by ~797 B), which
+can misalign the decoder's type tags (the observed 0x0e read). Fix: the
+length-preserving rewrite (`postbox_rewrite_widget.py --preserve-length
+--pad-html`) keeps uncompressed HTML length, compressed field length and t7
+value length identical, with the stage-A script unchanged.
+
+Control: rewrite the seed row to the **same seed HTML** with preserve-length;
+if that traps, the byte-level rewrite is invalid independent of the stage A.
